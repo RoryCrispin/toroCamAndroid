@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cam</string>
+    <string name="action_settings">Settings</string>
+    <string name="timelapse">Timelapse ></string>
+    <string name="shutter_release">Shutter Release ></string>
+    <string name="light_trigger">Light Trigger ></string>
+    <string name="sound_trigger">Sound Trigger ></string>
+    <string name="title_activity_shutter_release">Shutter Release</string>
+    <string name="delay">Time Delay: </string>
+	<string name="capture">Capture</string>
+	<string name="delayVal"> Deley Value</string>
+	<string name="delayInt"></string>
+</resources>
