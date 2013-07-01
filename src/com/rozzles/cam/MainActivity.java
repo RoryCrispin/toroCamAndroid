@@ -26,5 +26,8 @@ public class MainActivity extends Activity {
 		Intent myIntent = new Intent(v.getContext(), ShutterRelease.class);
 		startActivityForResult(myIntent, 0);
 	}
-
+	public void timelapseButtonClick(View v) {
+		Intent myIntent = new Intent(v.getContext(), Timelapse.class);
+		startActivityForResult(myIntent, 0);
+	}
 }

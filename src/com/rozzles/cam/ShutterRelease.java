@@ -23,7 +23,7 @@ public int prog = 0;
 		setContentView(R.layout.activity_shutter_release);
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
-		SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar1); 
+		SeekBar seekBar = (SeekBar)findViewById(R.id.TimeDelaySeek); 
 		final TextView seekBarValue = (TextView)findViewById(R.id.delayIntView);
 		
 	    seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){ 

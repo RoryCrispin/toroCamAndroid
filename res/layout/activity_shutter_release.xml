@@ -10,24 +10,24 @@
     tools:context=".ShutterRelease" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/TimeDelayView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/delay" />
 
     <SeekBar
-        android:id="@+id/seekBar1"
+        android:id="@+id/TimeDelaySeek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/TimeDelayView"
         android:max="60" />
 
     <TextView
         android:id="@+id/delayIntView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/seekBar1"
+        android:layout_below="@+id/TimeDelaySeek"
         android:layout_centerHorizontal="true"
         android:text="@string/delayInt"
         android:textAppearance="?android:attr/textAppearanceSmall" />

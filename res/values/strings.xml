@@ -9,7 +9,18 @@
     <string name="sound_trigger">Sound Trigger ></string>
     <string name="title_activity_shutter_release">Shutter Release</string>
     <string name="delay">Time Delay: </string>
-	<string name="capture">Capture</string>
-	<string name="delayVal"> Deley Value</string>
-	<string name="delayInt"></string>
+    <string name="capture">Capture</string>
+    <string name="delayVal"> Deley Value</string>
+    <string name="delayInt"></string>
+    <string name="title_activity_timelapse">Timelapse</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="shots">Shots</string>
+	<string name="zero">0</string>
+    <string-array name="timeArray">
+        <item>Seconds</item>
+        <item>Minutes</item>
+        <item>Hours</item>
+    </string-array>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
 </resources>
