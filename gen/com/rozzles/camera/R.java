@@ -27,50 +27,65 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int ShotsSeek=0x7f090009;
-        public static final int ShotsView=0x7f09000a;
-        public static final int TimeDelaySeek=0x7f090006;
-        public static final int TimeDelayView=0x7f090005;
-        public static final int TimeSpinner=0x7f09000b;
-        public static final int TimelapseDelayView=0x7f09000f;
-        public static final int action_settings=0x7f090010;
-        public static final int button1=0x7f090008;
-        public static final int delayIntView=0x7f090007;
-        public static final int delayValue=0x7f090004;
-        public static final int lightbutton=0x7f090002;
-        public static final int shutterbutton=0x7f090000;
-        public static final int soundbutton=0x7f090003;
-        public static final int timelapsebutton=0x7f090001;
-        public static final int toggleButton1=0x7f09000e;
-        public static final int totalShots=0x7f09000d;
-        public static final int totalTime=0x7f09000c;
+        public static final int CaptureButton=0x7f090005;
+        public static final int LightDelay=0x7f090001;
+        public static final int ShotsSeek=0x7f090010;
+        public static final int ShotsView=0x7f090011;
+        public static final int TimeDelaySeek=0x7f09000e;
+        public static final int TimeDelayView=0x7f09000d;
+        public static final int TimeSpinner=0x7f090012;
+        public static final int TimelapseDelayView=0x7f090016;
+        public static final int action_settings=0x7f090017;
+        public static final int bulbCheck=0x7f090004;
+        public static final int delayIntView=0x7f09000f;
+        public static final int delayValue=0x7f09000c;
+        public static final int lightbutton=0x7f09000a;
+        public static final int multiplierSeek=0x7f090003;
+        public static final int multiplierVal=0x7f090007;
+        public static final int shutterbutton=0x7f090008;
+        public static final int soundbutton=0x7f09000b;
+        public static final int textView1=0x7f090000;
+        public static final int textView2=0x7f090002;
+        public static final int timeDelayVal=0x7f090006;
+        public static final int timelapsebutton=0x7f090009;
+        public static final int toggleButton1=0x7f090015;
+        public static final int totalShots=0x7f090014;
+        public static final int totalTime=0x7f090013;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_shutter_release=0x7f030001;
-        public static final int activity_timelapse=0x7f030002;
+        public static final int activity_light_trigger=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_shutter_release=0x7f030002;
+        public static final int activity_sound_trigger=0x7f030003;
+        public static final int activity_timelapse=0x7f030004;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
-        public static final int shutter_release=0x7f080001;
-        public static final int timelapse=0x7f080002;
+        public static final int light_trigger=0x7f080000;
+        public static final int main=0x7f080001;
+        public static final int shutter_release=0x7f080002;
+        public static final int sound_trigger=0x7f080003;
+        public static final int timelapse=0x7f080004;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int bulbFlash=0x7f050012;
         public static final int capture=0x7f050008;
         public static final int delay=0x7f050007;
         public static final int delayInt=0x7f05000a;
         public static final int delayVal=0x7f050009;
         public static final int hello_world=0x7f05000c;
         public static final int light_trigger=0x7f050004;
+        public static final int multiplier=0x7f050013;
         public static final int shots=0x7f05000d;
         public static final int shutter_release=0x7f050003;
         public static final int sound_trigger=0x7f050005;
         public static final int start=0x7f05000f;
         public static final int stop=0x7f050010;
         public static final int timelapse=0x7f050002;
+        public static final int title_activity_light_trigger=0x7f050011;
         public static final int title_activity_shutter_release=0x7f050006;
+        public static final int title_activity_sound_trigger=0x7f050014;
         public static final int title_activity_timelapse=0x7f05000b;
         public static final int zero=0x7f05000e;
     }

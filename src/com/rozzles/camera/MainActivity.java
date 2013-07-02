@@ -30,4 +30,12 @@ public class MainActivity extends Activity {
 		Intent myIntent = new Intent(v.getContext(), Timelapse.class);
 		startActivityForResult(myIntent, 0);
 	}
+	public void lightButtonClick(View v) {
+		Intent myIntent = new Intent(v.getContext(), LightTrigger.class);
+		startActivityForResult(myIntent, 0);
+	}
+	public void soundButtonClick(View v) {
+		Intent myIntent = new Intent(v.getContext(), SoundTrigger.class);
+		startActivityForResult(myIntent, 0);
+	}
 }

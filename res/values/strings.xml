@@ -14,13 +14,20 @@
     <string name="delayInt"></string>
     <string name="title_activity_timelapse">Timelapse</string>
     <string name="hello_world">Hello world!</string>
-	<string name="shots">Shots</string>
-	<string name="zero">0</string>
+    <string name="shots">Shots</string>
+    <string name="zero">0</string>
+
     <string-array name="timeArray">
         <item>Seconds</item>
         <item>Minutes</item>
         <item>Hours</item>
     </string-array>
+
     <string name="start">START</string>
     <string name="stop">STOP</string>
+    <string name="title_activity_light_trigger">LightTrigger</string>
+    <string name="bulbFlash">Bulb Flash</string>
+    <string name="multiplier">Multiplier</string>
+    <string name="title_activity_sound_trigger">SoundTrigger</string>
+
 </resources>

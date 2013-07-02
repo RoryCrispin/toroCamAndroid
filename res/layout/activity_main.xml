@@ -40,7 +40,9 @@
           android:layout_below="@+id/timelapsebutton"
           android:layout_marginTop="25dp"
           android:text="@string/light_trigger"
-          android:textAppearance="?android:attr/textAppearanceLarge" />
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:onClick="lightButtonClick"
+          android:clickable="true" />
        <TextView
           android:id="@+id/soundbutton"
           android:layout_width="wrap_content"
@@ -49,6 +51,8 @@
           android:layout_below="@+id/lightbutton"
           android:layout_marginTop="25dp"
           android:text="@string/sound_trigger"
-          android:textAppearance="?android:attr/textAppearanceLarge" />
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:onClick="soundButtonClick"
+          android:clickable="true" />
 
 </RelativeLayout>

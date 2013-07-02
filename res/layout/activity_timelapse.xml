@@ -77,7 +77,6 @@
         android:id="@+id/TimeSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/totalTime"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/TimeDelaySeek"
         android:textSize="14pt" />

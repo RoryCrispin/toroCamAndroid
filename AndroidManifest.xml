@@ -30,6 +30,14 @@
             android:name="com.rozzles.camera.Timelapse"
             android:label="@string/title_activity_timelapse" >
         </activity>
+        <activity
+            android:name="com.rozzles.camera.LightTrigger"
+            android:label="@string/title_activity_light_trigger" >
+        </activity>
+        <activity
+            android:name="com.rozzles.camera.SoundTrigger"
+            android:label="@string/title_activity_sound_trigger" >
+        </activity>
     </application>
 
 </manifest>
