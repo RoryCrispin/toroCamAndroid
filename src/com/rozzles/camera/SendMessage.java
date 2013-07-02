@@ -1,4 +1,4 @@
-package com.rozzles.cam;
+package com.rozzles.camera;
 
 public class SendMessage {
 

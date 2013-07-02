@@ -1,4 +1,4 @@
-package com.rozzles.cam;
+package com.rozzles.camera;
 
 import java.util.concurrent.TimeUnit;
 

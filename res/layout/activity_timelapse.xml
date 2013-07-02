@@ -42,40 +42,6 @@
         android:layout_below="@+id/TimeSpinner"
         android:text="@string/shots" />
 
-    <Spinner
-        android:id="@+id/TimeSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TimeDelaySeek"
-        android:layout_toRightOf="@+id/TimelapseDelayView" />
-
-    <TextView
-        android:id="@+id/shotView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TimeSpinner"
-        android:layout_below="@+id/ShotsSeek"
-        android:text="@string/zero"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/TimelapseDelayView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TimeDelaySeek"
-        android:layout_below="@+id/TimeDelaySeek"
-        android:text="@string/zero"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/totalShots"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/shotView"
-        android:layout_centerHorizontal="true"
-        android:text="@string/zero"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
     <TextView
         android:id="@+id/totalTime"
         android:layout_width="wrap_content"
@@ -95,6 +61,35 @@
         android:text="@string/zero"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textOff="@string/start"
-        android:textOn="@string/stop" />
+        android:textOn="@string/stop"
+        android:onClick="onToggleClicked" />
+
+    <TextView
+        android:id="@+id/totalShots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ShotsSeek"
+        android:layout_below="@+id/ShotsSeek"
+        android:text="@string/zero"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Spinner
+        android:id="@+id/TimeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/totalTime"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/TimeDelaySeek"
+        android:textSize="14pt" />
+
+    <TextView
+        android:id="@+id/TimelapseDelayView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/TimeSpinner"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@+id/TimeSpinner"
+        android:text="@string/zero"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

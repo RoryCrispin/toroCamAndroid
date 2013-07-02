@@ -1,6 +1,6 @@
-package com.rozzles.cam;
+package com.rozzles.camera;
 
-import com.rozzles.cam.R;
+import com.rozzles.camera.R;
 
 import android.os.Bundle;
 import android.app.ActionBar;
