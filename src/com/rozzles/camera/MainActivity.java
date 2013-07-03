@@ -10,6 +10,8 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
+	//connect con = new connect();
+	BlueComms blu = new BlueComms();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,4 +40,12 @@ public class MainActivity extends Activity {
 		Intent myIntent = new Intent(v.getContext(), SoundTrigger.class);
 		startActivityForResult(myIntent, 0);
 	}
-}
+	public void devLinkButtonClick(View v) {
+	System.out.println("con1");
+	blu.connectDevice();
+    System.out.println("con2");
+	}
+	
+		
+	}
+

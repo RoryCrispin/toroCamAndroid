@@ -21,7 +21,7 @@ public class Timelapse extends Activity {
 	public int shots;
 	int delay;
 	public int spin = 1;
-	SendMessage sendMsg = new SendMessage();
+	BlueComms sendMsg = new BlueComms();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

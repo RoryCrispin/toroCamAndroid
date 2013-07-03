@@ -24,9 +24,9 @@ public class TimeParse {
 	        sb.append(hours);
 	        sb.append(" Hours ");
 	        sb.append(minutes);
-	        sb.append(" Minutes ");
+	        sb.append(" Min ");
 	        sb.append(seconds);
-	        sb.append(" Seconds");
+	        sb.append(" Sec");
 
 	        return(sb.toString());
 	    }

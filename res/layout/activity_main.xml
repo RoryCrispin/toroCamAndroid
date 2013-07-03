@@ -55,4 +55,16 @@
           android:onClick="soundButtonClick"
           android:clickable="true" />
 
+       <TextView
+           android:id="@+id/devLink"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignLeft="@+id/soundbutton"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="14dp"
+           android:clickable="true"
+           android:onClick="devLinkButtonClick"
+           android:text="@string/devlink"
+           android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>

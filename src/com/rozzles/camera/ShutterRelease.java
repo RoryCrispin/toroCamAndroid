@@ -56,7 +56,7 @@ public int prog = 0;
 	}
 	
 	public void CaptureClick(View view) {
-		SendMessage sendMsg = new SendMessage();
+		BlueComms sendMsg = new BlueComms();
 		sendMsg.sendMsg("1," + prog + ",0,0,0,0,0,0,0,0");
 	}
 	

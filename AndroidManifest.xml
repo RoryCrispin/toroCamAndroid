@@ -38,6 +38,10 @@
             android:name="com.rozzles.camera.SoundTrigger"
             android:label="@string/title_activity_sound_trigger" >
         </activity>
+        <activity
+            android:name="com.rozzles.camera.DevLink"
+            android:label="@string/title_activity_dev_link" >
+        </activity>
     </application>
 
 </manifest>

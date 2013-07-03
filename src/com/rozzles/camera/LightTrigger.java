@@ -16,7 +16,7 @@ public float delay;
 public float mod;
 public int bulbBinary;
 
-SendMessage sendMsg = new SendMessage();
+BlueComms sendMsg = new BlueComms();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
