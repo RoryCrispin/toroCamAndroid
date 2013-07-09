@@ -116,11 +116,13 @@ public class BlueComms {
 	}
 
 	public void killBT() {
-		try {
-			btSocket.close();
-			isConnected = false;
-		} catch (IOException e) {
-			System.out.println("Error: " + String.valueOf(e));
+		if (isConnected = true){
+			try {
+				btSocket.close();
+				isConnected = false;
+			} catch (IOException e) {
+				System.out.println("Error: " + String.valueOf(e));
+			}
 		}
 	}
 }

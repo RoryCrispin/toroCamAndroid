@@ -16,7 +16,7 @@
         android:layout_alignBaseline="@+id/messageField"
         android:layout_alignBottom="@+id/messageField"
         android:layout_alignParentRight="true"
-        android:onClick="tgClick"
+        android:onClick="sendClick"
         android:text="@string/zero" />
 
     <EditText

@@ -31,18 +31,18 @@ public final class R {
         public static final int CaptureButton=0x7f090008;
         public static final int LightDelay=0x7f090004;
         public static final int SendButton=0x7f090000;
-        public static final int ShotsSeek=0x7f090017;
-        public static final int ShotsView=0x7f090018;
-        public static final int TimeDelaySeek=0x7f090015;
-        public static final int TimeDelayView=0x7f090014;
-        public static final int TimeSpinner=0x7f090019;
-        public static final int TimelapseDelayView=0x7f09001c;
-        public static final int action_settings=0x7f09001d;
+        public static final int ShotsSeek=0x7f090018;
+        public static final int ShotsView=0x7f090019;
+        public static final int TimeDelaySeek=0x7f090016;
+        public static final int TimeDelayView=0x7f090015;
+        public static final int TimeSpinner=0x7f09001a;
+        public static final int TimelapseDelayView=0x7f09001d;
+        public static final int action_settings=0x7f09001e;
         public static final int bulbCheck=0x7f090007;
         public static final int button1=0x7f090010;
         public static final int button2=0x7f090011;
-        public static final int delayIntView=0x7f090016;
-        public static final int delayValue=0x7f090013;
+        public static final int delayIntView=0x7f090017;
+        public static final int delayValue=0x7f090014;
         public static final int devLink=0x7f090003;
         public static final int lightbutton=0x7f09000d;
         public static final int messageField=0x7f090001;
@@ -52,11 +52,12 @@ public final class R {
         public static final int soundbutton=0x7f09000e;
         public static final int textView1=0x7f09000f;
         public static final int textView2=0x7f090005;
+        public static final int textView3=0x7f090013;
         public static final int timeDelayVal=0x7f090009;
         public static final int timelapsebutton=0x7f09000c;
         public static final int toggleButton1=0x7f090002;
-        public static final int totalShots=0x7f09001b;
-        public static final int totalTime=0x7f09001a;
+        public static final int totalShots=0x7f09001c;
+        public static final int totalTime=0x7f09001b;
     }
     public static final class layout {
         public static final int activity_blue_control=0x7f030000;
@@ -106,6 +107,7 @@ public final class R {
         public static final int title_activity_shutter_release=0x7f050006;
         public static final int title_activity_sound_trigger=0x7f050014;
         public static final int title_activity_timelapse=0x7f05000b;
+        public static final int todo_device_must_be_connected_before_entering_activities_press_h_or_l_=0x7f05001e;
         public static final int zero=0x7f05000e;
     }
     public static final class style {

@@ -120,4 +120,16 @@
         android:text="@string/debug_controls"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/shutterbutton"
+        android:padding="0dp"
+        android:text="@string/todo_device_must_be_connected_before_entering_activities_press_h_or_l_"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/holo_red_light"
+        android:textColorHint="@android:color/holo_red_light" />
+
 </RelativeLayout>

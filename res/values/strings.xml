@@ -31,12 +31,13 @@
     <string name="title_activity_sound_trigger">SoundTrigger</string>
     <string name="title_activity_dev_link">DevLink</string>
     <string name="devlink">Quick Connect</string>
-    <string name="connect">Connect to Device</string>
+    <string name="connect">Device Options</string>
     <string name="title_activity_launch">Launch</string>
     <string name="title_activity_blue_control">BlueControl</string>
     <string name="h">H</string>
     <string name="l">L</string>
     <string name="kill">Kill</string>
     <string name="debug_controls">Debug Controls</string>
+    <string name="todo_device_must_be_connected_before_entering_activities_press_h_or_l_">TODO: Device must be connected BEFORE entering activities (Press H or L)</string>
 
 </resources>
