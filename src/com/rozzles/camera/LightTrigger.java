@@ -12,11 +12,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class LightTrigger extends Activity {
-public float delay;
-public float mod;
-public int bulbBinary;
+	public float delay;
+	public float mod;
+	public int bulbBinary;
 
-BlueComms sendMsg = new BlueComms();
+	BlueComms sendMsg = new BlueComms();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,7 +27,7 @@ BlueComms sendMsg = new BlueComms();
 		SeekBar modSeek = (SeekBar)findViewById(R.id.multiplierSeek); 
 		final TextView delayView = (TextView)findViewById(R.id.timeDelayVal);
 		final TextView modView = (TextView)findViewById(R.id.multiplierVal);
-		
+
 		delaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
 			@Override
@@ -65,17 +65,18 @@ BlueComms sendMsg = new BlueComms();
 		return true;
 	}
 	public boolean onOptionsItemSelected(MenuItem item){
-	    Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-	    startActivityForResult(myIntent, 0);
-	    return true;
+		sendMsg.killBT();
+		Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+		startActivityForResult(myIntent, 0);
+		return true;
 	}
 	public void CaptureClick(View v) {
 		final CheckBox bulb = (CheckBox)findViewById(R.id.bulbCheck);
 		if (bulb.isChecked() == true) {
 			bulbBinary = 1;
 		} else {
-		bulbBinary = 0;}
-		sendMsg.sendMsg("4," + delay + "," + mod + "," + bulbBinary + ",0,0,0,0,0,0,!");
+			bulbBinary = 0;}
+		sendMsg.sendMsg("4," + delay + "," + mod + "," + bulbBinary + ",0,0,0,0,0,0,!", 3);
 	}
 
 }

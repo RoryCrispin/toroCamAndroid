@@ -9,7 +9,7 @@ package com.rozzles.camera;
 
 public final class R {
     public static final class array {
-        public static int timeArray=0x7f060000;
+        public static final int timeArray=0x7f060000;
     }
     public static final class attr {
     }
@@ -20,107 +20,93 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static int activity_horizontal_margin=0x7f050000;
-        public static int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f040000;
+        public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static int ic_launcher=0x7f020000;
+        public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static int CaptureButton=0x7f090005;
-        public static int LightDelay=0x7f090001;
-        public static int ShotsSeek=0x7f090010;
-        public static int ShotsView=0x7f090011;
-        public static int TimeDelaySeek=0x7f09000e;
-        public static int TimeDelayView=0x7f09000d;
-        public static int TimeSpinner=0x7f090012;
-        public static int TimelapseDelayView=0x7f090016;
-        public static int action_settings=0x7f09001c;
-        public static int bulbCheck=0x7f090004;
-        public static int button_scan=0x7f09001b;
-        public static int delayIntView=0x7f09000f;
-        public static int delayValue=0x7f09000c;
-        public static int devLink=0x7f090000;
-        public static int lightbutton=0x7f09000a;
-        public static int multiplierSeek=0x7f090003;
-        public static int multiplierVal=0x7f090007;
-        public static int new_devices=0x7f09001a;
-        public static int paired_devices=0x7f090018;
-        public static int shutterbutton=0x7f090008;
-        public static int soundbutton=0x7f09000b;
-        public static int textView2=0x7f090002;
-        public static int timeDelayVal=0x7f090006;
-        public static int timelapsebutton=0x7f090009;
-        public static int title_new_devices=0x7f090019;
-        public static int title_paired_devices=0x7f090017;
-        public static int toggleButton1=0x7f090015;
-        public static int totalShots=0x7f090014;
-        public static int totalTime=0x7f090013;
+        public static final int Button01=0x7f090012;
+        public static final int CaptureButton=0x7f090008;
+        public static final int LightDelay=0x7f090004;
+        public static final int SendButton=0x7f090000;
+        public static final int ShotsSeek=0x7f090017;
+        public static final int ShotsView=0x7f090018;
+        public static final int TimeDelaySeek=0x7f090015;
+        public static final int TimeDelayView=0x7f090014;
+        public static final int TimeSpinner=0x7f090019;
+        public static final int TimelapseDelayView=0x7f09001c;
+        public static final int action_settings=0x7f09001d;
+        public static final int bulbCheck=0x7f090007;
+        public static final int button1=0x7f090010;
+        public static final int button2=0x7f090011;
+        public static final int delayIntView=0x7f090016;
+        public static final int delayValue=0x7f090013;
+        public static final int devLink=0x7f090003;
+        public static final int lightbutton=0x7f09000d;
+        public static final int messageField=0x7f090001;
+        public static final int multiplierSeek=0x7f090006;
+        public static final int multiplierVal=0x7f09000a;
+        public static final int shutterbutton=0x7f09000b;
+        public static final int soundbutton=0x7f09000e;
+        public static final int textView1=0x7f09000f;
+        public static final int textView2=0x7f090005;
+        public static final int timeDelayVal=0x7f090009;
+        public static final int timelapsebutton=0x7f09000c;
+        public static final int toggleButton1=0x7f090002;
+        public static final int totalShots=0x7f09001b;
+        public static final int totalTime=0x7f09001a;
     }
     public static final class layout {
-        public static int activity_light_trigger=0x7f030000;
-        public static int activity_main=0x7f030001;
-        public static int activity_shutter_release=0x7f030002;
-        public static int activity_sound_trigger=0x7f030003;
-        public static int activity_timelapse=0x7f030004;
-        public static int device_list=0x7f030005;
-        public static int device_name=0x7f030006;
+        public static final int activity_blue_control=0x7f030000;
+        public static final int activity_light_trigger=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int activity_shutter_release=0x7f030003;
+        public static final int activity_sound_trigger=0x7f030004;
+        public static final int activity_timelapse=0x7f030005;
     }
     public static final class menu {
-        public static int dev_link=0x7f080000;
-        public static int light_trigger=0x7f080001;
-        public static int main=0x7f080002;
-        public static int shutter_release=0x7f080003;
-        public static int sound_trigger=0x7f080004;
-        public static int timelapse=0x7f080005;
+        public static final int blue_control=0x7f080000;
+        public static final int dev_link=0x7f080001;
+        public static final int launch=0x7f080002;
+        public static final int light_trigger=0x7f080003;
+        public static final int main=0x7f080004;
+        public static final int shutter_release=0x7f080005;
+        public static final int sound_trigger=0x7f080006;
+        public static final int timelapse=0x7f080007;
     }
     public static final class string {
-        public static int action_settings=0x7f040011;
-        public static int app_name=0x7f040000;
-        public static int bt_not_enabled_leaving=0x7f040003;
-        public static int bulbFlash=0x7f040022;
-        public static int button_scan=0x7f04000d;
-        public static int capture=0x7f040018;
-        public static int connect=0x7f040027;
-        public static int delay=0x7f040017;
-        public static int delayInt=0x7f04001a;
-        public static int delayVal=0x7f040019;
-        public static int devlink=0x7f040026;
-        public static int discoverable=0x7f040010;
-        public static int hello_world=0x7f04001c;
-        public static int insecure_connect=0x7f04000f;
-        public static int light_trigger=0x7f040014;
-        public static int multiplier=0x7f040023;
-        public static int none_found=0x7f04000a;
-        public static int none_paired=0x7f040009;
-        public static int not_connected=0x7f040002;
-        /**   DeviceListActivity 
-         */
-        public static int scanning=0x7f040007;
-        /**  Options Menu 
-         */
-        public static int secure_connect=0x7f04000e;
-        public static int select_device=0x7f040008;
-        /**   BluetoothChat 
-         */
-        public static int send=0x7f040001;
-        public static int shots=0x7f04001d;
-        public static int shutter_release=0x7f040013;
-        public static int sound_trigger=0x7f040015;
-        public static int start=0x7f04001f;
-        public static int stop=0x7f040020;
-        public static int timelapse=0x7f040012;
-        public static int title_activity_dev_link=0x7f040025;
-        public static int title_activity_light_trigger=0x7f040021;
-        public static int title_activity_shutter_release=0x7f040016;
-        public static int title_activity_sound_trigger=0x7f040024;
-        public static int title_activity_timelapse=0x7f04001b;
-        public static int title_connected_to=0x7f040005;
-        public static int title_connecting=0x7f040004;
-        public static int title_not_connected=0x7f040006;
-        public static int title_other_devices=0x7f04000c;
-        public static int title_paired_devices=0x7f04000b;
-        public static int zero=0x7f04001e;
+        public static final int action_settings=0x7f050001;
+        public static final int app_name=0x7f050000;
+        public static final int bulbFlash=0x7f050012;
+        public static final int capture=0x7f050008;
+        public static final int connect=0x7f050017;
+        public static final int debug_controls=0x7f05001d;
+        public static final int delay=0x7f050007;
+        public static final int delayInt=0x7f05000a;
+        public static final int delayVal=0x7f050009;
+        public static final int devlink=0x7f050016;
+        public static final int h=0x7f05001a;
+        public static final int hello_world=0x7f05000c;
+        public static final int kill=0x7f05001c;
+        public static final int l=0x7f05001b;
+        public static final int light_trigger=0x7f050004;
+        public static final int multiplier=0x7f050013;
+        public static final int shots=0x7f05000d;
+        public static final int shutter_release=0x7f050003;
+        public static final int sound_trigger=0x7f050005;
+        public static final int start=0x7f05000f;
+        public static final int stop=0x7f050010;
+        public static final int timelapse=0x7f050002;
+        public static final int title_activity_blue_control=0x7f050019;
+        public static final int title_activity_dev_link=0x7f050015;
+        public static final int title_activity_launch=0x7f050018;
+        public static final int title_activity_light_trigger=0x7f050011;
+        public static final int title_activity_shutter_release=0x7f050006;
+        public static final int title_activity_sound_trigger=0x7f050014;
+        public static final int title_activity_timelapse=0x7f05000b;
+        public static final int zero=0x7f05000e;
     }
     public static final class style {
         /** 
@@ -144,10 +130,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f070001;
     }
 }

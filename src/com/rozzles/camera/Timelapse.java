@@ -22,10 +22,10 @@ public class Timelapse extends Activity {
 	int delay;
 	public int spin = 1;
 	BlueComms sendMsg = new BlueComms();
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timelapse);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_timelapse);
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		final SeekBar delaySeek = (SeekBar)findViewById(R.id.TimeDelaySeek); 
@@ -35,11 +35,11 @@ public class Timelapse extends Activity {
 		final TextView delayView = (TextView)findViewById(R.id.TimelapseDelayView);
 		final TextView totalTime = (TextView)findViewById(R.id.totalTime);
 		final TextView totalShotView = (TextView)findViewById(R.id.totalShots);
-		
+
 		final TimeParse timeparse = new TimeParse();
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-				
-		        R.array.timeArray, android.R.layout.simple_spinner_item);
+
+				R.array.timeArray, android.R.layout.simple_spinner_item);
 		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
@@ -62,73 +62,74 @@ public class Timelapse extends Activity {
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {			
 			}
-			
+
 		});
-		
-	    shotsSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){ 
 
-	   @Override 
-	   public void onProgressChanged(SeekBar shotsSeek, int progress, 
-	     boolean fromUser) { 
-		  totalShotView.setText(progress + " shots");
-		  //shotsText.setText(String.valueOf(progress));
-		  shots = progress;
-		  totalTime(totalTime, timeparse, delay, shots, spin);
-	   };
+		shotsSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){ 
 
-	   @Override 
-	   public void onStartTrackingTouch(SeekBar seekBar) { 
-	   } 
+			@Override 
+			public void onProgressChanged(SeekBar shotsSeek, int progress, 
+					boolean fromUser) { 
+				totalShotView.setText(progress + " shots");
+				//shotsText.setText(String.valueOf(progress));
+				shots = progress;
+				totalTime(totalTime, timeparse, delay, shots, spin);
+			};
 
-	   @Override 
-	   public void onStopTrackingTouch(SeekBar seekBar) { 
-	   } 
-	     });
-	    
-	    delaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){ 
+			@Override 
+			public void onStartTrackingTouch(SeekBar seekBar) { 
+			} 
 
-	 	   @Override 
-	 	   public void onProgressChanged(SeekBar delaySeek, int progress, 
-	 	     boolean fromUser) { 
-	 		   delayView.setText(String.valueOf(progress));
-	 		   delay = progress;
-	 		  totalTime(totalTime, timeparse, delay, shots, spin);
-	 	   };
+			@Override 
+			public void onStopTrackingTouch(SeekBar seekBar) { 
+			} 
+		});
 
-	 	   @Override 
-	 	   public void onStartTrackingTouch(SeekBar seekBar) { 
-	 	   } 
+		delaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){ 
 
-	 	   @Override 
-	 	   public void onStopTrackingTouch(SeekBar seekBar) { 
-	 	   } 
-	 	     });
-	   
-    }
-public void totalTime(TextView totalTime, TimeParse timeparse, int delay, int shots, int spin){
+			@Override 
+			public void onProgressChanged(SeekBar delaySeek, int progress, 
+					boolean fromUser) { 
+				delayView.setText(String.valueOf(progress));
+				delay = progress;
+				totalTime(totalTime, timeparse, delay, shots, spin);
+			};
 
-	  millis = delay * shots * spin;
-	  //totalShotView.setText(totalshots + " shots");
-	  totalTime.setText(TimeParse.getDurationBreakdown(millis));
-}
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.timelapse, menu);
-        return true;
-    }
-    public boolean onOptionsItemSelected(MenuItem item){
-	    Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-	    startActivityForResult(myIntent, 0);
-	    return true;
+			@Override 
+			public void onStartTrackingTouch(SeekBar seekBar) { 
+			} 
+
+			@Override 
+			public void onStopTrackingTouch(SeekBar seekBar) { 
+			} 
+		});
+
 	}
-    
-    public void onToggleClicked(View view) {
-        boolean on = ((ToggleButton) view).isChecked();
-        if (on) {
-            sendMsg.sendMsg("2,"+delay+","+spin+","+shots+",0,0,0,0,0,0,!");
-        } else {
-            sendMsg.sendMsg("3,0,0,0,0,0,0,0,0,0,!");
-        }
-    }
+	public void totalTime(TextView totalTime, TimeParse timeparse, int delay, int shots, int spin){
+
+		millis = delay * shots * spin;
+		//totalShotView.setText(totalshots + " shots");
+		totalTime.setText(TimeParse.getDurationBreakdown(millis));
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.timelapse, menu);
+		return true;
+	}
+	public boolean onOptionsItemSelected(MenuItem item){
+		sendMsg.killBT();
+		Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+		startActivityForResult(myIntent, 0);
+		return true;
+	}
+
+	public void onToggleClicked(View view) {
+		boolean on = ((ToggleButton) view).isChecked();
+		if (on) {
+			sendMsg.sendMsg("2,"+delay+","+spin+","+shots+",0,0,0,0,0,0,!", 2);
+		} else {
+			sendMsg.sendMsg("3,0,0,0,0,0,0,0,0,0,!", 2);
+		}
+	}
 }

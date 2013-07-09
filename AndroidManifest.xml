@@ -8,6 +8,9 @@
         android:minSdkVersion="13"
         android:targetSdkVersion="17" />
 
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -41,6 +44,19 @@
         <activity
             android:name="com.rozzles.camera.DevLink"
             android:label="@string/title_activity_dev_link" >
+        </activity>
+        <activity
+            android:name="com.rozzles.camera.Launch"
+            android:label="@string/title_activity_launch" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.rozzles.camera.BlueControl"
+            android:label="@string/title_activity_blue_control" >
         </activity>
     </application>
 

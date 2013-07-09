@@ -59,8 +59,8 @@
         android:layout_below="@+id/bulbCheck"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:text="@string/capture" 
-        android:onClick="CaptureClick"/>
+        android:onClick="CaptureClick"
+        android:text="@string/capture" />
 
     <TextView
         android:id="@+id/timeDelayVal"
