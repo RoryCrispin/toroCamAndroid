@@ -1,3 +1,18 @@
+/*
+ * Rory Crispin --rorycrispin.co.uk -- rozzles.com
+ * 
+ * Distributed under the Creative Commons 
+ * Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+ * License, full conditions can be found here: 
+ * http://creativecommons.org/licenses/by-sa/3.0/
+ *   
+ *   This is free software, and you are welcome to redistribute it
+ *   under certain conditions;
+ *   
+ *   Go crazy,
+ *   Rozz xx 
+ * 
+ */
 package com.rozzles.camera;
 
 import android.os.Bundle;
@@ -17,45 +32,52 @@ public class LightTrigger extends Activity {
 	public int bulbBinary;
 
 	BlueComms sendMsg = new BlueComms();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_light_trigger);
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
-		SeekBar delaySeek = (SeekBar)findViewById(R.id.LightDelay); 
-		SeekBar modSeek = (SeekBar)findViewById(R.id.multiplierSeek); 
-		final TextView delayView = (TextView)findViewById(R.id.timeDelayVal);
-		final TextView modView = (TextView)findViewById(R.id.multiplierVal);
+		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
+		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
+		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);
+		final TextView modView = (TextView) findViewById(R.id.multiplierVal);
 
-		delaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+		delaySeek
+				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+					@Override
+					public void onProgressChanged(SeekBar arg0, int arg1,
+							boolean arg2) {
+						delay = (float) arg1 / 100;
+						delayView.setText(String.valueOf(delay + " seconds"));
+					}
+
+					@Override
+					public void onStartTrackingTouch(SeekBar arg0) {
+					}
+
+					@Override
+					public void onStopTrackingTouch(SeekBar arg0) {
+					}
+				});
+		modSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				delay = (float) arg1/100; 
-				delayView.setText(String.valueOf(delay + " seconds"));
-			}
-
-			@Override
-			public void onStartTrackingTouch(SeekBar arg0) {
-			}
-			@Override
-			public void onStopTrackingTouch(SeekBar arg0) {	
-			} });
-		modSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
-
-			@Override
-			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				mod = (float) arg1/100; 
+				mod = (float) arg1 / 100;
 				modView.setText(String.valueOf(mod + "x"));
 			}
 
 			@Override
 			public void onStartTrackingTouch(SeekBar arg0) {
 			}
+
 			@Override
-			public void onStopTrackingTouch(SeekBar arg0) {	
-			} });
+			public void onStopTrackingTouch(SeekBar arg0) {
+			}
+		});
 	}
 
 	@Override
@@ -64,19 +86,24 @@ public class LightTrigger extends Activity {
 		getMenuInflater().inflate(R.menu.light_trigger, menu);
 		return true;
 	}
-	public boolean onOptionsItemSelected(MenuItem item){
+
+	public boolean onOptionsItemSelected(MenuItem item) {
 		sendMsg.killBT();
-		Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+		Intent myIntent = new Intent(getApplicationContext(),
+				MainActivity.class);
 		startActivityForResult(myIntent, 0);
 		return true;
 	}
+
 	public void CaptureClick(View v) {
-		final CheckBox bulb = (CheckBox)findViewById(R.id.bulbCheck);
+		final CheckBox bulb = (CheckBox) findViewById(R.id.bulbCheck);
 		if (bulb.isChecked() == true) {
 			bulbBinary = 1;
 		} else {
-			bulbBinary = 0;}
-		sendMsg.sendMsg("4," + delay + "," + mod + "," + bulbBinary + ",0,0,0,0,0,0,!", 3);
+			bulbBinary = 0;
+		}
+		sendMsg.sendMsg("4," + delay + "," + mod + "," + bulbBinary
+				+ ",0,0,0,0,0,0,!", 3);
 	}
 
 }

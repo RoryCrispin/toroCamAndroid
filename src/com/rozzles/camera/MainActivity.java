@@ -1,5 +1,19 @@
+/*
+ * Rory Crispin --rorycrispin.co.uk -- rozzles.com
+ * 
+ * Distributed under the Creative Commons 
+ * Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+ * License, full conditions can be found here: 
+ * http://creativecommons.org/licenses/by-sa/3.0/
+ *   
+ *   This is free software, and you are welcome to redistribute it
+ *   under certain conditions;
+ *   
+ *   Go crazy,
+ *   Rozz xx 
+ * 
+ */
 package com.rozzles.camera;
-
 
 import com.rozzles.camera.R;
 
@@ -27,27 +41,32 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+
 	public void shutterButtonClick(View v) {
 		blu.killBT();
 		Intent myIntent = new Intent(v.getContext(), ShutterRelease.class);
 		startActivityForResult(myIntent, 0);
-		
+
 	}
+
 	public void timelapseButtonClick(View v) {
 		blu.killBT();
 		Intent myIntent = new Intent(v.getContext(), Timelapse.class);
 		startActivityForResult(myIntent, 0);
 	}
+
 	public void lightButtonClick(View v) {
 		blu.killBT();
 		Intent myIntent = new Intent(v.getContext(), LightTrigger.class);
 		startActivityForResult(myIntent, 0);
 	}
+
 	public void soundButtonClick(View v) {
 		blu.killBT();
-		Intent myIntent = new Intent(v.getContext(),  SoundTrigger.class);
+		Intent myIntent = new Intent(v.getContext(), SoundTrigger.class);
 		startActivityForResult(myIntent, 0);
 	}
+
 	public void btOptionsButtonClick(View v) {
 		blu.killBT();
 		Intent myIntent = new Intent(v.getContext(), BlueControl.class);
@@ -57,21 +76,25 @@ public class MainActivity extends Activity {
 	public void wrKill(View v) {
 		blu.killBT();
 	}
+
 	public void wrH(View v) {
 		blu.sendMsg("H", 100);
 	}
+
 	public void wrL(View v) {
 		blu.sendMsg("L", 100);
 	}
+
 	public void devLinkButtonClick(View v) {
 
-		if (blu.connectDevice(100) == true ){
+		if (blu.connectDevice(100) == true) {
 
-			Toast.makeText(getApplicationContext(), "Connected to device",0).show();
-			//savedInstanceState.putBoolean("blue", blu.isConnected);
+			Toast.makeText(getApplicationContext(), "Connected to device", 0)
+					.show();
+			// savedInstanceState.putBoolean("blue", blu.isConnected);
 		} else {
-			Toast.makeText(getApplicationContext(), "Failed to connect", 0).show();
+			Toast.makeText(getApplicationContext(), "Failed to connect", 0)
+					.show();
 		}
 	}
 }
-

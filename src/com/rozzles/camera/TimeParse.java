@@ -1,13 +1,27 @@
+/*
+ * Rory Crispin --rorycrispin.co.uk -- rozzles.com
+ * 
+ * Distributed under the Creative Commons 
+ * Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+ * License, full conditions can be found here: 
+ * http://creativecommons.org/licenses/by-sa/3.0/
+ *   
+ *   This is free software, and you are welcome to redistribute it
+ *   under certain conditions;
+ *   
+ *   Go crazy,
+ *   Rozz xx 
+ * 
+ */
 package com.rozzles.camera;
 
 import java.util.concurrent.TimeUnit;
 
 public class TimeParse {
-	public static String getDurationBreakdown(long millis)
-	{
-		if(millis < 0)
-		{
-			throw new IllegalArgumentException("Duration must be greater than zero!");
+	public static String getDurationBreakdown(long millis) {
+		if (millis < 0) {
+			throw new IllegalArgumentException(
+					"Duration must be greater than zero!");
 		}
 
 		long days = TimeUnit.SECONDS.toDays(millis);
@@ -28,6 +42,6 @@ public class TimeParse {
 		sb.append(seconds);
 		sb.append(" Sec");
 
-		return(sb.toString());
+		return (sb.toString());
 	}
 }
