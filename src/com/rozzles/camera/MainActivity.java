@@ -15,6 +15,7 @@
  */
 package com.rozzles.camera;
 
+<<<<<<< HEAD
 import com.rozzles.camera.BlueComms.LocalBinder;
 import com.rozzles.camera.R;
 
@@ -25,14 +26,27 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+=======
+import com.rozzles.camera.R;
+
+import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+>>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
 @SuppressLint("ShowToast")
 public class MainActivity extends Activity {
+<<<<<<< HEAD
 	boolean mBounded;
 	BlueComms mServer;
+=======
+	BlueComms blu = new BlueComms();
+
+>>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,37 +55,62 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+<<<<<<< HEAD
+=======
+		// Inflate the menu; this adds items to the action bar if it is present.
+>>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	public void shutterButtonClick(View v) {
+<<<<<<< HEAD
+=======
+		blu.killBT();
+>>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 		Intent myIntent = new Intent(v.getContext(), ShutterRelease.class);
 		startActivityForResult(myIntent, 0);
 
 	}
 
 	public void timelapseButtonClick(View v) {
+<<<<<<< HEAD
+=======
+		blu.killBT();
+>>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 		Intent myIntent = new Intent(v.getContext(), Timelapse.class);
 		startActivityForResult(myIntent, 0);
 	}
 
 	public void lightButtonClick(View v) {
+<<<<<<< HEAD
+=======
+		blu.killBT();
+>>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 		Intent myIntent = new Intent(v.getContext(), LightTrigger.class);
 		startActivityForResult(myIntent, 0);
 	}
 
 	public void soundButtonClick(View v) {
+<<<<<<< HEAD
+=======
+		blu.killBT();
+>>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 		Intent myIntent = new Intent(v.getContext(), SoundTrigger.class);
 		startActivityForResult(myIntent, 0);
 	}
 
 	public void btOptionsButtonClick(View v) {
+<<<<<<< HEAD
+=======
+		blu.killBT();
+>>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 		Intent myIntent = new Intent(v.getContext(), BlueControl.class);
 		startActivityForResult(myIntent, 0);
 	}
 
 	public void wrKill(View v) {
+<<<<<<< HEAD
 		Intent mIntent = new Intent(this, BlueComms.class);
 		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
 	}
@@ -115,5 +154,29 @@ public class MainActivity extends Activity {
 	};
 	public void midmss(){
 		mServer.sendData("L");
+=======
+		blu.killBT();
+	}
+
+	public void wrH(View v) {
+		blu.sendMsg("H", 100);
+	}
+
+	public void wrL(View v) {
+		blu.sendMsg("L", 100);
+	}
+
+	public void devLinkButtonClick(View v) {
+
+		if (blu.connectDevice(100) == true) {
+
+			Toast.makeText(getApplicationContext(), "Connected to device", 0)
+					.show();
+			// savedInstanceState.putBoolean("blue", blu.isConnected);
+		} else {
+			Toast.makeText(getApplicationContext(), "Failed to connect", 0)
+					.show();
+		}
+>>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 	}
 }

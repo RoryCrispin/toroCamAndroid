@@ -80,6 +80,7 @@
         android:text="@string/zero"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+<<<<<<< HEAD
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -90,4 +91,6 @@
         android:onClick="Recal"
         android:text="@string/recallob" />
 
+=======
+>>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 </RelativeLayout>
