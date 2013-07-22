@@ -6,7 +6,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity" 
+    android:screenOrientation="portrait" 
+    android:configChanges="orientation|keyboardHidden">
 
     <TextView
         android:id="@+id/shutterbutton"
@@ -15,11 +17,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="27dp"
+        android:clickable="true"
+        android:onClick="shutterButtonClick"
         android:text="@string/shutter_release"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:typeface="normal"
-        android:onClick="shutterButtonClick"
-        android:clickable="true" />
+        android:typeface="normal" />
+
     <TextView
         android:id="@+id/timelapsebutton"
         android:layout_width="wrap_content"
@@ -27,28 +30,108 @@
         android:layout_alignLeft="@+id/shutterbutton"
         android:layout_below="@+id/shutterbutton"
         android:layout_marginTop="25dp"
-        android:text="@string/timelapse"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:clickable="true"
         android:onClick="timelapseButtonClick"
-        android:clickable="true" />
-      
-      <TextView
-          android:id="@+id/lightbutton"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/timelapsebutton"
-          android:layout_below="@+id/timelapsebutton"
-          android:layout_marginTop="25dp"
-          android:text="@string/light_trigger"
-          android:textAppearance="?android:attr/textAppearanceLarge" />
-       <TextView
-          android:id="@+id/soundbutton"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/lightbutton"
-          android:layout_below="@+id/lightbutton"
-          android:layout_marginTop="25dp"
-          android:text="@string/sound_trigger"
-          android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/timelapse"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/lightbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/timelapsebutton"
+        android:layout_below="@+id/timelapsebutton"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:onClick="lightButtonClick"
+        android:text="@string/light_trigger"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/soundbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lightbutton"
+        android:layout_below="@+id/lightbutton"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:onClick="soundButtonClick"
+        android:text="@string/sound_trigger"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/devLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/soundbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="14dp"
+        android:clickable="true"
+        android:onClick="devLinkButtonClick"
+        android:text="@string/devlink"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/devLink"
+        android:layout_alignLeft="@+id/devLink"
+        android:layout_marginBottom="17dp"
+        android:clickable="true"
+        android:onClick="btOptionsButtonClick"
+        android:text="@string/connect"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_marginBottom="54dp"
+        android:onClick="wrH"
+        android:text="@string/h" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_toRightOf="@+id/button1"
+        android:onClick="wrL"
+        android:text="@string/l" />
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toRightOf="@+id/button2"
+        android:onClick="wrKill"
+        android:text="@string/kill" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignLeft="@+id/button1"
+        android:text="@string/debug_controls"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/shutterbutton"
+        android:padding="0dp"
+        android:text="@string/todo_device_must_be_connected_before_entering_activities_press_h_or_l_"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/holo_red_light"
+        android:textColorHint="@android:color/holo_red_light" />
 
 </RelativeLayout>

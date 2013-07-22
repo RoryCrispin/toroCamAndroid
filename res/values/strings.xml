@@ -14,13 +14,31 @@
     <string name="delayInt"></string>
     <string name="title_activity_timelapse">Timelapse</string>
     <string name="hello_world">Hello world!</string>
-	<string name="shots">Shots</string>
-	<string name="zero">0</string>
+    <string name="shots">Shots</string>
+    <string name="zero">0</string>
+
     <string-array name="timeArray">
         <item>Seconds</item>
         <item>Minutes</item>
         <item>Hours</item>
     </string-array>
+
     <string name="start">START</string>
     <string name="stop">STOP</string>
+    <string name="title_activity_light_trigger">LightTrigger</string>
+    <string name="bulbFlash">Bulb Flash</string>
+    <string name="multiplier">Multiplier</string>
+    <string name="title_activity_sound_trigger">SoundTrigger</string>
+    <string name="title_activity_dev_link">DevLink</string>
+    <string name="devlink">Quick Connect</string>
+    <string name="connect">Device Options</string>
+    <string name="title_activity_launch">Launch</string>
+    <string name="title_activity_blue_control">BlueControl</string>
+    <string name="h">H</string>
+    <string name="l">L</string>
+    <string name="kill">Kill</string>
+    <string name="debug_controls">Debug Controls</string>
+    <string name="todo_device_must_be_connected_before_entering_activities_press_h_or_l_">TODO: MainActivity does not rebind BT service with onCreate like other activities</string>
+    <string name="recallob">Recallob&amp;apos; sensors</string>
+
 </resources>
