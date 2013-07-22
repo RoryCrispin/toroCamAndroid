@@ -38,11 +38,7 @@
     <string name="l">L</string>
     <string name="kill">Kill</string>
     <string name="debug_controls">Debug Controls</string>
-<<<<<<< HEAD
     <string name="todo_device_must_be_connected_before_entering_activities_press_h_or_l_">TODO: MainActivity does not rebind BT service with onCreate like other activities</string>
     <string name="recallob">Recallob&amp;apos; sensors</string>
-=======
-    <string name="todo_device_must_be_connected_before_entering_activities_press_h_or_l_">TODO: Device must be connected BEFORE entering activities (Press H or L)</string>
->>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 
 </resources>

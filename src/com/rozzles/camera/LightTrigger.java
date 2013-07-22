@@ -15,7 +15,6 @@
  */
 package com.rozzles.camera;
 
-<<<<<<< HEAD
 import com.rozzles.camera.BlueComms.LocalBinder;
 
 import android.os.Bundle;
@@ -25,12 +24,6 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-=======
-import android.os.Bundle;
-import android.app.ActionBar;
-import android.app.Activity;
-import android.content.Intent;
->>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,12 +36,8 @@ public class LightTrigger extends Activity {
 	public float mod;
 	public int bulbBinary;
 
-<<<<<<< HEAD
 	boolean mBounded;
 	BlueComms mServer;
-=======
-	BlueComms sendMsg = new BlueComms();
->>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +49,8 @@ public class LightTrigger extends Activity {
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
 		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);
 		final TextView modView = (TextView) findViewById(R.id.multiplierVal);
-<<<<<<< HEAD
 		Intent mIntent = new Intent(this, BlueComms.class);
 	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
-=======
-
->>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 		delaySeek
 				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -102,7 +87,6 @@ public class LightTrigger extends Activity {
 		});
 	}
 
-<<<<<<< HEAD
 	ServiceConnection mConnection = new ServiceConnection() {
 
 		public void onServiceDisconnected(ComponentName name) {
@@ -115,8 +99,6 @@ public class LightTrigger extends Activity {
 			mServer = mLocalBinder.getServerInstance();
 		}
 	};
-=======
->>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -125,10 +107,6 @@ public class LightTrigger extends Activity {
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
-<<<<<<< HEAD
-=======
-		sendMsg.killBT();
->>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 		Intent myIntent = new Intent(getApplicationContext(),
 				MainActivity.class);
 		startActivityForResult(myIntent, 0);
@@ -142,16 +120,11 @@ public class LightTrigger extends Activity {
 		} else {
 			bulbBinary = 0;
 		}
-<<<<<<< HEAD
 		mServer.sendData("3,1000,"+ Math.round((200-(mod*100))) + "," + Math.round(delay) + "," + bulbBinary
 				+ ",0,0,0,0,0!");
 	}
 	public void Recal(View v) {
 		mServer.sendData("9,0,0,0,0,0,0,0,0,0!");
-=======
-		sendMsg.sendMsg("4," + delay + "," + mod + "," + bulbBinary
-				+ ",0,0,0,0,0,0,!", 3);
->>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
 	}
 
 }

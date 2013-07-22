@@ -39,16 +39,11 @@ public final class R {
         public static final int TimelapseDelayView=0x7f09001d;
         public static final int action_settings=0x7f09001e;
         public static final int bulbCheck=0x7f090007;
-<<<<<<< HEAD
         public static final int button1=0x7f09000b;
-=======
-        public static final int button1=0x7f090010;
->>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
         public static final int button2=0x7f090011;
         public static final int delayIntView=0x7f090017;
         public static final int delayValue=0x7f090014;
         public static final int devLink=0x7f090003;
-<<<<<<< HEAD
         public static final int lightbutton=0x7f09000e;
         public static final int messageField=0x7f090001;
         public static final int multiplierSeek=0x7f090006;
@@ -60,19 +55,6 @@ public final class R {
         public static final int textView3=0x7f090013;
         public static final int timeDelayVal=0x7f090009;
         public static final int timelapsebutton=0x7f09000d;
-=======
-        public static final int lightbutton=0x7f09000d;
-        public static final int messageField=0x7f090001;
-        public static final int multiplierSeek=0x7f090006;
-        public static final int multiplierVal=0x7f09000a;
-        public static final int shutterbutton=0x7f09000b;
-        public static final int soundbutton=0x7f09000e;
-        public static final int textView1=0x7f09000f;
-        public static final int textView2=0x7f090005;
-        public static final int textView3=0x7f090013;
-        public static final int timeDelayVal=0x7f090009;
-        public static final int timelapsebutton=0x7f09000c;
->>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
         public static final int toggleButton1=0x7f090002;
         public static final int totalShots=0x7f09001c;
         public static final int totalTime=0x7f09001b;
@@ -112,10 +94,7 @@ public final class R {
         public static final int l=0x7f05001b;
         public static final int light_trigger=0x7f050004;
         public static final int multiplier=0x7f050013;
-<<<<<<< HEAD
         public static final int recallob=0x7f05001f;
-=======
->>>>>>> 85e50f9ac3bc51bb59d8d09786791212971d2e10
         public static final int shots=0x7f05000d;
         public static final int shutter_release=0x7f050003;
         public static final int sound_trigger=0x7f050005;
