@@ -18,7 +18,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/sensitivityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/multiplierSeek"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/LightDelay"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/sensitivityTextView"
         android:max="200" />
 
     <SeekBar

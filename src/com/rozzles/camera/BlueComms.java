@@ -37,7 +37,8 @@ public class BlueComms extends Service{
 	public BluetoothSocket btSocket = null;
 	public OutputStream outStream = null;
 	//public static String address = "00:13:04:07:08:28"; //TODO Un hardcode this
-	public static String address = "20:13:05:06:31:35";
+	//public static String address = "20:13:05:06:31:35";
+	public static String address = "00:13:04:07:14:67";
 	public static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 	// private InputStream inStream = null; //TODO Add input stream listener
 	Handler handler = new Handler();

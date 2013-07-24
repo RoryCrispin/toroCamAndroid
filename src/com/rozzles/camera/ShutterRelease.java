@@ -30,7 +30,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ShutterRelease extends Activity {
 	MainActivity mid = new MainActivity();
@@ -56,7 +55,6 @@ public class ShutterRelease extends Activity {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
-
 				seekBarValue.setText(String.valueOf(progress + " seconds"));
 				prog = progress;
 			};

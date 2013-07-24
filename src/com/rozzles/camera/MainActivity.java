@@ -71,23 +71,14 @@ public class MainActivity extends Activity {
 		startActivityForResult(myIntent, 0);
 	}
 
-	public void wrKill(View v) {
-		Intent mIntent = new Intent(this, BlueComms.class);
-		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
-	}
-
-	public void wrH(View v) {
-		mServer.sendData("H");
-	}
-
-	public void wrL(View v) {
-		mServer.sendData("L");
-	}
-
 	public void devLinkButtonClick(View v) {
 		 Intent mIntent = new Intent(this, BlueComms.class);
 		 startService(mIntent);
 	        bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+	}
+	public void dripTrigButtonClick(View v) {
+		Intent myIntent = new Intent(v.getContext(), DripTrig.class);
+		startActivityForResult(myIntent, 0);
 	}
 	ServiceConnection mConnection = new ServiceConnection() {
 

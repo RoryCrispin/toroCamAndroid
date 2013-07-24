@@ -52,7 +52,7 @@
         android:text="@string/h" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/sensitivityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button1"
@@ -64,7 +64,7 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/sensitivityTextView"
         android:layout_toRightOf="@+id/TimeDelayView"
         android:onClick="wrL"
         android:text="@string/l" />
@@ -73,7 +73,7 @@
         android:id="@+id/Button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/sensitivityTextView"
         android:layout_toRightOf="@+id/button2"
         android:onClick="wrKill"
         android:text="@string/kill" />

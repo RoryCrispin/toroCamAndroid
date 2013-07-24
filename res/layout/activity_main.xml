@@ -72,7 +72,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/sensitivityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/devLink"
@@ -83,55 +83,16 @@
         android:text="@string/connect"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView1"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_marginBottom="54dp"
-        android:onClick="wrH"
-        android:text="@string/h" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_toRightOf="@+id/button1"
-        android:onClick="wrL"
-        android:text="@string/l" />
-
-    <Button
-        android:id="@+id/Button01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_toRightOf="@+id/button2"
-        android:onClick="wrKill"
-        android:text="@string/kill" />
-
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/dripTrigButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_alignLeft="@+id/button1"
-        android:text="@string/debug_controls"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/shutterbutton"
-        android:padding="0dp"
-        android:text="@string/todo_device_must_be_connected_before_entering_activities_press_h_or_l_"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/holo_red_light"
-        android:textColorHint="@android:color/holo_red_light" />
+        android:layout_alignLeft="@+id/soundbutton"
+        android:layout_below="@+id/soundbutton"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:onClick="dripTrigButtonClick"
+        android:text="@string/driptrig_"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

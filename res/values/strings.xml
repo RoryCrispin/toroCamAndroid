@@ -39,6 +39,15 @@
     <string name="kill">Kill</string>
     <string name="debug_controls">Debug Controls</string>
     <string name="todo_device_must_be_connected_before_entering_activities_press_h_or_l_">TODO: MainActivity does not rebind BT service with onCreate like other activities</string>
-    <string name="recallob">Recallob&amp;apos; sensors</string>
+    <string name="recallob">Recalibrate sensors</string>
+    <string name="driptrig_">DripTrig™ ></string>
+    <string name="title_activity_drip_trig">DripTrig</string>
+    <string name="sevsitivity">Sevsitivity</string>
+    <string name="ldr_laser">LDR/Laser</string>
+    <string name="mic">Mic</string>
+    <string name="drip_length_size">Drip Length/Size</string>
+    <string name="flash_delay">Flash Delay</string>
+    <string name="drip_no_">Drip No.</string>
+    <string name="delay_betweem_drips">Delay betweem drips</string>
 
 </resources>
