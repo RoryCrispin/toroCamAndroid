@@ -25,6 +25,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -120,5 +121,14 @@ public class ShutterRelease extends Activity {
 	public void wrL(View v) {
 		mServer.sendData("L");
 	}
+	
+	public boolean onKeyDown(int keyCode, KeyEvent event) { 
+		   if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) { 
+		       mServer.sendData("1," + prog + ",0,0,0,0,0,0,0,0!");
+		       return true;
+		   } else {
+		       return super.onKeyDown(keyCode, event); 
+		   }
+		}
 
 }

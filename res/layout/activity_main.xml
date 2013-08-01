@@ -19,7 +19,7 @@
         android:layout_marginLeft="27dp"
         android:clickable="true"
         android:onClick="shutterButtonClick"
-        android:text="@string/shutter_release"
+        android:text="@string/helvetica_"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:typeface="normal" />
 
@@ -93,6 +93,18 @@
         android:clickable="true"
         android:onClick="dripTrigButtonClick"
         android:text="@string/driptrig_"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dripTrigButton"
+        android:layout_below="@+id/dripTrigButton"
+        android:layout_marginTop="26dp"
+        android:clickable="true"
+        android:onClick="hdrButtonClick"
+        android:text="@string/hdr_timelapse"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

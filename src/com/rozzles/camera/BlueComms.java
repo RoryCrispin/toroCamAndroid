@@ -24,69 +24,119 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 public class BlueComms extends Service{
-
-	public boolean isConnected;
-	public static final String TAG = "CameraRemote";
-	public BluetoothAdapter mBluetoothAdapter = null;
+	
+	public BluetoothAdapter mBluetoothAdapter = null; 
 	public BluetoothSocket btSocket = null;
 	public OutputStream outStream = null;
-	//public static String address = "00:13:04:07:08:28"; //TODO Un hardcode this
-	//public static String address = "20:13:05:06:31:35";
-	public static String address = "00:13:04:07:14:67";
-	public static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+	
+	public static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");//TODO useless delete this and debug
 	// private InputStream inStream = null; //TODO Add input stream listener
 	Handler handler = new Handler();
+	
 	byte delimiter = 10;
-	boolean stopWorker = false;
-	int readBufferPosition = 0;
 	byte[] readBuffer = new byte[1024];
+	
+	boolean stopWorker = false;
+	boolean isConnected;
+	
+	int readBufferPosition = 0;
 	int connectedActv = 0;
+	
+	String address;
+	public static final String TAG = "CameraRemote"; //Debug stuff
 	IBinder mBinder = new LocalBinder();
+	
+	public static final String PREFS_NAME = "AndCamPreferences";
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Service#onCreate()
+	 * Caled when the service is created, probably useless TODO debug this 
+	 */
 	public void onCreate(){
-
+		restoreMac();
 	}
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Service#onBind(android.content.Intent)
+	 */
+	@Override
+	public IBinder onBind(Intent intent) {
+		return mBinder;
+	}
+	/*
+	 * This is used to bind classes to the service so they can communicate
+	 */
 	public class LocalBinder extends Binder {
 		public BlueComms getServerInstance() {
 			return BlueComms.this;
 		}
 	}
-	@Override
-	public IBinder onBind(Intent intent) {
-		return mBinder;
+	/*
+	 * This retrieves the mac address from the shared preference set in the set-up utility
+	 */
+	public void restoreMac() {
+		SharedPreferences prefs = getSharedPreferences(PREFS_NAME, 0);
+		address = prefs.getString("macaddress", "0");
+		System.out.println("PULLING PREF :" + address);
 	}
-	public void onDestroy(){
-		if (isConnected){
-			try {
-				btSocket.close();
-				isConnected = false;
-			} catch (IOException e) {
-				System.out.println("Error: " + String.valueOf(e));
-			}
-		} else {
-			System.out.println("Kill command issued with closed connection");
-		}	
+	/*
+	 *This is called by the Setup utility to send the Mac address selected
+	 *to BlueComms and save it in the shared preference  
+	 */
+	public void recvMac(String macAddress){
+		address = macAddress;
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putString("macaddress", address);
+		System.out.println("PHSHING PREF: " + address);
+		editor.commit();
 	}
-	public int onStartCommand(Intent intent, int flags, int startId){
+	
 
-		System.out.println("***Trace: CheckBt()");
-		CheckBt();
-		System.out.println("***Trace: Checked");
+	/*
+	 *This method is used as an assurance to check that the bluetooth
+	 *hardware exists and is turned on, it also sets the mBluetoothAdapter
+	 *which is essential to the connection process, CheckBT() must be called
+	 *before connecting
+	 */
+	private void CheckBt() {
+		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		if (!mBluetoothAdapter.isEnabled()) {
+			System.out.println("Bluetooth is disabled");
+		}
+
+		if (mBluetoothAdapter == null) {
+			System.out.println("Device does not have bluetooth");
+		}
+	}
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Service#onStartCommand(android.content.Intent, int, int)
+	 * 
+	 *This is called when the service is started, it connects to the device and calls START_STICKY
+	 *which keeps the service running. Avoid changing this stuff if you can.
+	 */
+	public int onStartCommand(Intent intent, int flags, int startId){
+		CheckBt(); //Check bluetooth exists and is enabled & set mBluetoothAdapter
 		BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
 		Log.d(TAG, "Connecting to ... " + device);
 		mBluetoothAdapter.cancelDiscovery();
 		try {
-			btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
-			btSocket.connect();
-			outStream = btSocket.getOutputStream();
-			Log.d(TAG, "Connection made.");
+			btSocket = device.createRfcommSocketToServiceRecord(MY_UUID); //This line doesn't do anything really, I should delete it but I'm scared
+			btSocket.connect(); //Connect to the device
+			outStream = btSocket.getOutputStream(); //Initialize the output stream so data can be sent to the device later
+			Toast.makeText(getApplicationContext(), "Connetion Made!", Toast.LENGTH_SHORT).show();
 			isConnected = true;
-			return START_STICKY;
+			return START_STICKY;//TODO this is pointless see below
+			//TODO make a persistent notification while the service is open
 
 		} catch (IOException e) {
 			try {
@@ -98,19 +148,19 @@ public class BlueComms extends Service{
 			Log.d(TAG, "Socket creation failed");
 		}
 
-		return START_STICKY;
+		return START_STICKY;//TODO As above, only one return is needed 
 	}
+	/*
+	 * This method is used to send data to the bluetooth device device 
+	 */
 	public void sendData(String data) {
-		CheckBt();
 		try {
 			outStream = btSocket.getOutputStream();
 		} catch (IOException e) {
 			Log.d(TAG, "Bug BEFORE Sending stuff", e);
 		}
-
-		String message = data;
-		System.out.println("**DATA SENT: " + message + "**");
-		byte[] msgBuffer = message.getBytes();
+		System.out.println("**DATA SENT: " + data + "**");
+		byte[] msgBuffer = data.getBytes();
 
 		try {
 			outStream.write(msgBuffer);
@@ -119,19 +169,12 @@ public class BlueComms extends Service{
 		}
 	}
 
-	private void CheckBt() {
-
-		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
-		if (!mBluetoothAdapter.isEnabled()) {
-			System.out.println("Bt dsbld");
-		}
-
-		if (mBluetoothAdapter == null) {
-			System.out.println("Bt null");
-		}
-	}
-
+	/*
+	 *This method is used to kill the Bluetooth connection to the device,
+	 *Sometimes it is called even though the device is already disconnected
+	 *The if statement ensures it doesn't cause any crashes when using the app
+	 *without a connected device
+	 */
 	public void killBT() {
 		if (isConnected){
 			try {
@@ -140,10 +183,21 @@ public class BlueComms extends Service{
 			} catch (IOException e) {
 				System.out.println("Error: " + String.valueOf(e));
 			}
-		} else {
-			System.out.println("Kill command issued with closed connection");
 		}
 	}
 
-
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Service#onDestroy()
+	 * This is called when the service is destroyed, it's purpose is to kill the bluetooth connection
+	 * and clean up afterwards
+	 */
+	public void onDestroy(){
+		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putString("macaddress", address);//TODO I'm not sure if this is deprecated yet
+		System.out.println("PHSHING PREF: " + address);
+		editor.commit();
+		killBT();
+	}
 }

@@ -25,20 +25,40 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 @SuppressLint("ShowToast")
 public class MainActivity extends Activity {
 	boolean mBounded;
 	BlueComms mServer;
+	TextView QuickConnectButton;
+	public static final String PREFS_NAME = "AndCamPreferences";
+	String devName;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/robotoLI.otf");
+        TextView tv = (TextView) findViewById(R.id.shutterbutton);
+        tv.setTypeface(tf);
 	}
-
+	
+	public void onResume(){
+		super.onResume();
+		SharedPreferences prefs = getSharedPreferences(PREFS_NAME, 0);
+		devName = prefs.getString("devicename", null);
+		QuickConnectButton = (TextView) findViewById(R.id.devLink);
+		if (devName != null){
+			QuickConnectButton.setText("Quick Connect: " + devName);
+		}
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
@@ -46,9 +66,14 @@ public class MainActivity extends Activity {
 	}
 
 	public void shutterButtonClick(View v) {
-		Intent myIntent = new Intent(v.getContext(), ShutterRelease.class);
-		startActivityForResult(myIntent, 0);
-
+		//Intent myIntent = new Intent(v.getContext(), FlatHome.class);
+		//startActivityForResult(myIntent, 0);
+	     try    {           
+	         Intent newIntent = new Intent(v.getContext(), FlatHome.class);    
+	         startActivityForResult(newIntent, 0);
+	         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
+	     } catch(Exception ex) {
+	     }
 	}
 
 	public void timelapseButtonClick(View v) {
@@ -80,6 +105,10 @@ public class MainActivity extends Activity {
 		Intent myIntent = new Intent(v.getContext(), DripTrig.class);
 		startActivityForResult(myIntent, 0);
 	}
+	public void hdrButtonClick(View v) {
+		Intent myIntent = new Intent(v.getContext(), HDRLapse.class);
+		startActivityForResult(myIntent, 0);
+	}
 	ServiceConnection mConnection = new ServiceConnection() {
 
 		public void onServiceDisconnected(ComponentName name) {
@@ -89,7 +118,6 @@ public class MainActivity extends Activity {
 		}
 
 		public void onServiceConnected(ComponentName name, IBinder service) {
-			Toast.makeText(MainActivity.this, "Service is connected", 1000).show();
 			mBounded = true;
 			LocalBinder mLocalBinder = (LocalBinder)service;
 			mServer = mLocalBinder.getServerInstance();

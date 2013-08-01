@@ -67,6 +67,22 @@
             android:name="com.rozzles.camera.DripTrig"
             android:label="@string/title_activity_drip_trig" >
         </activity>
+        <activity
+            android:name="com.rozzles.camera.FlatHome"
+            android:label="@string/title_activity_flat_home" >
+        </activity>
+        <activity
+            android:name="com.rozzles.camera.HDRLapse"
+            android:label="@string/title_activity_hdrlapse" >
+        </activity>
+        <activity
+            android:name="com.rozzles.camera.SetupOne"
+            android:label="@string/title_activity_setup_one" >
+        </activity>
+        <activity
+            android:name="com.rozzles.camera.SetupTwo"
+            android:label="@string/title_activity_setup_two" >
+        </activity>
     </application>
 
 </manifest>

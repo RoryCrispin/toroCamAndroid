@@ -35,7 +35,7 @@ public class LightTrigger extends Activity {
 	public float delay;
 	public float mod;
 	public int bulbBinary;
-
+	
 	boolean mBounded;
 	BlueComms mServer;
 

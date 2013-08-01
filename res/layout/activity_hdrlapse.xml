@@ -1,0 +1,141 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".HDRLapse" >
+
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/s1_length" />
+
+    <SeekBar
+        android:id="@+id/sOneSeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/appTitle"
+        android:max="200" />
+
+    <SeekBar
+        android:id="@+id/sTwoSeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/sOneSeek"
+        android:layout_marginTop="16dp"
+        android:max="200"  />
+
+    <SeekBar
+        android:id="@+id/sThreeSeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/sTwoSeek"
+        android:layout_marginTop="19dp"
+        android:max="200"  />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sTwoSeek"
+        android:layout_below="@+id/sOneSeek"
+        android:text="@string/s2_length" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sThreeSeek"
+        android:layout_below="@+id/sTwoSeek"
+        android:text="@string/s3_length" />
+
+    <TextView
+        android:id="@+id/sOneLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignRight="@+id/sTwoSeek"
+        android:text="@string/zero" />
+
+    <TextView
+        android:id="@+id/sTwoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/sTwoSeek"
+        android:layout_below="@+id/sTwoSeek"
+        android:text="@string/zero" />
+
+    <TextView
+        android:id="@+id/sThreeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/sThreeSeek"
+        android:layout_below="@+id/sThreeSeek"
+        android:text="@string/zero" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="captureClick"
+        android:text="@string/capture" />
+
+    <CheckBox
+        android:id="@+id/hdrCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sThreeLabel"
+        android:text="Timelapse Mode" />
+
+    <SeekBar
+        android:id="@+id/sDelSeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hdrCheck"
+        android:layout_marginTop="22dp" />
+
+    <Spinner
+        android:id="@+id/sDelSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/sDelSeek"
+        android:layout_below="@+id/sDelSeek"
+        android:layout_toRightOf="@+id/button1" />
+
+    <TextView
+        android:id="@+id/sDelLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/button1"
+        android:layout_alignTop="@+id/sDelSpinner"
+        android:text="@string/zero" />
+
+    <SeekBar
+        android:id="@+id/sShotSeek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/sDelSpinner" />
+
+    <TextView
+        android:id="@+id/sShotLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sShotSeek"
+        android:layout_toLeftOf="@+id/sThreeLabel"
+        android:text="@string/zero" />
+
+</RelativeLayout>

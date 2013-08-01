@@ -18,6 +18,13 @@ package com.rozzles.camera;
 import java.util.concurrent.TimeUnit;
 
 public class TimeParse {
+	/*
+	 * This class is used to convert the data used in the timelapse which is sent in 
+	 * TODO Seconds/Milliseconds, I think I changed this and forgot to update the names!
+	 * into a string with the format:
+	 * W Days X Hours Y Min Z Sec 
+	 * This shows the length of the timelapse.
+	 */
 	public static String getDurationBreakdown(long millis) {
 		if (millis < 0) {
 			throw new IllegalArgumentException(

@@ -3,10 +3,9 @@
 
     <string name="app_name">Cam</string>
     <string name="action_settings">Settings</string>
-    <string name="timelapse">Timelapse ></string>
-    <string name="shutter_release">Shutter Release ></string>
-    <string name="light_trigger">Light Trigger ></string>
-    <string name="sound_trigger">Sound Trigger ></string>
+    <string name="timelapse">Timelapse</string>
+    <string name="light_trigger">Light Trigger </string>
+    <string name="sound_trigger">Sound Trigger </string>
     <string name="title_activity_shutter_release">Shutter Release</string>
     <string name="delay">Time Delay: </string>
     <string name="capture">Capture</string>
@@ -30,7 +29,7 @@
     <string name="multiplier">Multiplier</string>
     <string name="title_activity_sound_trigger">SoundTrigger</string>
     <string name="title_activity_dev_link">DevLink</string>
-    <string name="devlink">Quick Connect</string>
+    <string name="devlink">No device set up</string>
     <string name="connect">Device Options</string>
     <string name="title_activity_launch">Launch</string>
     <string name="title_activity_blue_control">BlueControl</string>
@@ -40,7 +39,7 @@
     <string name="debug_controls">Debug Controls</string>
     <string name="todo_device_must_be_connected_before_entering_activities_press_h_or_l_">TODO: MainActivity does not rebind BT service with onCreate like other activities</string>
     <string name="recallob">Recalibrate sensors</string>
-    <string name="driptrig_">DripTrig™ ></string>
+    <string name="driptrig_">DripTrig™ </string>
     <string name="title_activity_drip_trig">DripTrig</string>
     <string name="sevsitivity">Sevsitivity</string>
     <string name="ldr_laser">LDR/Laser</string>
@@ -49,5 +48,24 @@
     <string name="flash_delay">Flash Delay</string>
     <string name="drip_no_">Drip No.</string>
     <string name="delay_betweem_drips">Delay betweem drips</string>
+    <string name="title_activity_new_main">NewMain</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_flat_home">FlatHome</string>
+    <string name="title_activity_hdrlapse">HDRLapse</string>
+    <string name="hdr_timelapse">HDR Timelapse </string>
+    <string name="s1_length">S1 Length</string>
+    <string name="s2_length">S2 Length</string>
+    <string name="s3_length">S3 Length</string>
+    <string name="smartshutter">SmartShutter</string>
+    <string name="simple_shoot">Simple Shoot</string>
+    <string name="todo">TODO</string>
+    <string name="title_activity_setup_one">SetupOne</string>
+    <string name="title_activity_setup_two">SetupTwo</string>
+    <string name="i_have_a_smartbox">I have a SmartBox</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="skip_just_browsing">Skip -  Just Browsing</string>
+    <string name="helvetica_">Helvetica?</string>
+    <string name="select_your_device">Select your device</string>
 
 </resources>
