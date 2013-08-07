@@ -188,8 +188,9 @@ public class DripTrig extends Activity {
 		return true;
 	}
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
 		startActivityForResult(myIntent, 0);
+		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
 		return true;
 	}
 	public void captureClick(View v){

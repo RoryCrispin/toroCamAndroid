@@ -24,8 +24,8 @@ public class SetupOne extends Activity {
 		Typeface robotoL = Typeface.createFromAsset(getAssets(),
                 "fonts/robotoLI.otf");
 		//Init the two text views for to set the fonts to ultralight, so hipster
-		TextView appTitle = (TextView) findViewById(R.id.appTitle);
-		TextView wlcmTo = (TextView) findViewById(R.id.welcomeText);
+		TextView appTitle = (TextView) findViewById(R.id.dialog_title);
+		TextView wlcmTo = (TextView) findViewById(R.id.dialog_text);
 		//Set the fonts to roboto
         appTitle.setTypeface(robotoLI);
         wlcmTo.setTypeface(robotoL);
@@ -36,6 +36,11 @@ public class SetupOne extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.setup_one, menu);
 		return true;
+	}
+	@Override
+	public void onBackPressed(){
+		super.onBackPressed();
+		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
 	}
 	//Method called when the user selects the first button
 	public void haveSmartBox(View v){

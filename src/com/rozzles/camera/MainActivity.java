@@ -22,7 +22,10 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -106,9 +109,13 @@ public class MainActivity extends Activity {
 		startActivityForResult(myIntent, 0);
 	}
 	public void hdrButtonClick(View v) {
-		Intent myIntent = new Intent(v.getContext(), HDRLapse.class);
+		/*Intent myIntent = new Intent(v.getContext(), HDRLapse.class);
 		startActivityForResult(myIntent, 0);
+		*/
+		
 	}
+	
+
 	ServiceConnection mConnection = new ServiceConnection() {
 
 		public void onServiceDisconnected(ComponentName name) {

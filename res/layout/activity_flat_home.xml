@@ -10,7 +10,7 @@
     tools:context=".FlatHome" >
 
     <TextView
-        android:id="@+id/appTitle"
+        android:id="@+id/dialog_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -28,21 +28,21 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/appTitle"
+        android:layout_below="@+id/dialog_title"
         android:layout_marginTop="20dp" >
 
         <LinearLayout
             android:id="@+id/LinButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:animateLayoutChanges="true" >
+            android:animateLayoutChanges="true"
+            android:orientation="vertical" >
 
             <LinearLayout
-                android:id="@+id/LinearLayout01"
+                android:id="@+id/connectObj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="simpleShootClick"
+                android:onClick="connectClick"
                 android:orientation="vertical"
                 android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/greenbutton"
-                    android:onClick="startSetup"
+                    android:onClick="connectClick"
                     tools:ignore="UselessParent" >
 
                     <ImageView
@@ -64,20 +64,20 @@
                         android:baselineAlignBottom="false"
                         android:contentDescription="@string/zero"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/simpleshoot" />
+                        android:src="@drawable/connecticon" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" >
 
                         <TextView
-                            android:id="@+id/TextView06"
+                            android:id="@+id/connectText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
                             android:paddingLeft="10dp"
-                            android:text="Set up"
+                            android:text="@string/connecting_"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="#FFFFFF" />
                     </RelativeLayout>
@@ -132,7 +132,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="simpelShootClick"
                 android:orientation="vertical"
                 android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
@@ -143,6 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/greenbutton"
+                    android:onClick="timelapseClick"
                     tools:ignore="UselessParent" >
 
                     <ImageView
@@ -176,7 +176,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="simpelShootClick"
                 android:orientation="vertical"
                 android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
@@ -187,6 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/greenbutton"
+                    android:onClick="soundClick"
                     tools:ignore="UselessParent" >
 
                     <ImageView
@@ -231,6 +231,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/greenbutton"
+                    android:onClick="lightClick"
                     tools:ignore="UselessParent" >
 
                     <ImageView
@@ -275,6 +276,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/greenbutton"
+                    android:onClick="dripClick"
                     tools:ignore="UselessParent" >
 
                     <ImageView

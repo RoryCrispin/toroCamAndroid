@@ -9,16 +9,16 @@
     tools:context=".SetupTwo" >
 
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/dialog_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appTitle"
+        android:layout_below="@+id/dialog_title"
         android:layout_centerHorizontal="true"
         android:text="@string/select_your_device"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/appTitle"
+        android:id="@+id/dialog_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -32,9 +32,25 @@
         android:id="@+id/pairedList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/welcomeText"
-        android:layout_centerHorizontal="true" >
+        android:layout_above="@+id/imageView1"
+        android:layout_below="@+id/dialog_text"
+        android:layout_centerHorizontal="true"
+        android:divider="@drawable/greenbutton"
+        android:dividerHeight="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textAlignment="center" >
 
     </ListView>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:adjustViewBounds="true"
+        android:contentDescription="TODO"
+        android:src="@drawable/grass2" />
 
 </RelativeLayout>

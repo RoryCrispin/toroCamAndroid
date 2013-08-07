@@ -48,9 +48,6 @@
     <string name="flash_delay">Flash Delay</string>
     <string name="drip_no_">Drip No.</string>
     <string name="delay_betweem_drips">Delay betweem drips</string>
-    <string name="title_activity_new_main">NewMain</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_flat_home">FlatHome</string>
     <string name="title_activity_hdrlapse">HDRLapse</string>
     <string name="hdr_timelapse">HDR Timelapse </string>
@@ -67,5 +64,14 @@
     <string name="skip_just_browsing">Skip -  Just Browsing</string>
     <string name="helvetica_">Helvetica?</string>
     <string name="select_your_device">Select your device</string>
+    <string name="title_activity_setup_three">SetupThree</string>
+    <string name="just_a_minute_">Just a minute...</string>
+    <string name="oops_">Oops!</string>
+    <string name="there_was_a_problem_with_bluetooth_nis_your_smartshutter_turned_on_">There was a problem with Bluetooth! \n Is your SmartShutter turned on?</string>
+    <string name="try_again">Try Again</string>
+    <string name="help">Help</string>
+    <string name="retry">Retry</string>
+    <string name="troubleshoot">Troubleshoot</string>
+    <string name="connecting_">Connecting...</string>
 
 </resources>

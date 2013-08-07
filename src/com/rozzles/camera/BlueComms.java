@@ -53,6 +53,7 @@ public class BlueComms extends Service{
 	String address;
 	public static final String TAG = "CameraRemote"; //Debug stuff
 	IBinder mBinder = new LocalBinder();
+	SetupThree setupThree = new SetupThree();
 	
 	public static final String PREFS_NAME = "AndCamPreferences";
 	/*
@@ -125,6 +126,12 @@ public class BlueComms extends Service{
 	 *which keeps the service running. Avoid changing this stuff if you can.
 	 */
 	public int onStartCommand(Intent intent, int flags, int startId){
+		//Connect();
+		return START_STICKY;//Keeps the service running 
+	}
+	
+	public boolean Connect(){
+		restoreMac();
 		CheckBt(); //Check bluetooth exists and is enabled & set mBluetoothAdapter
 		BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
 		Log.d(TAG, "Connecting to ... " + device);
@@ -134,8 +141,9 @@ public class BlueComms extends Service{
 			btSocket.connect(); //Connect to the device
 			outStream = btSocket.getOutputStream(); //Initialize the output stream so data can be sent to the device later
 			Toast.makeText(getApplicationContext(), "Connetion Made!", Toast.LENGTH_SHORT).show();
+		
 			isConnected = true;
-			return START_STICKY;//TODO this is pointless see below
+			return true;
 			//TODO make a persistent notification while the service is open
 
 		} catch (IOException e) {
@@ -143,12 +151,11 @@ public class BlueComms extends Service{
 				btSocket.close();
 			} catch (IOException e2) {
 				Log.d(TAG, "Unable to end the connection");
-				return 0;
 			}
+			
 			Log.d(TAG, "Socket creation failed");
+			return false;
 		}
-
-		return START_STICKY;//TODO As above, only one return is needed 
 	}
 	/*
 	 * This method is used to send data to the bluetooth device device 

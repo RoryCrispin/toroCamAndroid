@@ -2,17 +2,25 @@ package com.rozzles.camera;
 import java.util.ArrayList;
 import java.util.Set;
 
+import com.rozzles.camera.BlueComms.LocalBinder;
+
 import android.app.Activity;
+import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class SetupTwo extends Activity {
@@ -21,13 +29,15 @@ public class SetupTwo extends Activity {
 	ArrayAdapter<String> list;
 
 	boolean mBounded;
-
 	BlueComms mServer;
 
 	public String mac;
 	String name;
 	String[] macAddressArray;  
 	String[] nameArray;
+	
+	Dialog dialog = null;
+	
 
 	public static final String PREFS_NAME = "AndCamPreferences";
 
@@ -35,8 +45,26 @@ public class SetupTwo extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setup_two);
+		dialog = new Dialog(this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.connect_dev);
+		
+		Intent mIntent = new Intent(this, BlueComms.class); 
+		startService(mIntent);
+		//Init the fonts from the assets folder
+		Typeface robotoLI = Typeface.createFromAsset(getAssets(),
+				"fonts/robotoLI.otf");
+		Typeface robotoL = Typeface.createFromAsset(getAssets(),
+				"fonts/robotoLI.otf");
+		//Init the two text views for to set the fonts to ultralight, so hipster
+		TextView appTitle = (TextView) findViewById(R.id.dialog_title);
+		TextView wlcmTo = (TextView) findViewById(R.id.dialog_text);
+		//Set the fonts to roboto
+		appTitle.setTypeface(robotoLI);
+		wlcmTo.setTypeface(robotoL);
 
 		listView = (ListView) findViewById(R.id.pairedList);
+		//listView.setTypeface(robotoL);
 
 		BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
@@ -47,7 +75,7 @@ public class SetupTwo extends Activity {
 		if (pairedDevices.size() > 0) {
 			int i=0;
 			for (BluetoothDevice device : pairedDevices) {
-				
+
 				name = device.getName();
 				mac = device.getAddress();
 				list.add(name + "\n" + mac);
@@ -67,12 +95,44 @@ public class SetupTwo extends Activity {
 				System.out.println(String.valueOf(nameArray[position]));
 				SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 				SharedPreferences.Editor editor = settings.edit();
-				editor.putString("macaddress", macAddressArray[ ((int) id)+ 1]);
-				editor.putString("devicename", nameArray[ ((int) id)+ 1]);
+				editor.putString("macaddress", macAddressArray[ ((int) id)]);
+				editor.putString("devicename", nameArray[ ((int) id)]);
 				editor.commit();
 				//mServer.recvMac(macAddressArray[ ((int) id)+ 1]);
+				
+				try    {           
+			         Intent newIntent = new Intent(view.getContext(), SetupThree.class);    
+			         startActivityForResult(newIntent, 0);
+			         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
+			     } catch(Exception ex) {
+			    }
+			    
+				
+	
+				
+				
 			}
 		});
+	}
+	
+	ServiceConnection mConnection = new ServiceConnection() {
+
+ 		public void onServiceDisconnected(ComponentName name) {
+ 			mBounded = false;
+ 			mServer = null;
+ 		}
+ 		public void onServiceConnected(ComponentName name, IBinder service) {
+ 			mBounded = true;
+ 			LocalBinder mLocalBinder = (LocalBinder)service;
+ 			mServer = mLocalBinder.getServerInstance();
+ 			//mServer.Connect();
+ 		}
+ 	};
+ 	
+	@Override
+	public void onBackPressed(){
+		super.onBackPressed();
+		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
 	}
 
 }

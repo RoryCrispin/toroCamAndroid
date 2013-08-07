@@ -2,20 +2,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SetupOne"
     android:paddingBottom="0dp"
     android:paddingLeft="0dp"
-    android:paddingRight="0dp" >
+    android:paddingRight="0dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".SetupThree" >
+
+    <TextView
+        android:id="@+id/dialog_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_title"
+        android:layout_centerHorizontal="true"
+        android:text="@string/just_a_minute_"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="@string/smartshutter"
+        android:textColor="#3B97D3"
+        android:textSize="40sp" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/grass3" />
+
+    <ImageView
+        android:id="@+id/connectView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/connect" />
 
     <LinearLayout
         android:id="@+id/LinButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:animateLayoutChanges="true"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="gone" >
 
         <LinearLayout
             android:id="@+id/connectOnj"
@@ -32,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:background="@drawable/greenbutton"
-                android:onClick="continueClick"
+                android:onClick="retryClick"
                 tools:ignore="UselessParent" >
 
                 <ImageView
@@ -43,7 +84,7 @@
                     android:baselineAlignBottom="false"
                     android:contentDescription="@string/zero"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/tick" />
+                    android:src="@drawable/retry" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -56,7 +97,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:paddingLeft="10dp"
-                        android:text="@string/i_have_a_smartbox"
+                        android:text="@string/retry"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF" />
                 </RelativeLayout>
@@ -67,7 +108,7 @@
             android:id="@+id/simpleShootStruct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="skipClick"
+            android:onClick="troubleshootClick"
             android:orientation="vertical"
             android:paddingBottom="10dp"
             android:paddingLeft="20dp"
@@ -88,7 +129,7 @@
                     android:baselineAlignBottom="false"
                     android:contentDescription="@string/zero"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/cross" />
+                    android:src="@drawable/question" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -101,7 +142,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:paddingLeft="10dp"
-                        android:text="@string/skip_just_browsing"
+                        android:text="@string/troubleshoot"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF" />
                 </RelativeLayout>
@@ -110,33 +151,16 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:adjustViewBounds="true"
-        android:src="@drawable/grass1" android:contentDescription="@string/todo"/>
-
-    <TextView
-        android:id="@+id/dialog_title"
+        android:id="@+id/errorImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/LinButtons"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
-        android:text="@string/smartshutter"
-        android:textColor="#3B97D3"
-        android:textSize="40sp" />
-
-    <TextView
-        android:id="@+id/dialog_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/dialog_title"
-        android:layout_centerHorizontal="true"
-        android:text="@string/welcome_to"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_alignLeft="@+id/dialog_title"
+        android:layout_alignRight="@+id/dialog_title"
+        android:layout_below="@+id/dialog_text"
+        android:contentDescription="@string/todo"
+        android:paddingTop="20dp"
+        android:src="@drawable/error"
+        android:visibility="gone" />
 
 </RelativeLayout>
