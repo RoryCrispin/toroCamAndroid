@@ -4,11 +4,13 @@ import com.rozzles.camera.BlueComms.LocalBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +18,9 @@ import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
 
 public class HDRLapse extends Activity {
 
@@ -24,6 +29,7 @@ public class HDRLapse extends Activity {
 	int secs = 0;
 	int mins = 0; 
 	int hurs = 0;
+	public int shotsvar;
 	
 	boolean mBounded;
 	BlueComms mServer;
@@ -44,6 +50,7 @@ public class HDRLapse extends Activity {
 	TextView sThreeLabel = null;
 	TextView sShotsLabel = null;
 	TextView sDelayLabel = null;
+	CheckBox hdrCheck = null;
 	
 	CheckBox lapseBox = null;
 	
@@ -53,6 +60,11 @@ public class HDRLapse extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hdrlapse);
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+	
+
+		
 		sOneSeek  = (SeekBar) findViewById(R.id.sOneSeek);
 		sTwoSeek  = (SeekBar) findViewById(R.id.sTwoSeek);
 		sThreeSeek  = (SeekBar) findViewById(R.id.sThreeSeek);
@@ -61,9 +73,11 @@ public class HDRLapse extends Activity {
 		
 		sOneLabel  = (TextView) findViewById(R.id.sOneLabel);
 		sTwoLabel  = (TextView) findViewById(R.id.sTwoLabel);
+		sThreeLabel  = (TextView) findViewById(R.id.sThreeLabel);
 		sShotsLabel  = (TextView) findViewById(R.id.sShotLabel);
 		sDelayLabel  = (TextView) findViewById(R.id.sDelLabel);
 		spinner = (Spinner) findViewById(R.id.sDelSpinner);
+		hdrCheck = (CheckBox) findViewById(R.id.hdrCheck);
 		Intent mIntent = new Intent(this, BlueComms.class);
 		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -145,6 +159,7 @@ public class HDRLapse extends Activity {
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				sThreeVal = (float) arg1 / 100;
 				sThreeLabel.setText(String.valueOf(sThreeVal + "s"));
+				
 
 			}
 
@@ -165,7 +180,7 @@ public class HDRLapse extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				sShotsLabel.setText(String.valueOf(arg1));
+				sShotsLabel.setText(String.valueOf(arg1 + "Shots"));
 
 			}
 
@@ -186,7 +201,7 @@ public class HDRLapse extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				sDelayLabel.setText(String.valueOf(arg1 + " shots"));
+				sDelayLabel.setText(String.valueOf(arg1 + ""));
 				
 			}
 
@@ -204,6 +219,25 @@ public class HDRLapse extends Activity {
 
 		});
 		
+		hdrCheck.setOnCheckedChangeListener(new OnCheckedChangeListener()	{
+
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+				if(arg1 == false)	{
+					sShotsSeek.setEnabled(false);
+					sDelaySeek.setEnabled(false);
+					spinner.setEnabled(false);
+				}	else	{
+					sShotsSeek.setEnabled(true);
+					sDelaySeek.setEnabled(true);
+					spinner.setEnabled(true);
+				}
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 	}
 	ServiceConnection mConnection = new ServiceConnection() {
 
@@ -218,9 +252,26 @@ public class HDRLapse extends Activity {
 		}
 	};
 
+	
+
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
+		startActivityForResult(myIntent, 0);
+		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
+		return true;
+	}
+	
+	
 	public void captureClick (View v){
+		
+		if (hdrCheck.isChecked() == false) {
+			shotsvar = 1;
+		} else {
+			shotsvar = sShotsSeek.getProgress();
+		}
 		delayParse();
-		mServer.sendData("5," + secs +"," + mins + "," + hurs + ","  + (sShotsSeek.getProgress()) + "," + (sOneSeek.getProgress()*10) + "," + (sTwoSeek.getProgress()*10) + "," + (sThreeSeek.getProgress()*10) + ",500,0!");
+		mServer.sendData("5," + secs +"," + mins + "," + hurs + ","  + (shotsvar) + "," + (sOneSeek.getProgress()*10) + "," + (sTwoSeek.getProgress()*10) + "," + (sThreeSeek.getProgress()*10) + ",500,0!");
 		clearTimes();
 	}
 

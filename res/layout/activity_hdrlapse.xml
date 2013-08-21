@@ -97,7 +97,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sThreeLabel"
-        android:text="Timelapse Mode" />
+        android:text="Timelapse Mode"
+        android:checked="true" />
 
     <SeekBar
         android:id="@+id/sDelSeek"
@@ -105,7 +106,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/hdrCheck"
-        android:layout_marginTop="22dp" />
+        android:layout_marginTop="22dp"
+        android:max="59" />
 
     <Spinner
         android:id="@+id/sDelSpinner"
@@ -128,7 +130,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/sDelSpinner" />
+        android:layout_below="@+id/sDelSpinner"
+        android:max="200" />
 
     <TextView
         android:id="@+id/sShotLabel"
