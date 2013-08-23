@@ -90,7 +90,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="captureClick"
-        android:text="@string/capture" />
+        android:text="@string/capture"
+        android:textColor="#FFFFFF" />
 
     <CheckBox
         android:id="@+id/hdrCheck"

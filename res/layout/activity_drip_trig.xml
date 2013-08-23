@@ -166,17 +166,16 @@
 
     <Button
         android:id="@+id/button1"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/flashSlider"
         android:layout_centerHorizontal="true"
         android:text="@string/capture"
-        android:onClick="captureClick" />
+        android:onClick="captureClick"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/button2"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -184,6 +183,6 @@
         android:layout_alignParentRight="true"
         android:text="@string/recallob"
         android:onClick="Recal"
-         />
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

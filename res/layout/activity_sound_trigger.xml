@@ -60,7 +60,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
         android:onClick="CaptureClick"
-        android:text="@string/capture" />
+        android:text="@string/capture"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/timeDelayVal"
@@ -88,6 +89,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:onClick="Recal"
-        android:text="@string/recallob" />
+        android:text="@string/recallob"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
