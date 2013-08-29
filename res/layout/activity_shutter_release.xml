@@ -10,6 +10,17 @@
     tools:context=".ShutterRelease" >
 
     <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="@string/smartshutter"
+        android:textColor="#3B97D3"
+        android:textSize="40sp" />
+    
+    <TextView
         android:id="@+id/TimeDelayView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

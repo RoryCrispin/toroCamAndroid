@@ -25,6 +25,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,6 +37,11 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class Timelapse extends Activity {
+	@Override
+	public void onBackPressed() {
+	    super.onBackPressed();
+	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
+	}
 	public long millis;
 	public int shots;
 	int delay;
@@ -50,6 +56,10 @@ public class Timelapse extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_timelapse);
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/robotoLI.otf");
+		TextView tv = (TextView) findViewById(R.id.dialog_title);
+		tv.setTypeface(tf);
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		final SeekBar delaySeek = (SeekBar) findViewById(R.id.TimeDelaySeek);

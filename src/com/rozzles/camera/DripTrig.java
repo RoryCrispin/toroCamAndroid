@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class DripTrig extends Activity {
+	@Override
+	public void onBackPressed() {
+	    super.onBackPressed();
+	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
+	}
 	float delay;
 	boolean mBounded;
 	BlueComms mServer;
@@ -38,6 +44,10 @@ public class DripTrig extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_drip_trig);
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/robotoLI.otf");
+		TextView tv = (TextView) findViewById(R.id.dialog_title);
+		tv.setTypeface(tf);
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		sensSlide  = (SeekBar) findViewById(R.id.sensitivitySlider);

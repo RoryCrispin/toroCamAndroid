@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +33,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class SoundTrigger extends Activity {
+	@Override
+	public void onBackPressed() {
+	    super.onBackPressed();
+	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
+	}
 	public float delay;
 	public float mod;
 	public int bulbBinary;
@@ -43,6 +49,10 @@ public class SoundTrigger extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_light_trigger);
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/robotoLI.otf");
+		TextView tv = (TextView) findViewById(R.id.dialog_title);
+		tv.setTypeface(tf);
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
