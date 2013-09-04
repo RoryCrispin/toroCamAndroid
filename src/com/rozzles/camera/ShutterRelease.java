@@ -130,7 +130,7 @@ public class ShutterRelease extends Activity {
 	}
 
 	public void wrH(View v) {
-		mServer.sendData("H");
+		mServer.sendData("9,99,0,0,0,0,0,0,0,0!");
 	}
 
 	public void wrL(View v) {
