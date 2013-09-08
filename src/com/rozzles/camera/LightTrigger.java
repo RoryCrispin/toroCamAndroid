@@ -130,7 +130,7 @@ public class LightTrigger extends Activity {
 		} else {
 			bulbBinary = 0;
 		}
-		mServer.sendData("3,1000,"+ Math.round((200-(mod*100))) + "," + Math.round(delay) + "," + bulbBinary
+		mServer.sendData("3,1000,"+ Math.round((200-(mod*100))) + "," + Math.round(delay*1000) + "," + bulbBinary
 				+ ",0,0,0,0,0!");
 	}
 	public void Recal(View v) {
