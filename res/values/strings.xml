@@ -73,5 +73,7 @@
     <string name="retry">Retry</string>
     <string name="troubleshoot">Troubleshoot</string>
     <string name="connecting_">Connecting...</string>
+    <string name="title_activity_flat_settings">FlatSettings</string>
+    <string name="timelapse_mode">Timelapse Mode</string>
 
 </resources>

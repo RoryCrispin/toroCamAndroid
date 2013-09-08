@@ -31,7 +31,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class color {
         public static final int black_overlay=0x7f050000;
-        public static final int pressed_rccamgreen=0x7f050001;
+        public static final int pressed_rccamgreen=0x7f050002;
+        public static final int white=0x7f050001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -167,92 +168,94 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int timelapse=0x7f020078;
     }
     public static final class id {
-        public static final int Button01=0x7f0b004e;
-        public static final int CaptureButton=0x7f0b003d;
-        public static final int ImageView01=0x7f0b0026;
-        public static final int ImageView02=0x7f0b0024;
-        public static final int ImageView03=0x7f0b0022;
-        public static final int ImageView04=0x7f0b0020;
-        public static final int ImageView05=0x7f0b001e;
-        public static final int ImageView06=0x7f0b001b;
+        public static final int CaptureButton=0x7f0b003f;
+        public static final int ImageView01=0x7f0b0027;
+        public static final int ImageView02=0x7f0b0025;
+        public static final int ImageView03=0x7f0b0023;
+        public static final int ImageView04=0x7f0b0021;
+        public static final int ImageView05=0x7f0b001f;
+        public static final int ImageView06=0x7f0b001c;
         public static final int LDRradio=0x7f0b0007;
-        public static final int LightDelay=0x7f0b003a;
-        public static final int LinButtons=0x7f0b0019;
+        public static final int LightDelay=0x7f0b003c;
+        public static final int LinButtons=0x7f0b001a;
         public static final int MICradio=0x7f0b0008;
         public static final int SendButton=0x7f0b0000;
         public static final int ShotsSeek=0x7f0b004f;
         public static final int ShotsView=0x7f0b0050;
-        public static final int TextView01=0x7f0b0027;
-        public static final int TextView02=0x7f0b0025;
-        public static final int TextView03=0x7f0b0023;
-        public static final int TextView04=0x7f0b0021;
-        public static final int TextView05=0x7f0b001f;
-        public static final int TimeDelaySeek=0x7f0b004c;
-        public static final int TimeDelayView=0x7f0b004b;
+        public static final int TextView01=0x7f0b0028;
+        public static final int TextView02=0x7f0b0026;
+        public static final int TextView03=0x7f0b0024;
+        public static final int TextView04=0x7f0b0022;
+        public static final int TextView05=0x7f0b0020;
+        public static final int TimeDelaySeek=0x7f0b004d;
+        public static final int TimeDelayView=0x7f0b004e;
         public static final int TimeSpinner=0x7f0b0051;
         public static final int TimelapseDelayView=0x7f0b0054;
-        public static final int action_settings=0x7f0b0058;
-        public static final int bulbCheck=0x7f0b003c;
+        public static final int action_settings=0x7f0b005a;
+        public static final int bulbCheck=0x7f0b003e;
         public static final int button1=0x7f0b0016;
-        public static final int button2=0x7f0b0017;
-        public static final int connectObj=0x7f0b001a;
-        public static final int connectOnj=0x7f0b0045;
-        public static final int connectText=0x7f0b001c;
-        public static final int connectView=0x7f0b0047;
+        public static final int button2=0x7f0b0018;
+        public static final int connectObj=0x7f0b001b;
+        public static final int connectOnj=0x7f0b0047;
+        public static final int connectText=0x7f0b001d;
+        public static final int connectView=0x7f0b0049;
         public static final int dbdSlider=0x7f0b0011;
         public static final int dbdText=0x7f0b0010;
         public static final int dbdTextView=0x7f0b0012;
-        public static final int delayIntView=0x7f0b004d;
-        public static final int delayValue=0x7f0b004a;
-        public static final int devLink=0x7f0b0039;
-        public static final int dialogHelpButton=0x7f0b0057;
-        public static final int dialogTryAgainButton=0x7f0b0056;
-        public static final int dialog_text=0x7f0b0046;
-        public static final int dialog_title=0x7f0b0003;
+        public static final int delayIntView=0x7f0b004c;
+        public static final int delayValue=0x7f0b0003;
+        public static final int devLink=0x7f0b003d;
+        public static final int dialogHelpButton=0x7f0b0059;
+        public static final int dialogTryAgainButton=0x7f0b0058;
+        public static final int dialog_text=0x7f0b0048;
+        public static final int dialog_title=0x7f0b003a;
         public static final int dlengthSlider=0x7f0b000a;
         public static final int dlengthText=0x7f0b0009;
         public static final int dlengthTextView=0x7f0b000c;
         public static final int dnoSlider=0x7f0b000d;
         public static final int dnoText=0x7f0b000e;
         public static final int dnoTextView=0x7f0b000f;
-        public static final int dripTrigButton=0x7f0b0044;
-        public static final int errorImg=0x7f0b0048;
+        public static final int dripTrigButton=0x7f0b0046;
+        public static final int errorImg=0x7f0b004a;
         public static final int flashSlider=0x7f0b0014;
         public static final int flashText=0x7f0b0013;
         public static final int flashTextView=0x7f0b0015;
-        public static final int hdrCheck=0x7f0b0033;
-        public static final int imageView1=0x7f0b002a;
-        public static final int lightbutton=0x7f0b0042;
+        public static final int hdrCheck=0x7f0b0034;
+        public static final int help=0x7f0b0056;
+        public static final int imageView1=0x7f0b002b;
+        public static final int lightbutton=0x7f0b0044;
         public static final int messageField=0x7f0b0001;
         public static final int multiplierSeek=0x7f0b003b;
-        public static final int multiplierVal=0x7f0b003f;
-        public static final int pairedList=0x7f0b0049;
+        public static final int multiplierVal=0x7f0b0041;
+        public static final int new_game=0x7f0b0055;
+        public static final int pairedList=0x7f0b004b;
         public static final int radioGroup1=0x7f0b0006;
-        public static final int sDelLabel=0x7f0b0036;
-        public static final int sDelSeek=0x7f0b0034;
-        public static final int sDelSpinner=0x7f0b0035;
-        public static final int sOneLabel=0x7f0b0030;
-        public static final int sOneSeek=0x7f0b002b;
-        public static final int sShotLabel=0x7f0b0038;
-        public static final int sShotSeek=0x7f0b0037;
-        public static final int sThreeLabel=0x7f0b0032;
-        public static final int sThreeSeek=0x7f0b002d;
-        public static final int sTwoLabel=0x7f0b0031;
+        public static final int s1Text=0x7f0b0017;
+        public static final int sDelLabel=0x7f0b0037;
+        public static final int sDelSeek=0x7f0b0035;
+        public static final int sDelSpinner=0x7f0b0036;
+        public static final int sOneLabel=0x7f0b0031;
+        public static final int sOneSeek=0x7f0b002d;
+        public static final int sShotLabel=0x7f0b0039;
+        public static final int sShotSeek=0x7f0b0038;
+        public static final int sThreeLabel=0x7f0b0033;
+        public static final int sThreeSeek=0x7f0b002e;
+        public static final int sTwoLabel=0x7f0b0032;
         public static final int sTwoSeek=0x7f0b002c;
-        public static final int scrollView1=0x7f0b0018;
-        public static final int sensitivitySlider=0x7f0b0005;
-        public static final int sensitivityText=0x7f0b0004;
+        public static final int scrollView1=0x7f0b0019;
+        public static final int sensitivitySlider=0x7f0b0004;
+        public static final int sensitivityText=0x7f0b0005;
         public static final int sensitivityTextView=0x7f0b000b;
-        public static final int shutterbutton=0x7f0b0040;
-        public static final int simpleShootIcon=0x7f0b0028;
-        public static final int simpleShootStruct=0x7f0b001d;
-        public static final int simpleShootText=0x7f0b0029;
-        public static final int soundbutton=0x7f0b0043;
-        public static final int textView1=0x7f0b0055;
-        public static final int textView2=0x7f0b002e;
-        public static final int textView3=0x7f0b002f;
-        public static final int timeDelayVal=0x7f0b003e;
-        public static final int timelapsebutton=0x7f0b0041;
+        public static final int shutterbutton=0x7f0b0042;
+        public static final int simpleShootIcon=0x7f0b0029;
+        public static final int simpleShootStruct=0x7f0b001e;
+        public static final int simpleShootText=0x7f0b002a;
+        public static final int soundbutton=0x7f0b0045;
+        public static final int textView1=0x7f0b0057;
+        public static final int textView2=0x7f0b002f;
+        public static final int textView3=0x7f0b0030;
+        public static final int timeDelayVal=0x7f0b0040;
+        public static final int timelapsebutton=0x7f0b0043;
         public static final int toggleButton1=0x7f0b0002;
         public static final int totalShots=0x7f0b0053;
         public static final int totalTime=0x7f0b0052;
@@ -261,34 +264,37 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_blue_control=0x7f030000;
         public static final int activity_drip_trig=0x7f030001;
         public static final int activity_flat_home=0x7f030002;
-        public static final int activity_hdrlapse=0x7f030003;
-        public static final int activity_light_trigger=0x7f030004;
-        public static final int activity_main=0x7f030005;
-        public static final int activity_setup_one=0x7f030006;
-        public static final int activity_setup_three=0x7f030007;
-        public static final int activity_setup_two=0x7f030008;
-        public static final int activity_shutter_release=0x7f030009;
-        public static final int activity_sound_trigger=0x7f03000a;
-        public static final int activity_timelapse=0x7f03000b;
-        public static final int connect_dev=0x7f03000c;
-        public static final int problem_dialog=0x7f03000d;
+        public static final int activity_flat_settings=0x7f030003;
+        public static final int activity_hdrlapse=0x7f030004;
+        public static final int activity_light_trigger=0x7f030005;
+        public static final int activity_main=0x7f030006;
+        public static final int activity_setup_one=0x7f030007;
+        public static final int activity_setup_three=0x7f030008;
+        public static final int activity_setup_two=0x7f030009;
+        public static final int activity_shutter_release=0x7f03000a;
+        public static final int activity_sound_trigger=0x7f03000b;
+        public static final int activity_timelapse=0x7f03000c;
+        public static final int connect_dev=0x7f03000d;
+        public static final int menuview=0x7f03000e;
+        public static final int problem_dialog=0x7f03000f;
     }
     public static final class menu {
         public static final int blue_control=0x7f0a0000;
         public static final int dev_link=0x7f0a0001;
         public static final int drip_trig=0x7f0a0002;
         public static final int flat_home=0x7f0a0003;
-        public static final int hdrlapse=0x7f0a0004;
-        public static final int launch=0x7f0a0005;
-        public static final int light_trigger=0x7f0a0006;
-        public static final int main=0x7f0a0007;
-        public static final int new_main=0x7f0a0008;
-        public static final int setup_one=0x7f0a0009;
-        public static final int setup_three=0x7f0a000a;
-        public static final int setup_two=0x7f0a000b;
-        public static final int shutter_release=0x7f0a000c;
-        public static final int sound_trigger=0x7f0a000d;
-        public static final int timelapse=0x7f0a000e;
+        public static final int flat_settings=0x7f0a0004;
+        public static final int hdrlapse=0x7f0a0005;
+        public static final int launch=0x7f0a0006;
+        public static final int light_trigger=0x7f0a0007;
+        public static final int main=0x7f0a0008;
+        public static final int new_main=0x7f0a0009;
+        public static final int setup_one=0x7f0a000a;
+        public static final int setup_three=0x7f0a000b;
+        public static final int setup_two=0x7f0a000c;
+        public static final int shutter_release=0x7f0a000d;
+        public static final int sound_trigger=0x7f0a000e;
+        public static final int timelapse=0x7f0a000f;
     }
     public static final class string {
         public static final int action_settings=0x7f070001;
@@ -337,10 +343,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int stop=0x7f07000f;
         public static final int there_was_a_problem_with_bluetooth_nis_your_smartshutter_turned_on_=0x7f07003b;
         public static final int timelapse=0x7f070002;
+        public static final int timelapse_mode=0x7f070042;
         public static final int title_activity_blue_control=0x7f070018;
         public static final int title_activity_dev_link=0x7f070014;
         public static final int title_activity_drip_trig=0x7f070020;
         public static final int title_activity_flat_home=0x7f070028;
+        public static final int title_activity_flat_settings=0x7f070041;
         public static final int title_activity_hdrlapse=0x7f070029;
         public static final int title_activity_launch=0x7f070017;
         public static final int title_activity_light_trigger=0x7f070010;
@@ -439,7 +447,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:buttonBarButtonStyle
+          @attr name com.rozzles.camera:buttonBarButtonStyle
         */
         public static final int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
         /**
@@ -449,7 +457,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:buttonBarStyle
+          @attr name com.rozzles.camera:buttonBarStyle
         */
         public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
     };

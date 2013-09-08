@@ -20,7 +20,6 @@ import com.rozzles.camera.BlueComms.LocalBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -29,6 +28,7 @@ import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
@@ -55,13 +55,14 @@ public class Timelapse extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_timelapse);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.dialog_title);
+		TextView tv = (TextView) findViewById(R.id.s1Text);
 		tv.setTypeface(tf);
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		//ActionBar actionBar = getActionBar();
+		//actionBar.setDisplayHomeAsUpEnabled(true);
 		final SeekBar delaySeek = (SeekBar) findViewById(R.id.TimeDelaySeek);
 		final SeekBar shotsSeek = (SeekBar) findViewById(R.id.ShotsSeek);
 		Spinner spinner = (Spinner) findViewById(R.id.TimeSpinner);

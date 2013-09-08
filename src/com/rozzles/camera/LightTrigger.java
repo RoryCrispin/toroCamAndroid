@@ -19,7 +19,6 @@ import com.rozzles.camera.BlueComms.LocalBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -28,6 +27,7 @@ import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -48,13 +48,13 @@ public class LightTrigger extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_light_trigger);
+		
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.dialog_title);
+		TextView tv = (TextView) findViewById(R.id.s1Text);
 		tv.setTypeface(tf);
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
 		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
 		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);

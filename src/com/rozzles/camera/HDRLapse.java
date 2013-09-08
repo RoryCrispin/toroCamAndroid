@@ -4,7 +4,6 @@ import com.rozzles.camera.BlueComms.LocalBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -13,6 +12,7 @@ import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -65,14 +65,12 @@ public class HDRLapse extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_hdrlapse);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
 		TextView tv = (TextView) findViewById(R.id.dialog_title);
 		tv.setTypeface(tf);
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-	
 
 		
 		sOneSeek  = (SeekBar) findViewById(R.id.sOneSeek);

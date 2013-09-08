@@ -20,7 +20,6 @@ import com.rozzles.camera.BlueComms.LocalBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -58,7 +57,7 @@ public class ShutterRelease extends Activity {
 		setContentView(R.layout.activity_shutter_release);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.dialog_title);
+		TextView tv = (TextView) findViewById(R.id.s1Text);
 		tv.setTypeface(tf);
 		SeekBar seekBar = (SeekBar) findViewById(R.id.TimeDelaySeek);
 		final TextView seekBarValue = (TextView) findViewById(R.id.delayIntView);

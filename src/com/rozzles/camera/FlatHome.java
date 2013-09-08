@@ -13,9 +13,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -38,7 +36,7 @@ Intent mIntent;
 		setContentView(R.layout.activity_flat_home);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.dialog_title);
+		TextView tv = (TextView) findViewById(R.id.s1Text);
 		tv.setTypeface(tf);
 
 		/*
