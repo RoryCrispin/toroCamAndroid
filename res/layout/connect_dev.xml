@@ -12,13 +12,13 @@
         android:id="@+id/dialog_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dialog_title"
+        android:layout_below="@+id/s1Text"
         android:layout_centerHorizontal="true"
         android:text="@string/just_a_minute_"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/dialog_title"
+        android:id="@+id/s1Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

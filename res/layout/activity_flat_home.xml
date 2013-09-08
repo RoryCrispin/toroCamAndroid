@@ -10,7 +10,7 @@
     tools:context=".FlatHome" >
 
     <TextView
-        android:id="@+id/dialog_title"
+        android:id="@+id/s1Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -28,7 +28,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/dialog_title"
+        android:layout_below="@+id/s1Text"
         android:layout_marginTop="20dp" >
 
         <LinearLayout

@@ -20,19 +20,26 @@ import com.rozzles.camera.BlueComms.LocalBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Typeface;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class ShutterRelease extends Activity {
+	@Override
+	public void onBackPressed() {
+	    super.onBackPressed();
+	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
+	}
+	
 	MainActivity mid = new MainActivity();
 	boolean mBounded;
 	BlueComms mServer;
@@ -40,6 +47,7 @@ public class ShutterRelease extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		
 		 Intent mIntent = new Intent(this, BlueComms.class);
@@ -47,8 +55,10 @@ public class ShutterRelease extends Activity {
 		
 		
 		setContentView(R.layout.activity_shutter_release);
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/robotoLI.otf");
+		TextView tv = (TextView) findViewById(R.id.s1Text);
+		tv.setTypeface(tf);
 		SeekBar seekBar = (SeekBar) findViewById(R.id.TimeDelaySeek);
 		final TextView seekBarValue = (TextView) findViewById(R.id.delayIntView);
 		seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -68,7 +78,11 @@ public class ShutterRelease extends Activity {
 			public void onStopTrackingTouch(SeekBar seekBar) {
 			}
 		});
+		
 	}
+	
+
+	
 	
 	ServiceConnection mConnection = new ServiceConnection() {
 
@@ -115,7 +129,7 @@ public class ShutterRelease extends Activity {
 	}
 
 	public void wrH(View v) {
-		mServer.sendData("H");
+		mServer.sendData("9,99,0,0,0,0,0,0,0,0!");
 	}
 
 	public void wrL(View v) {
