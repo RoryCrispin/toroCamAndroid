@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="13"
+        android:minSdkVersion="14"
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -86,6 +86,10 @@
         <activity
             android:name="com.rozzles.camera.SetupThree"
             android:label="@string/title_activity_setup_three" >
+        </activity>
+        <activity
+            android:name="com.rozzles.camera.FlatSettings"
+            android:label="@string/title_activity_flat_settings" >
         </activity>
     </application>
 

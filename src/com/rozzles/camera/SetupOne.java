@@ -24,7 +24,7 @@ public class SetupOne extends Activity {
 		Typeface robotoL = Typeface.createFromAsset(getAssets(),
                 "fonts/robotoLI.otf");
 		//Init the two text views for to set the fonts to ultralight, so hipster
-		TextView appTitle = (TextView) findViewById(R.id.dialog_title);
+		TextView appTitle = (TextView) findViewById(R.id.s1Text);
 		TextView wlcmTo = (TextView) findViewById(R.id.dialog_text);
 		//Set the fonts to roboto
         appTitle.setTypeface(robotoLI);
