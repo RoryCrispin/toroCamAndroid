@@ -34,18 +34,19 @@
         android:layout_centerHorizontal="true"
         android:text="@string/zero"
         android:textAppearance="?android:attr/textAppearanceMedium" /><ToggleButton
-        android:id="@+id/toggleButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/totalTime"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:onClick="onToggleClicked"
-        android:text="@string/zero"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textOff="@string/start"
-        android:textOn="@string/stop"
-        android:textColor="#FFFFFF" />
+            android:id="@+id/toggleButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/totalTime"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:minWidth="80dp"
+            android:onClick="onToggleClicked"
+            android:text="@string/zero"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF"
+            android:textOff="@string/start"
+            android:textOn="@string/stop" />
 
 <TextView
         android:id="@+id/totalShots"
@@ -60,7 +61,6 @@
     android:id="@+id/TimeSpinner"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_alignParentRight="true"
     android:layout_below="@+id/TimeDelaySeek"
     android:layout_toRightOf="@+id/toggleButton1"
     android:textSize="14pt" />
