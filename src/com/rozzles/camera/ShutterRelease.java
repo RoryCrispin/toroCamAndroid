@@ -30,8 +30,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class ShutterRelease extends Activity {
 	@Override
@@ -60,9 +63,29 @@ public class ShutterRelease extends Activity {
 		TextView tv = (TextView) findViewById(R.id.s1Text);
 		tv.setTypeface(tf);
 		SeekBar seekBar = (SeekBar) findViewById(R.id.TimeDelaySeek);
+		final SeekBar ShutterBmodeSeek = (SeekBar) findViewById(R.id.shutterBmodeSeek);
 		final TextView seekBarValue = (TextView) findViewById(R.id.delayIntView);
-		seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+		final TextView ShutterBmodeText = (TextView) findViewById(R.id.shutterBmodeText);
+		CheckBox ShutterBmodeCheck = (CheckBox) findViewById(R.id.shutterBmodeCheck);
+		
+		ShutterBmodeSeek.setEnabled(false);
+		ShutterBmodeCheck.setOnCheckedChangeListener(new OnCheckedChangeListener()	{
 
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+				if (arg1){
+					ShutterBmodeSeek.setEnabled(true);
+				} else {
+					ShutterBmodeSeek.setEnabled(false);
+				}
+				
+			}
+
+		});
+		
+		
+		
+		seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {

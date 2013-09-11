@@ -34,8 +34,10 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_alignLeft="@+id/delayIntView"
+          android:layout_alignParentRight="true"
           android:layout_below="@+id/TimeDelayView"
-          android:max="60" />
+          android:max="60" 
+          android:enabled="false"/>
 
       <Button
           android:id="@+id/CaptureButton"
@@ -58,6 +60,31 @@
           android:text="@string/smartshutter"
           android:textColor="#3B97D3"
           android:textSize="40sp" />
+
+      <CheckBox
+          android:id="@+id/shutterBmodeCheck"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/delayIntView"
+          android:layout_alignTop="@+id/delayIntView"
+          android:text="Bulb Mode" />
+
+      <SeekBar
+          android:id="@+id/shutterBmodeSeek"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/delayIntView"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/shutterBmodeCheck" />
+
+      <TextView
+          android:id="@+id/shutterBmodeText"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignRight="@+id/shutterBmodeSeek"
+          android:layout_below="@+id/shutterBmodeSeek"
+          android:text="@string/zero"
+          android:textAppearance="?android:attr/textAppearanceSmall" />
 
   </RelativeLayout>
 

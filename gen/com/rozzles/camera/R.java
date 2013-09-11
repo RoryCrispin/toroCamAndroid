@@ -180,8 +180,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int LinButtons=0x7f0b001a;
         public static final int MICradio=0x7f0b0008;
         public static final int SendButton=0x7f0b0000;
-        public static final int ShotsSeek=0x7f0b004f;
-        public static final int ShotsView=0x7f0b0050;
+        public static final int ShotsSeek=0x7f0b0052;
+        public static final int ShotsView=0x7f0b0053;
         public static final int TextView01=0x7f0b0028;
         public static final int TextView02=0x7f0b0026;
         public static final int TextView03=0x7f0b0024;
@@ -189,9 +189,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int TextView05=0x7f0b0020;
         public static final int TimeDelaySeek=0x7f0b004d;
         public static final int TimeDelayView=0x7f0b004e;
-        public static final int TimeSpinner=0x7f0b0051;
-        public static final int TimelapseDelayView=0x7f0b0054;
-        public static final int action_settings=0x7f0b005a;
+        public static final int TimeSpinner=0x7f0b0054;
+        public static final int TimelapseDelayView=0x7f0b0057;
+        public static final int action_settings=0x7f0b005d;
         public static final int bulbCheck=0x7f0b003e;
         public static final int button1=0x7f0b0016;
         public static final int button2=0x7f0b0018;
@@ -205,8 +205,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int delayIntView=0x7f0b004c;
         public static final int delayValue=0x7f0b0003;
         public static final int devLink=0x7f0b003d;
-        public static final int dialogHelpButton=0x7f0b0059;
-        public static final int dialogTryAgainButton=0x7f0b0058;
+        public static final int dialogHelpButton=0x7f0b005c;
+        public static final int dialogTryAgainButton=0x7f0b005b;
         public static final int dialog_text=0x7f0b0048;
         public static final int dialog_title=0x7f0b003a;
         public static final int dlengthSlider=0x7f0b000a;
@@ -221,13 +221,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int flashText=0x7f0b0013;
         public static final int flashTextView=0x7f0b0015;
         public static final int hdrCheck=0x7f0b0034;
-        public static final int help=0x7f0b0056;
+        public static final int help=0x7f0b0059;
         public static final int imageView1=0x7f0b002b;
         public static final int lightbutton=0x7f0b0044;
         public static final int messageField=0x7f0b0001;
         public static final int multiplierSeek=0x7f0b003b;
         public static final int multiplierVal=0x7f0b0041;
-        public static final int new_game=0x7f0b0055;
+        public static final int new_game=0x7f0b0058;
         public static final int pairedList=0x7f0b004b;
         public static final int radioGroup1=0x7f0b0006;
         public static final int s1Text=0x7f0b0017;
@@ -246,19 +246,22 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int sensitivitySlider=0x7f0b0004;
         public static final int sensitivityText=0x7f0b0005;
         public static final int sensitivityTextView=0x7f0b000b;
+        public static final int shutterBmodeCheck=0x7f0b004f;
+        public static final int shutterBmodeSeek=0x7f0b0050;
+        public static final int shutterBmodeText=0x7f0b0051;
         public static final int shutterbutton=0x7f0b0042;
         public static final int simpleShootIcon=0x7f0b0029;
         public static final int simpleShootStruct=0x7f0b001e;
         public static final int simpleShootText=0x7f0b002a;
         public static final int soundbutton=0x7f0b0045;
-        public static final int textView1=0x7f0b0057;
+        public static final int textView1=0x7f0b005a;
         public static final int textView2=0x7f0b002f;
         public static final int textView3=0x7f0b0030;
         public static final int timeDelayVal=0x7f0b0040;
         public static final int timelapsebutton=0x7f0b0043;
         public static final int toggleButton1=0x7f0b0002;
-        public static final int totalShots=0x7f0b0053;
-        public static final int totalTime=0x7f0b0052;
+        public static final int totalShots=0x7f0b0056;
+        public static final int totalTime=0x7f0b0055;
     }
     public static final class layout {
         public static final int activity_blue_control=0x7f030000;

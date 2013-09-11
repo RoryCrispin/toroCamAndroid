@@ -54,7 +54,7 @@
     <string name="s1_length">S1 Length</string>
     <string name="s2_length">S2 Length</string>
     <string name="s3_length">S3 Length</string>
-    <string name="smartshutter">SmartShutter</string>
+    <string name="smartshutter">toroCam</string>
     <string name="simple_shoot">Simple Shoot</string>
     <string name="todo">TODO</string>
     <string name="title_activity_setup_one">SetupOne</string>
