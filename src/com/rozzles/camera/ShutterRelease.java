@@ -30,9 +30,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
@@ -43,10 +46,14 @@ public class ShutterRelease extends Activity {
 	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
 	}
 	
+	
 	MainActivity mid = new MainActivity();
 	boolean mBounded;
+	boolean bulbMode;
 	BlueComms mServer;
 	public int prog = 0;
+	public int bulbProg = 0;
+	public int spin = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,22 +74,73 @@ public class ShutterRelease extends Activity {
 		final TextView seekBarValue = (TextView) findViewById(R.id.delayIntView);
 		final TextView ShutterBmodeText = (TextView) findViewById(R.id.shutterBmodeText);
 		CheckBox ShutterBmodeCheck = (CheckBox) findViewById(R.id.shutterBmodeCheck);
+		final Spinner spinner = (Spinner) findViewById(R.id.TimeSpinner);
 		
 		ShutterBmodeSeek.setEnabled(false);
+		spinner.setEnabled(false);
 		ShutterBmodeCheck.setOnCheckedChangeListener(new OnCheckedChangeListener()	{
 
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 				if (arg1){
+					
 					ShutterBmodeSeek.setEnabled(true);
+					spinner.setEnabled(true);
+					bulbMode = false;
 				} else {
 					ShutterBmodeSeek.setEnabled(false);
+					spinner.setEnabled(false);
+					bulbMode = true;
 				}
 				
 			}
 
 		});
 		
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				this,
+
+				R.array.timeArray, android.R.layout.simple_spinner_item);
+
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setAdapter(adapter);
+		spinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				java.lang.System.out.println(String.valueOf(arg3));
+				if (arg3 == 0) {
+					spin = 1;
+				} else if (arg3 == 1) {
+					spin = 60;
+				} else if (arg3 == 2) {
+					spin = 3600;
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+
+		});
+		
+			ShutterBmodeSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				ShutterBmodeText.setText(String.valueOf(progress));
+				bulbProg = progress;
+			};
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+			}
+		});
 		
 		
 		seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -137,8 +195,17 @@ public class ShutterRelease extends Activity {
 		return true;
 	}
 
+	public String delayParse(){
+		if(bulbMode){
+			return Integer.toString(spin*bulbProg);
+		} else {
+		return "0";
+		}
+		
+		}
+	
 	public void CaptureClick(View view) {
-		mServer.sendData("1," + prog + ",0,0,0,0,0,0,0,0!");
+		mServer.sendData("1," + prog + "," + (bulbMode? 1 : 0) + "," + delayParse() + ",0,0,0,0,0,0!");
 	}
 
 	@Override
@@ -161,7 +228,7 @@ public class ShutterRelease extends Activity {
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event) { 
 		   if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) { 
-		       mServer.sendData("1," + prog + ",0,0,0,0,0,0,0,0!");
+				mServer.sendData("1," + prog + "," + (bulbMode? 1 : 0) + "," + delayParse() + ",0,0,0,0,0,0!");
 		       return true;
 		   } else {
 		       return super.onKeyDown(keyCode, event); 

@@ -12,32 +12,15 @@
       android:paddingRight="@dimen/activity_horizontal_margin"
       android:paddingTop="@dimen/activity_vertical_margin" >
 
-      <TextView
-          android:id="@+id/delayIntView"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_below="@+id/TimeDelaySeek"
-          android:text="@string/delayInt"
-          android:textAppearance="?android:attr/textAppearanceSmall" />
-
-      <TextView
-          android:id="@+id/TimeDelayView"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/delayIntView"
-          android:layout_below="@+id/s1Text"
-          android:text="@string/delay" />
-
       <SeekBar
           android:id="@+id/TimeDelaySeek"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/delayIntView"
+          android:layout_alignLeft="@+id/s1Text"
           android:layout_alignParentRight="true"
           android:layout_below="@+id/TimeDelayView"
-          android:max="60" 
-          android:enabled="false"/>
+          android:enabled="false"
+          android:max="60" />
 
       <Button
           android:id="@+id/CaptureButton"
@@ -61,19 +44,11 @@
           android:textColor="#3B97D3"
           android:textSize="40sp" />
 
-      <CheckBox
-          android:id="@+id/shutterBmodeCheck"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/delayIntView"
-          android:layout_alignTop="@+id/delayIntView"
-          android:text="Bulb Mode" />
-
       <SeekBar
           android:id="@+id/shutterBmodeSeek"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/delayIntView"
+          android:layout_alignLeft="@+id/shutterBmodeCheck"
           android:layout_alignParentRight="true"
           android:layout_below="@+id/shutterBmodeCheck" />
 
@@ -81,10 +56,44 @@
           android:id="@+id/shutterBmodeText"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_alignRight="@+id/shutterBmodeSeek"
+          android:layout_alignRight="@+id/CaptureButton"
           android:layout_below="@+id/shutterBmodeSeek"
           android:text="@string/zero"
           android:textAppearance="?android:attr/textAppearanceSmall" />
+
+      <Spinner
+          android:id="@+id/TimeSpinner"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignRight="@+id/shutterBmodeSeek"
+          android:layout_below="@+id/shutterBmodeSeek"
+          android:layout_toRightOf="@+id/CaptureButton"
+          android:textSize="14pt" />
+
+      <TextView
+          android:id="@+id/TimeDelayView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/TimeDelaySeek"
+          android:layout_below="@+id/s1Text"
+          android:text="@string/delay" />
+
+      <TextView
+          android:id="@+id/delayIntView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignRight="@+id/TimeDelaySeek"
+          android:layout_below="@+id/TimeDelaySeek"
+          android:text="@string/zero"
+          android:textAppearance="?android:attr/textAppearanceSmall" />
+
+      <CheckBox
+          android:id="@+id/shutterBmodeCheck"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/TimeDelaySeek"
+          android:layout_alignTop="@+id/delayIntView"
+          android:text="Bulb Mode" />
 
   </RelativeLayout>
 

@@ -180,16 +180,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int LinButtons=0x7f0b001a;
         public static final int MICradio=0x7f0b0008;
         public static final int SendButton=0x7f0b0000;
-        public static final int ShotsSeek=0x7f0b0052;
-        public static final int ShotsView=0x7f0b0053;
+        public static final int ShotsSeek=0x7f0b0053;
+        public static final int ShotsView=0x7f0b0054;
         public static final int TextView01=0x7f0b0028;
         public static final int TextView02=0x7f0b0026;
         public static final int TextView03=0x7f0b0024;
         public static final int TextView04=0x7f0b0022;
         public static final int TextView05=0x7f0b0020;
-        public static final int TimeDelaySeek=0x7f0b004d;
-        public static final int TimeDelayView=0x7f0b004e;
-        public static final int TimeSpinner=0x7f0b0054;
+        public static final int TimeDelaySeek=0x7f0b004c;
+        public static final int TimeDelayView=0x7f0b004d;
+        public static final int TimeSpinner=0x7f0b0051;
         public static final int TimelapseDelayView=0x7f0b0057;
         public static final int action_settings=0x7f0b005d;
         public static final int bulbCheck=0x7f0b003e;
@@ -202,7 +202,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int dbdSlider=0x7f0b0011;
         public static final int dbdText=0x7f0b0010;
         public static final int dbdTextView=0x7f0b0012;
-        public static final int delayIntView=0x7f0b004c;
+        public static final int delayIntView=0x7f0b0052;
         public static final int delayValue=0x7f0b0003;
         public static final int devLink=0x7f0b003d;
         public static final int dialogHelpButton=0x7f0b005c;
@@ -247,8 +247,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int sensitivityText=0x7f0b0005;
         public static final int sensitivityTextView=0x7f0b000b;
         public static final int shutterBmodeCheck=0x7f0b004f;
-        public static final int shutterBmodeSeek=0x7f0b0050;
-        public static final int shutterBmodeText=0x7f0b0051;
+        public static final int shutterBmodeSeek=0x7f0b004e;
+        public static final int shutterBmodeText=0x7f0b0050;
         public static final int shutterbutton=0x7f0b0042;
         public static final int simpleShootIcon=0x7f0b0029;
         public static final int simpleShootStruct=0x7f0b001e;
@@ -450,7 +450,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:buttonBarButtonStyle
+          @attr name com.rozzles.camera:buttonBarButtonStyle
         */
         public static final int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
         /**
@@ -460,7 +460,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name android:buttonBarStyle
+          @attr name com.rozzles.camera:buttonBarStyle
         */
         public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
     };
