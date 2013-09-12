@@ -129,8 +129,8 @@ public class SoundTrigger extends Activity {
 		} else {
 			bulbBinary = 0;
 		}
-		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + bulbBinary
-				+ ",0,0,0,0,0!");
+		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + ",0," + bulbBinary
+				+ ",0,0,0,0!");
 	}
 	public void Recal(View v) {
 		mServer.sendData("9,0,0,0,0,0,0,0,0,0!");

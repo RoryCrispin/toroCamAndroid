@@ -47,17 +47,6 @@
         android:layout_marginTop="26dp"
         android:text="@string/bulbFlash" />
 
-    <Button
-        android:id="@+id/CaptureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bulbCheck"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:onClick="CaptureClick"
-        android:text="@string/capture"
-        android:textColor="#FFFFFF" />
-
     <TextView
         android:id="@+id/timeDelayVal"
         android:layout_width="wrap_content"
@@ -105,6 +94,25 @@
         android:layout_below="@+id/s1Text"
         android:text="@string/delay"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <CheckBox
+        android:id="@+id/chkPersistant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bulbCheck"
+        android:layout_below="@+id/bulbCheck"
+        android:text="Repeat Mode" />
+
+    <Button
+        android:id="@+id/CaptureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chkPersistant"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:onClick="CaptureClick"
+        android:text="@string/capture"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
 </ScrollView>

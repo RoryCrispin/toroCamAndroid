@@ -86,11 +86,11 @@ public class ShutterRelease extends Activity {
 					
 					ShutterBmodeSeek.setEnabled(true);
 					spinner.setEnabled(true);
-					bulbMode = false;
+					bulbMode = true;
 				} else {
 					ShutterBmodeSeek.setEnabled(false);
 					spinner.setEnabled(false);
-					bulbMode = true;
+					bulbMode = false;
 				}
 				
 			}
@@ -196,8 +196,9 @@ public class ShutterRelease extends Activity {
 	}
 
 	public String delayParse(){
+		System.out.println(bulbMode);
 		if(bulbMode){
-			return Integer.toString(spin*bulbProg);
+			return Integer.toString(spin*bulbProg*1000);
 		} else {
 		return "0";
 		}
@@ -205,7 +206,7 @@ public class ShutterRelease extends Activity {
 		}
 	
 	public void CaptureClick(View view) {
-		mServer.sendData("1," + prog + "," + (bulbMode? 1 : 0) + "," + delayParse() + ",0,0,0,0,0,0!");
+		mServer.sendData("1," + prog + "," + delayParse() + ",0,0,0,0,0,0,0!");
 	}
 
 	@Override
@@ -228,7 +229,7 @@ public class ShutterRelease extends Activity {
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event) { 
 		   if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) { 
-				mServer.sendData("1," + prog + "," + (bulbMode? 1 : 0) + "," + delayParse() + ",0,0,0,0,0,0!");
+				mServer.sendData("1," + prog + "," + delayParse() + ",0,0,0,0,0,0,0!");
 		       return true;
 		   } else {
 		       return super.onKeyDown(keyCode, event); 
