@@ -42,28 +42,28 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 public class ShutterRelease extends Activity {
 	@Override
 	public void onBackPressed() {
-	    super.onBackPressed();
-	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
+		super.onBackPressed();
+		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
 	}
-	
-	
-	MainActivity mid = new MainActivity();
+
+
 	boolean mBounded;
 	boolean bulbMode;
 	BlueComms mServer;
 	public int prog = 0;
 	public int bulbProg = 0;
 	public int spin = 1;
+	CheckBox ShutterBmodeCheck;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
-		
-		 Intent mIntent = new Intent(this, BlueComms.class);
-	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
-		
-		
+
+		Intent mIntent = new Intent(this, BlueComms.class);
+		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+
+
 		setContentView(R.layout.activity_shutter_release);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
@@ -73,9 +73,9 @@ public class ShutterRelease extends Activity {
 		final SeekBar ShutterBmodeSeek = (SeekBar) findViewById(R.id.shutterBmodeSeek);
 		final TextView seekBarValue = (TextView) findViewById(R.id.delayIntView);
 		final TextView ShutterBmodeText = (TextView) findViewById(R.id.shutterBmodeText);
-		CheckBox ShutterBmodeCheck = (CheckBox) findViewById(R.id.shutterBmodeCheck);
+		ShutterBmodeCheck = (CheckBox) findViewById(R.id.shutterBmodeCheck);
 		final Spinner spinner = (Spinner) findViewById(R.id.TimeSpinner);
-		
+
 		ShutterBmodeSeek.setEnabled(false);
 		spinner.setEnabled(false);
 		ShutterBmodeCheck.setOnCheckedChangeListener(new OnCheckedChangeListener()	{
@@ -83,7 +83,7 @@ public class ShutterRelease extends Activity {
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
 				if (arg1){
-					
+
 					ShutterBmodeSeek.setEnabled(true);
 					spinner.setEnabled(true);
 					bulbMode = true;
@@ -92,11 +92,11 @@ public class ShutterRelease extends Activity {
 					spinner.setEnabled(false);
 					bulbMode = false;
 				}
-				
+
 			}
 
 		});
-		
+
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this,
 
@@ -124,8 +124,8 @@ public class ShutterRelease extends Activity {
 			}
 
 		});
-		
-			ShutterBmodeSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+		ShutterBmodeSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
@@ -141,8 +141,8 @@ public class ShutterRelease extends Activity {
 			public void onStopTrackingTouch(SeekBar seekBar) {
 			}
 		});
-		
-		
+
+
 		seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress,
@@ -159,12 +159,12 @@ public class ShutterRelease extends Activity {
 			public void onStopTrackingTouch(SeekBar seekBar) {
 			}
 		});
-		
-	}
-	
 
-	
-	
+	}
+
+
+
+
 	ServiceConnection mConnection = new ServiceConnection() {
 
 		public void onServiceDisconnected(ComponentName name) {
@@ -187,7 +187,7 @@ public class ShutterRelease extends Activity {
 			mBounded = false;
 		}
 	};
-	
+
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
 		startActivityForResult(myIntent, 0);
@@ -200,11 +200,11 @@ public class ShutterRelease extends Activity {
 		if(bulbMode){
 			return Integer.toString(spin*bulbProg*1000);
 		} else {
-		return "0";
+			return "0";
 		}
-		
-		}
-	
+
+	}
+
 	public void CaptureClick(View view) {
 		mServer.sendData("1," + prog + "," + delayParse() + "," + (bulbMode? 1 : 0) + ",0,0,0,0,0,0!");
 	}
@@ -215,25 +215,13 @@ public class ShutterRelease extends Activity {
 		return true;
 	}
 
-	public void wrKill(View v) {
-
-	}
-
-	public void wrH(View v) {
-		mServer.sendData("9,99,0,0,0,0,0,0,0,0!");
-	}
-
-	public void wrL(View v) {
-		mServer.sendData("L");
-	}
-	
 	public boolean onKeyDown(int keyCode, KeyEvent event) { 
-		   if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) { 
-				mServer.sendData("1," + prog + "," + delayParse() + ",0,0,0,0,0,0,0!");
-		       return true;
-		   } else {
-		       return super.onKeyDown(keyCode, event); 
-		   }
+		if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) { 
+			mServer.sendData("1," + prog + "," + delayParse() + ",0,0,0,0,0,0,0!");
+			return true;
+		} else {
+			return super.onKeyDown(keyCode, event); 
 		}
+	}
 
 }

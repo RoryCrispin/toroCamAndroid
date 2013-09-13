@@ -33,15 +33,26 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class SoundTrigger extends Activity {
+	
+	@Override 
+	public void onPause(){
+		super.onPause();
+		mBounded = false;
+		mServer = null;
+	}
+	
 	@Override
 	public void onBackPressed() {
+		//TODO leaking service 
 	    super.onBackPressed();
 	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
+	    
 	}
 	public float delay;
 	public float mod;
 	public int bulbBinary;
-
+	CheckBox bulb;
+	CheckBox chkPersistant;
 	boolean mBounded;
 	BlueComms mServer;
 	
@@ -58,7 +69,8 @@ public class SoundTrigger extends Activity {
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
 		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);
 		final TextView modView = (TextView) findViewById(R.id.multiplierVal);
-		 
+		bulb = (CheckBox) findViewById(R.id.bulbCheck);
+		chkPersistant = (CheckBox) findViewById(R.id.chkPersistant);
 		Intent mIntent = new Intent(this, BlueComms.class);
 	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
 
@@ -123,13 +135,12 @@ public class SoundTrigger extends Activity {
 	}
 
 	public void CaptureClick(View v) {
-		final CheckBox bulb = (CheckBox) findViewById(R.id.bulbCheck);
 		if (bulb.isChecked() == true) {
 			bulbBinary = 1;
 		} else {
 			bulbBinary = 0;
 		}
-		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + ",0," + bulbBinary
+		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + ((chkPersistant.isChecked())? 1 : 0) + "," + bulbBinary
 				+ ",0,0,0,0!");
 	}
 	public void Recal(View v) {
