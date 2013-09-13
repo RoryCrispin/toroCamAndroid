@@ -206,7 +206,7 @@ public class ShutterRelease extends Activity {
 		}
 	
 	public void CaptureClick(View view) {
-		mServer.sendData("1," + prog + "," + delayParse() + ",0,0,0,0,0,0,0!");
+		mServer.sendData("1," + prog + "," + delayParse() + "," + (bulbMode? 1 : 0) + ",0,0,0,0,0,0!");
 	}
 
 	@Override
