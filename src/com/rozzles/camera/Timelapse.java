@@ -51,6 +51,7 @@ public class Timelapse extends Activity {
 	int hurs = 0;
 	boolean mBounded;
 	BlueComms mServer;
+	int move;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +66,13 @@ public class Timelapse extends Activity {
 		//actionBar.setDisplayHomeAsUpEnabled(true);
 		final SeekBar delaySeek = (SeekBar) findViewById(R.id.TimeDelaySeek);
 		final SeekBar shotsSeek = (SeekBar) findViewById(R.id.ShotsSeek);
+		final SeekBar functionSeek = (SeekBar) findViewById(R.id.seekFunction);
 		Spinner spinner = (Spinner) findViewById(R.id.TimeSpinner);
 		// final TextView shotsText = (TextView)findViewById(R.id.shotView);
 		final TextView delayView = (TextView) findViewById(R.id.TimelapseDelayView);
 		final TextView totalTime = (TextView) findViewById(R.id.totalTime);
 		final TextView totalShotView = (TextView) findViewById(R.id.totalShots);
+		final TextView textvalFunction = (TextView) findViewById(R.id.textvalFunction);
 		Intent mIntent = new Intent(this, BlueComms.class);
 	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
 		final TimeParse timeparse = new TimeParse();
@@ -140,6 +143,29 @@ public class Timelapse extends Activity {
 					public void onStopTrackingTouch(SeekBar seekBar) {
 					}
 				});
+		
+		functionSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				textvalFunction.setText(progress + " ms");
+				move = progress;
+				
+			}
+		});
 
 	}
 	
@@ -181,7 +207,7 @@ public class Timelapse extends Activity {
 		if (on) {
 			delayParse();
 			mServer.sendData("2," + secs + "," + mins + "," + hurs + "," + shots
-					+ ",0,0,0,0,0!");
+					+ "," + move + ",0,0,0,0!");
 			clearTimes();
 		} else {
 			mServer.sendData("0,0,0,0,0,0,0,0,0,0!");

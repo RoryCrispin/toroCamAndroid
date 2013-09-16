@@ -26,27 +26,6 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/TimeSpinner"
         android:text="@string/shots" />
-<TextView
-        android:id="@+id/totalTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/totalShots"
-        android:layout_centerHorizontal="true"
-        android:text="@string/zero"
-        android:textAppearance="?android:attr/textAppearanceMedium" /><ToggleButton
-            android:id="@+id/toggleButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/totalTime"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="18dp"
-            android:minWidth="80dp"
-            android:onClick="onToggleClicked"
-            android:text="@string/zero"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"
-            android:textOff="@string/start"
-            android:textOn="@string/stop" />
 
 <TextView
         android:id="@+id/totalShots"
@@ -100,6 +79,47 @@
     android:layout_alignLeft="@+id/TimeDelaySeek"
     android:layout_below="@+id/s1Text"
     android:text="@string/delay" />
+
+<TextView
+    android:id="@+id/totalTime"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/totalShots"
+    android:layout_centerHorizontal="true"
+    android:text="@string/zero"
+    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+<SeekBar
+    android:id="@+id/seekFunction"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignRight="@+id/totalShots"
+    android:layout_below="@+id/totalTime"
+    android:layout_marginTop="14dp"
+    android:max="50" />
+
+<ToggleButton
+    android:id="@+id/toggleButton1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/seekFunction"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="29dp"
+    android:minWidth="80dp"
+    android:onClick="onToggleClicked"
+    android:text="@string/zero"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:textColor="#FFFFFF"
+    android:textOff="@string/start"
+    android:textOn="@string/stop" />
+
+<TextView
+    android:id="@+id/textvalFunction"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignRight="@+id/seekFunction"
+    android:layout_below="@+id/seekFunction"
+    android:text="0 ms" />
 
          </RelativeLayout>
          
