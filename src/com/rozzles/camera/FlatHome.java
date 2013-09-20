@@ -87,6 +87,7 @@ Intent mIntent;
 		} else {
 			return false;
 		}
+		
 	}
 	/*
 	 * Set of simple methods to forward the user to the appropriate 

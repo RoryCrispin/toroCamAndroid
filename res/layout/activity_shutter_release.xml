@@ -18,7 +18,7 @@
           android:layout_height="wrap_content"
           android:layout_alignLeft="@+id/s1Text"
           android:layout_alignParentRight="true"
-          android:layout_below="@+id/TimeDelayView"
+          android:layout_below="@+id/startXtitle"
           android:enabled="false"
           android:max="60" />
 
@@ -71,7 +71,7 @@
           android:textSize="14pt" />
 
       <TextView
-          android:id="@+id/TimeDelayView"
+          android:id="@+id/startXtitle"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_alignLeft="@+id/TimeDelaySeek"

@@ -75,5 +75,11 @@
     <string name="connecting_">Connecting...</string>
     <string name="title_activity_flat_settings">FlatSettings</string>
     <string name="timelapse_mode">Timelapse Mode</string>
+    <string name="title_activity_servo_timelapse">ServoTimelapse</string>
+    <string name="start_x">Start X</string>
+    <string name="zeroms">0 ms</string>
+    <string name="start_y">Start Y</string>
+    <string name="end_y">End Y</string>
+    <string name="end_x">End X</string>
 
 </resources>

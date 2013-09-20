@@ -91,6 +91,10 @@
             android:name="com.rozzles.camera.FlatSettings"
             android:label="@string/title_activity_flat_settings" >
         </activity>
+        <activity
+            android:name="com.rozzles.camera.ServoTimelapse"
+            android:label="@string/title_activity_servo_timelapse" >
+        </activity>
     </application>
 
 </manifest>
