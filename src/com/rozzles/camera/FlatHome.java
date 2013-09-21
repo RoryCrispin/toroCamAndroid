@@ -149,6 +149,15 @@ Intent mIntent;
 			//I don't handle catches because I'm lazy 
 		}
 	}
+	public void	srvClick(View v) {
+		try    {
+			Intent newIntent = new Intent(v.getContext(), ServoTimelapse.class);    
+			startActivityForResult(newIntent, 0);
+			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
+		} catch(Exception ex) {
+			//I don't handle catches because I'm lazy 
+		}
+	}
 
 	/*
 	 * This is part of the system that hides the connecting button when the

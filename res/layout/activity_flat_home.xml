@@ -333,7 +333,7 @@
                         android:baselineAlignBottom="false"
                         android:contentDescription="@string/zero"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/simpleshoot" />
+                        android:src="@drawable/timelapse" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"

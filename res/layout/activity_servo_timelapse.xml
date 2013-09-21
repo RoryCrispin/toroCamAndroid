@@ -19,7 +19,7 @@
           android:layout_alignParentLeft="true"
           android:layout_alignParentRight="true"
           android:layout_below="@+id/ShotsView"
-          android:max="1000" />
+          android:max="180" />
 
       <TextView
           android:id="@+id/ShotsView"
@@ -52,8 +52,9 @@
           android:id="@+id/startXseek"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
           android:layout_below="@+id/startXtitle"
-          android:max="59" />
+          android:max="180" />
 
       <TextView
           android:id="@+id/startXtitle"
@@ -80,7 +81,7 @@
           android:layout_alignParentRight="true"
           android:layout_below="@+id/startYvalue"
           android:layout_marginTop="16dp"
-          android:max="1000" />
+          android:max="180" />
 
       <TextView
           android:id="@+id/endXvalue"
@@ -107,7 +108,7 @@
           android:layout_alignParentRight="true"
           android:layout_below="@+id/endXvalue"
           android:layout_marginTop="20dp"
-          android:max="1000" />
+          android:max="180" />
 
       <TextView
           android:id="@+id/endYtitle"
@@ -126,12 +127,31 @@
           android:text="@string/zero"
           android:textAppearance="?android:attr/textAppearanceSmall" />
 
+      <SeekBar
+          android:id="@+id/delaySeek"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/endYvalue"
+          android:layout_marginTop="16dp"
+          android:max="180" />
+
+      <TextView
+          android:id="@+id/delayServoTitle"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/endYseek"
+          android:layout_below="@+id/endYvalue"
+          android:text="@string/delServoTitle" />
+
       <ToggleButton
           android:id="@+id/servToggle"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/endYvalue"
+          android:layout_below="@+id/delaySeek"
           android:layout_centerHorizontal="true"
+          android:layout_marginTop="26dp"
           android:minWidth="80dp"
           android:onClick="onToggleClicked"
           android:text="@string/zero"
@@ -139,6 +159,15 @@
           android:textColor="#FFFFFF"
           android:textOff="@string/start"
           android:textOn="@string/stop" />
+
+      <TextView
+          android:id="@+id/delayValueServo"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignRight="@+id/delaySeek"
+          android:layout_below="@+id/delaySeek"
+          android:text="@string/zero"
+          android:textAppearance="?android:attr/textAppearanceSmall" />
 
   </RelativeLayout>
          
