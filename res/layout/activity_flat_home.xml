@@ -9,27 +9,49 @@
     android:paddingTop="0dp"
     tools:context=".FlatHome" >
 
-    <TextView
-        android:id="@+id/s1Text"
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="@string/smartshutter"
-        android:textColor="#3B97D3"
-        android:textSize="40sp" />
+        android:layout_marginTop="15dp" >
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_action_backaction" />
+
+        <ImageView
+            android:id="@+id/ImageView08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/todo"
+            android:onClick="optionsClicked"
+            android:src="@drawable/ic_launcher_menu" />
+
+        <TextView
+            android:id="@+id/s1Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/smartshutter"
+            android:textColor="#3B97D3"
+            android:textSize="40sp" />
+    </RelativeLayout>
 
     <ScrollView
-        android:fillViewport="true"
         android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/s1Text"
-        android:layout_marginTop="20dp" >
+        android:layout_below="@+id/relativeLayout1"
+        android:fillViewport="true" >
 
         <LinearLayout
             android:id="@+id/LinButtons"

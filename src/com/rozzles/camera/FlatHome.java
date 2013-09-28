@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -24,6 +26,7 @@ public class FlatHome extends Activity {
 
 	boolean mBounded;
 	BlueComms mServer;
+	boolean skipSetup;
 Intent mIntent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +88,12 @@ Intent mIntent;
 		if (prefs.getBoolean("completedSetup", false)){
 			return true;
 		} else {
+			if (prefs.getBoolean("skipSetup", true)){
+				skipSetup = true;
+				return true;
+			} else {
 			return false;
+			}
 		}
 		
 	}
@@ -158,12 +166,43 @@ Intent mIntent;
 			//I don't handle catches because I'm lazy 
 		}
 	}
+	//This creates the popup options dialog
+	public void optionsClicked(final View v) {
+
+		 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+		 helpBuilder.setTitle("Options");
+		 //helpBuilder.setMessage("");
+		 helpBuilder.setNeutralButton("Redo Setup", new DialogInterface.OnClickListener() {
+
+		  @Override
+		  public void onClick(DialogInterface dialog, int which) {
+			  SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+				SharedPreferences.Editor editor = settings.edit();
+				editor.putBoolean("skipSetup", false);
+				editor.putBoolean("completedSetup", false);
+				editor.commit();
+				try    {
+					Intent newIntent = new Intent(v.getContext(), SetupOne.class);    
+					startActivityForResult(newIntent, 0);
+					overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
+				} catch(Exception ex) {
+					//I don't handle catches because I'm lazy 
+				}
+		  }
+		 });
+
+		 // Remember, create doesn't show the dialog
+		 AlertDialog helpDialog = helpBuilder.create();
+		 helpDialog.show();
+
+		}
 
 	/*
 	 * This is part of the system that hides the connecting button when the
 	 * connection has been established
 	 */
 	public void hideConnect(){
+		if(!skipSetup){
 		TextView connectText = (TextView) findViewById(R.id.connectText);
 		connectText.setText("Connecting...");
 		final Handler handler = new Handler();
@@ -192,6 +231,7 @@ Intent mIntent;
 				}
 		}, 500);
 
+	}
 	}
 
 	ServiceConnection mConnection = new ServiceConnection() {

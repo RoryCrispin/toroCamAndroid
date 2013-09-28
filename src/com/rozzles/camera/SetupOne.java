@@ -3,6 +3,7 @@ package com.rozzles.camera;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.View;
@@ -11,6 +12,9 @@ import android.widget.TextView;
 
 public class SetupOne extends Activity {
 
+	public static final String PREFS_NAME = "AndCamPreferences";
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		//Hides the action bar
@@ -49,8 +53,12 @@ public class SetupOne extends Activity {
 	//Skips to the main window 
 	public void skipClick(View v){
 		//Simple intent to change activities to the Home screen
-		Intent myIntent = new Intent(v.getContext(), FlatHome.class);
-		startActivityForResult(myIntent, 0);
+		   SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putBoolean("skipSetup", true);
+			editor.commit();
+			Intent myIntent = new Intent(v.getContext(), FlatHome.class);
+			startActivityForResult(myIntent, 0);
 	}
 	/*
 	 *Button click -Continue, creates an intent to switch to the second setup activity and

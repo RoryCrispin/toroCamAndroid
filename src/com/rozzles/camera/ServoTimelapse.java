@@ -10,6 +10,7 @@ import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -93,7 +94,7 @@ public class ServoTimelapse extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				startXvalue.setText(arg1 + "º");
+				startXvalue.setText(arg1 + "ï¿½");
 				
 			}
 
@@ -113,7 +114,7 @@ public class ServoTimelapse extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				startYvalue.setText(arg1 + "º");
+				startYvalue.setText(arg1 + "ï¿½");
 				
 			}
 
@@ -133,7 +134,7 @@ public class ServoTimelapse extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				endXvalue.setText(arg1 + "º");
+				endXvalue.setText(arg1 + "ï¿½");
 				
 			}
 
@@ -152,7 +153,7 @@ public class ServoTimelapse extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				endYvalue.setText(arg1 + "º");
+				endYvalue.setText(arg1 + "ï¿½");
 				
 			}
 
@@ -193,46 +194,12 @@ public class ServoTimelapse extends Activity {
 		}
 	}
 	
-	public void onOptionsClicked(View view)	{
-		showPopUp2();
+	public void onOptionsClicked(View view){
+		
 	}
 	
 	
-	
-	private void showPopUp2() {
 
-		 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-		 helpBuilder.setTitle("Options");
-		 helpBuilder.setMessage("This is a Simple Pop Up");
-		 helpBuilder.setPositiveButton("Positive",
-		   new DialogInterface.OnClickListener() {
-
-		    public void onClick(DialogInterface dialog, int which) {
-		     // Do nothing but close the dialog
-		    }
-		   });
-
-		 helpBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
-
-		  @Override
-		  public void onClick(DialogInterface dialog, int which) {
-		   // Do nothing
-		  }
-		 });
-		 
-		 helpBuilder.setNeutralButton("Neutral", new DialogInterface.OnClickListener() {
-
-		  @Override
-		  public void onClick(DialogInterface dialog, int which) {
-		   // Do nothing
-		  }
-		 });
-
-		 // Remember, create doesn't show the dialog
-		 AlertDialog helpDialog = helpBuilder.create();
-		 helpDialog.show();
-
-		}
 	
 	
 	
