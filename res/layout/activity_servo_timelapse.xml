@@ -12,103 +12,37 @@
       android:paddingRight="@dimen/activity_horizontal_margin"
       android:paddingTop="@dimen/activity_vertical_margin" >
 
-      <SeekBar
-          android:id="@+id/startYseek"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentRight="true"
-          android:layout_below="@+id/ShotsView"
-          android:max="180" />
-
-      <TextView
-          android:id="@+id/ShotsView"
+      <RelativeLayout
+          android:id="@+id/relativeLayout1"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_alignParentLeft="true"
-          android:layout_below="@+id/startXseek"
-          android:text="@string/start_y" />
+          android:layout_alignParentRight="true" >
 
-      <TextView
-          android:id="@+id/startYvalue"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignRight="@+id/startYseek"
-          android:layout_below="@+id/startYseek"
-          android:text="@string/zero"
-          android:textAppearance="?android:attr/textAppearanceSmall" />
+          <ImageView
+              android:id="@+id/imageView4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:src="@drawable/ic_action_backaction" />
 
-      <TextView
-          android:id="@+id/s1Text"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentTop="true"
-          android:layout_centerHorizontal="true"
-          android:text="@string/smartshutter"
-          android:textColor="#3B97D3"
-          android:textSize="40sp" />
+          <TextView
+              android:id="@+id/s1Text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:text="@string/smartshutter"
+              android:textColor="#3B97D3"
+              android:textSize="40sp" />
 
-      <SeekBar
-          android:id="@+id/startXseek"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          android:layout_below="@+id/startXtitle"
-          android:max="180" />
-
-      <TextView
-          android:id="@+id/startXtitle"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/startXseek"
-          android:layout_below="@+id/s1Text"
-          android:text="@string/start_x" />
-
-      <TextView
-          android:id="@+id/startXvalue"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignRight="@+id/startXseek"
-          android:layout_below="@+id/startXseek"
-          android:text="@string/zero"
-          android:textAppearance="?android:attr/textAppearanceSmall" />
-
-      <SeekBar
-          android:id="@+id/endXseek"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentRight="true"
-          android:layout_below="@+id/startYvalue"
-          android:layout_marginTop="16dp"
-          android:max="180" />
-
-      <TextView
-          android:id="@+id/endXvalue"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/startYvalue"
-          android:layout_centerVertical="true"
-          android:text="@string/zero"
-          android:textAppearance="?android:attr/textAppearanceSmall" />
-
-      <TextView
-          android:id="@+id/endXtitle"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/endYseek"
-          android:layout_below="@+id/startYvalue"
-          android:text="@string/end_x" />
-
-      <SeekBar
-          android:id="@+id/endYseek"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentRight="true"
-          android:layout_below="@+id/endXvalue"
-          android:layout_marginTop="20dp"
-          android:max="180" />
+          <ImageView
+              android:id="@+id/imageView1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:onClick="onOptionsClicked"
+              android:src="@drawable/ic_launcher_menu" />
+      </RelativeLayout>
 
       <TextView
           android:id="@+id/endYtitle"
@@ -117,15 +51,6 @@
           android:layout_alignLeft="@+id/endYseek"
           android:layout_below="@+id/endXvalue"
           android:text="@string/end_y" />
-
-      <TextView
-          android:id="@+id/endYvalue"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignRight="@+id/endYseek"
-          android:layout_below="@+id/endYseek"
-          android:text="@string/zero"
-          android:textAppearance="?android:attr/textAppearanceSmall" />
 
       <SeekBar
           android:id="@+id/delaySeek"
@@ -160,14 +85,107 @@
           android:textOff="@string/start"
           android:textOn="@string/stop" />
 
+      <SeekBar
+          android:id="@+id/startYseek"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/ShotsView"
+          android:max="180" />
+
+      <TextView
+          android:id="@+id/startXtitle"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/startYvalue"
+          android:text="@string/start_x" />
+
+      <SeekBar
+          android:id="@+id/startXseek"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/startXtitle"
+          android:layout_below="@+id/startXtitle"
+          android:max="180" />
+
+      <TextView
+          android:id="@+id/endXtitle"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/startXvalue"
+          android:text="@string/end_x" />
+
+      <SeekBar
+          android:id="@+id/endXseek"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/endXtitle"
+          android:layout_below="@+id/endXtitle"
+          android:max="180" />
+
       <TextView
           android:id="@+id/delayValueServo"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_alignRight="@+id/delaySeek"
           android:layout_below="@+id/delaySeek"
+          android:layout_marginRight="12dp"
           android:text="@string/zero"
           android:textAppearance="?android:attr/textAppearanceSmall" />
+
+      <SeekBar
+          android:id="@+id/endYseek"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/delaySeek"
+          android:layout_below="@+id/endYtitle"
+          android:max="180" />
+
+      <TextView
+          android:id="@+id/endYvalue"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/delayValueServo"
+          android:layout_below="@+id/endYseek"
+          android:text="@string/zero"
+          android:textAppearance="?android:attr/textAppearanceSmall" />
+
+      <TextView
+          android:id="@+id/endXvalue"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/endYvalue"
+          android:layout_below="@+id/endXseek"
+          android:text="@string/zero"
+          android:textAppearance="?android:attr/textAppearanceSmall" />
+
+      <TextView
+          android:id="@+id/startXvalue"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/endXvalue"
+          android:layout_below="@+id/startXseek"
+          android:text="@string/zero"
+          android:textAppearance="?android:attr/textAppearanceSmall" />
+
+      <TextView
+          android:id="@+id/startYvalue"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/startXvalue"
+          android:layout_below="@+id/startYseek"
+          android:text="@string/zero"
+          android:textAppearance="?android:attr/textAppearanceSmall" />
+
+      <TextView
+          android:id="@+id/ShotsView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignRight="@+id/startXtitle"
+          android:layout_below="@+id/relativeLayout1"
+          android:layout_marginTop="14dp"
+          android:text="@string/start_y" />
 
   </RelativeLayout>
          

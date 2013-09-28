@@ -5,7 +5,9 @@ import com.rozzles.camera.BlueComms.LocalBinder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Typeface;
@@ -184,12 +186,53 @@ public class ServoTimelapse extends Activity {
 		boolean on = ((ToggleButton) view).isChecked();
 		if (on) {
 			
-			mServer.sendData("5," + startXseek.getProgress() + "," + startYseek.getProgress() + "," + endXseek.getProgress() + "," + endYseek.getProgress() + "," + delaySeek.getProgress() + ","  + "0,0,0,0!");
+			mServer.sendData("6," + startXseek.getProgress() + "," + startYseek.getProgress() + "," + endXseek.getProgress() + "," + endYseek.getProgress() + "," + delaySeek.getProgress() + ","  + "0,0,0,0!");
 			
 		} else {
 			mServer.sendData("0,0,0,0,0,0,0,0,0,0!");
 		}
 	}
+	
+	public void onOptionsClicked(View view)	{
+		showPopUp2();
+	}
+	
+	
+	
+	private void showPopUp2() {
+
+		 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+		 helpBuilder.setTitle("Options");
+		 helpBuilder.setMessage("This is a Simple Pop Up");
+		 helpBuilder.setPositiveButton("Positive",
+		   new DialogInterface.OnClickListener() {
+
+		    public void onClick(DialogInterface dialog, int which) {
+		     // Do nothing but close the dialog
+		    }
+		   });
+
+		 helpBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
+
+		  @Override
+		  public void onClick(DialogInterface dialog, int which) {
+		   // Do nothing
+		  }
+		 });
+		 
+		 helpBuilder.setNeutralButton("Neutral", new DialogInterface.OnClickListener() {
+
+		  @Override
+		  public void onClick(DialogInterface dialog, int which) {
+		   // Do nothing
+		  }
+		 });
+
+		 // Remember, create doesn't show the dialog
+		 AlertDialog helpDialog = helpBuilder.create();
+		 helpDialog.show();
+
+		}
 	
 	
 	
