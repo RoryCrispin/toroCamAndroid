@@ -27,6 +27,11 @@ public class FlatHome extends Activity {
 	boolean mBounded;
 	BlueComms mServer;
 	boolean skipSetup;
+	String[] myStringArray = {"Help","Power Off"};
+	String[] checkboxarraypop = {"test","testtt"};
+	
+	
+
 Intent mIntent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -169,9 +174,36 @@ Intent mIntent;
 	//This creates the popup options dialog
 	public void optionsClicked(final View v) {
 
+		
 		 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 		 helpBuilder.setTitle("Options");
+		 
+		 
+	/*	 helpBuilder.setItems(myStringArray , new DialogInterface.OnClickListener() {
+             public void onClick(DialogInterface dialog, int which) {
+             // The 'which' argument contains the index position
+             // of the selected item
+         }
+		 });
+		 
+		 helpBuilder.setMultiChoiceItems(checkboxarraypop, null,
+                 new DialogInterface.OnMultiChoiceClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which,boolean isChecked) {
+              if (isChecked) {
+                  // If the user checked the item, add it to the selected items
+                  //mSelectedItems.add(which);
+              //} else if (mSelectedItems.contains(which)) {
+                  // Else, if the item is already in the array, remove it 
+               //   mSelectedItems.remove(Integer.valueOf(which));
+              }
+          }
+      });
+             */
+             
 		 //helpBuilder.setMessage("");
+		 
+		 
 		 helpBuilder.setNeutralButton("Redo Setup", new DialogInterface.OnClickListener() {
 
 		  @Override
@@ -190,6 +222,7 @@ Intent mIntent;
 				}
 		  }
 		 });
+		 
 
 		 // Remember, create doesn't show the dialog
 		 AlertDialog helpDialog = helpBuilder.create();
