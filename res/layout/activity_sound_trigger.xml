@@ -95,24 +95,24 @@
         android:text="@string/delay"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <CheckBox
-        android:id="@+id/chkPersistant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/bulbCheck"
-        android:layout_below="@+id/bulbCheck"
-        android:text="Repeat Mode" />
-
     <Button
         android:id="@+id/CaptureButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/chkPersistant"
+        android:layout_below="@+id/bulbCheck"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="39dp"
         android:onClick="CaptureClick"
         android:text="@string/capture"
         android:textColor="#FFFFFF" />
+
+    <CheckBox
+        android:id="@+id/chkPersistant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/bulbCheck"
+        android:layout_below="@+id/bulbCheck"
+        android:text="CheckBox" />
 
 </RelativeLayout>
 </ScrollView>

@@ -135,6 +135,7 @@ public class SoundTrigger extends Activity {
 	}
 
 	public void CaptureClick(View v) {
+		if (chkPersistant.isChecked() == true)	{}
 		if (bulb.isChecked() == true) {
 			bulbBinary = 1;
 		} else {
