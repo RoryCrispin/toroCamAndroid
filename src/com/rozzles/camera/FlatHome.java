@@ -146,6 +146,16 @@ Intent mIntent;
 			//I don't handle catches because I'm lazy 
 		}
 	}
+	public void	shakeClick(View v) {
+		try    {
+			Intent newIntent = new Intent(v.getContext(), ShakeTrigger.class);    
+			startActivityForResult(newIntent, 0);
+			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
+		} catch(Exception ex) {
+			System.out.println(ex);
+			//I don't handle catches because I'm lazy 
+		}
+	}
 	
 	public void	dripClick(View v) {
 		try    {
