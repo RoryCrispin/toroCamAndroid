@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.preference.PreferenceManager;
+import android.preference.Preference;
 
 public class FlatHome extends Activity {
 	public static final String PREFS_NAME = "AndCamPreferences";
@@ -30,7 +32,7 @@ public class FlatHome extends Activity {
 	String[] myStringArray = {"Help","Power Off"};
 	String[] checkboxarraypop = {"test","testtt"};
 	
-	
+
 
 Intent mIntent;
 	@Override
@@ -106,6 +108,7 @@ Intent mIntent;
 	 * Set of simple methods to forward the user to the appropriate 
 	 * activities for different functions
 	 */
+	
 	public void simpleShootClick(View v) {
 		try    {
 			Intent newIntent = new Intent(v.getContext(), ShutterRelease.class);    
@@ -173,7 +176,11 @@ Intent mIntent;
 	}
 	//This creates the popup options dialog
 	public void optionsClicked(final View v) {
-
+		
+		
+		final AlertDialog.Builder advfuncBuilder = new AlertDialog.Builder(this);
+		  advfuncBuilder.setTitle("Options 2");
+		  
 		
 		 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 		 helpBuilder.setTitle("Options");
@@ -204,7 +211,7 @@ Intent mIntent;
 		 //helpBuilder.setMessage("");
 		 
 		 
-		 helpBuilder.setNeutralButton("Redo Setup", new DialogInterface.OnClickListener() {
+		 helpBuilder.setNegativeButton("Redo Setup", new DialogInterface.OnClickListener() {
 
 		  @Override
 		  public void onClick(DialogInterface dialog, int which) {
@@ -223,13 +230,24 @@ Intent mIntent;
 		  }
 		 });
 		 
+		 helpBuilder.setNeutralButton("Advanced Functions", new DialogInterface.OnClickListener() {
+
+			  @Override
+			  public void onClick(DialogInterface dialog, int which) {
+				  AlertDialog advfuncDialog = advfuncBuilder.create();
+				  advfuncDialog.show();
+			  }
+			 });
 
 		 // Remember, create doesn't show the dialog
 		 AlertDialog helpDialog = helpBuilder.create();
 		 helpDialog.show();
-
+		 
+		 
 		}
 
+	
+		
 	/*
 	 * This is part of the system that hides the connecting button when the
 	 * connection has been established

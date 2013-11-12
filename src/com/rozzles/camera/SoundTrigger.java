@@ -135,13 +135,13 @@ public class SoundTrigger extends Activity {
 	}
 
 	public void CaptureClick(View v) {
-		if (chkPersistant.isChecked() == true)	{}
+		
 		if (bulb.isChecked() == true) {
 			bulbBinary = 1;
 		} else {
 			bulbBinary = 0;
 		}
-		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + ((chkPersistant.isChecked())? 1 : 0) + "," + bulbBinary
+		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + "0" + "," + bulbBinary
 				+ ",0,0,0,0!");
 	}
 	public void Recal(View v) {
