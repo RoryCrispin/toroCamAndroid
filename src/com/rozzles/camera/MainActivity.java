@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
 	boolean mBounded;
 	BlueComms mServer;
 	TextView QuickConnectButton;
-	public static final String PREFS_NAME = "AndCamPreferences";
+	public static final String TOROCAM_PREFS = "AndCamPreferences";
 	String devName;
 	
 	@Override
@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
 	
 	public void onResume(){
 		super.onResume();
-		SharedPreferences prefs = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
 		devName = prefs.getString("devicename", null);
 		QuickConnectButton = (TextView) findViewById(R.id.devLink);
 		if (devName != null){

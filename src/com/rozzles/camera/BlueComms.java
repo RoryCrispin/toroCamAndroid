@@ -55,7 +55,7 @@ public class BlueComms extends Service{
 	IBinder mBinder = new LocalBinder();
 	SetupThree setupThree = new SetupThree();
 	
-	public static final String PREFS_NAME = "AndCamPreferences";
+	public static final String TOROCAM_PREFS = "AndCamPreferences";
 	/*
 	 * (non-Javadoc)
 	 * @see android.app.Service#onCreate()
@@ -84,7 +84,7 @@ public class BlueComms extends Service{
 	 * This retrieves the mac address from the shared preference set in the set-up utility
 	 */
 	public void restoreMac() {
-		SharedPreferences prefs = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
 		address = prefs.getString("macaddress", "0");
 		System.out.println("PULLING PREF :" + address);
 	}
@@ -94,7 +94,7 @@ public class BlueComms extends Service{
 	 */
 	public void recvMac(String macAddress){
 		address = macAddress;
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putString("macaddress", address);
 		System.out.println("PHSHING PREF: " + address);
@@ -200,7 +200,7 @@ public class BlueComms extends Service{
 	 * and clean up afterwards
 	 */
 	public void onDestroy(){
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putString("macaddress", address);//TODO I'm not sure if this is deprecated yet
 		System.out.println("PHSHING PREF: " + address);

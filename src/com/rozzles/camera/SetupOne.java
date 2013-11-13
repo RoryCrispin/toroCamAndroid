@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class SetupOne extends Activity {
 
-	public static final String PREFS_NAME = "AndCamPreferences";
+	public static final String TOROCAM_PREFS = "AndCamPreferences";
 	
 	
 	@Override
@@ -53,7 +53,7 @@ public class SetupOne extends Activity {
 	//Skips to the main window 
 	public void skipClick(View v){
 		//Simple intent to change activities to the Home screen
-		   SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		   SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
 			SharedPreferences.Editor editor = settings.edit();
 			editor.putBoolean("skipSetup", true);
 			editor.commit();

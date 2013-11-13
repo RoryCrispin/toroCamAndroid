@@ -27,7 +27,7 @@ public class BlueControl extends ListActivity {
 	ArrayAdapter<String> btArrayAdapter;
 	String[] macAddressArray;  
 	String[] nameArray;
-	public static final String PREFS_NAME = "AndCamPreferences";
+	public static final String TOROCAM_PREFS = "AndCamPreferences";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -82,7 +82,7 @@ public class BlueControl extends ListActivity {
 		Intent intent = new Intent();
 		setResult(RESULT_OK, intent);
 		System.out.println("MACARRAY found: " + macAddressArray[ ((int) id)+ 1] + " " + nameArray[ ((int) id)+ 1]);
-		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putString("macaddress", macAddressArray[ ((int) id)+ 1]);
 		editor.putString("devicename", nameArray[ ((int) id)+ 1]);

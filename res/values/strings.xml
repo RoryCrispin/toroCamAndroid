@@ -21,6 +21,9 @@
         <item>Minutes</item>
         <item>Hours</item>
     </string-array>
+     <string-array name="optionsCheckboxes">
+        <item>Advanced Functions</item>
+    </string-array>
 	<string name="title_activity_shake_trigger">Shake Trigger</string>
     <string name="start">START</string>
     <string name="stop">STOP</string>

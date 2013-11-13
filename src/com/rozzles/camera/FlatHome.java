@@ -1,5 +1,7 @@
 package com.rozzles.camera;
 
+import java.util.ArrayList;
+
 import com.rozzles.camera.BlueComms.LocalBinder;
 
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,7 +25,7 @@ import android.preference.PreferenceManager;
 import android.preference.Preference;
 
 public class FlatHome extends Activity {
-	public static final String PREFS_NAME = "AndCamPreferences";
+	public static final String TOROCAM_PREFS = "AndCamPreferences";
 
 	LinearLayout linButtons = null;
 
@@ -31,10 +34,10 @@ public class FlatHome extends Activity {
 	boolean skipSetup;
 	String[] myStringArray = {"Help","Power Off"};
 	String[] checkboxarraypop = {"test","testtt"};
-	
 
 
-Intent mIntent;
+
+	Intent mIntent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -91,7 +94,7 @@ Intent mIntent;
 	 * has already run setup, if they have it returns true, otherwise false
 	 */
 	public boolean checkSetup(){
-		SharedPreferences prefs = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
 		if (prefs.getBoolean("completedSetup", false)){
 			return true;
 		} else {
@@ -99,16 +102,16 @@ Intent mIntent;
 				skipSetup = true;
 				return true;
 			} else {
-			return false;
+				return false;
 			}
 		}
-		
+
 	}
 	/*
 	 * Set of simple methods to forward the user to the appropriate 
 	 * activities for different functions
 	 */
-	
+
 	public void simpleShootClick(View v) {
 		try    {
 			Intent newIntent = new Intent(v.getContext(), ShutterRelease.class);    
@@ -118,7 +121,7 @@ Intent mIntent;
 			//I don't handle catches because I'm lazy 
 		}
 	}
-	
+
 	public void timelapseClick(View v) {
 		try    {
 			Intent newIntent = new Intent(v.getContext(), Timelapse.class);    
@@ -156,7 +159,7 @@ Intent mIntent;
 			//I don't handle catches because I'm lazy 
 		}
 	}
-	
+
 	public void	dripClick(View v) {
 		try    {
 			Intent newIntent = new Intent(v.getContext(), DripTrig.class);    
@@ -184,48 +187,19 @@ Intent mIntent;
 			//I don't handle catches because I'm lazy 
 		}
 	}
+
 	//This creates the popup options dialog
 	public void optionsClicked(final View v) {
 		
-		
-		final AlertDialog.Builder advfuncBuilder = new AlertDialog.Builder(this);
-		  advfuncBuilder.setTitle("Options 2");
-		  
-		
-		 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-		 helpBuilder.setTitle("Options");
-		 
-		 
-	/*	 helpBuilder.setItems(myStringArray , new DialogInterface.OnClickListener() {
-             public void onClick(DialogInterface dialog, int which) {
-             // The 'which' argument contains the index position
-             // of the selected item
-         }
-		 });
-		 
-		 helpBuilder.setMultiChoiceItems(checkboxarraypop, null,
-                 new DialogInterface.OnMultiChoiceClickListener() {
-          @Override
-          public void onClick(DialogInterface dialog, int which,boolean isChecked) {
-              if (isChecked) {
-                  // If the user checked the item, add it to the selected items
-                  //mSelectedItems.add(which);
-              //} else if (mSelectedItems.contains(which)) {
-                  // Else, if the item is already in the array, remove it 
-               //   mSelectedItems.remove(Integer.valueOf(which));
-              }
-          }
-      });
-             */
-             
-		 //helpBuilder.setMessage("");
-		 
-		 
-		 helpBuilder.setNegativeButton("Redo Setup", new DialogInterface.OnClickListener() {
+		AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+		helpBuilder.setTitle("Options");
 
-		  @Override
-		  public void onClick(DialogInterface dialog, int which) {
-			  SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+		helpBuilder.setNegativeButton("Redo Setup", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
 				SharedPreferences.Editor editor = settings.edit();
 				editor.putBoolean("skipSetup", false);
 				editor.putBoolean("completedSetup", false);
@@ -237,62 +211,86 @@ Intent mIntent;
 				} catch(Exception ex) {
 					//I don't handle catches because I'm lazy 
 				}
-		  }
-		 });
-		 
-		 helpBuilder.setNeutralButton("Advanced Functions", new DialogInterface.OnClickListener() {
-
-			  @Override
-			  public void onClick(DialogInterface dialog, int which) {
-				  AlertDialog advfuncDialog = advfuncBuilder.create();
-				  advfuncDialog.show();
-			  }
-			 });
-
-		 // Remember, create doesn't show the dialog
-		 AlertDialog helpDialog = helpBuilder.create();
-		 helpDialog.show();
-		 
-		 
-		}
-
-	
+			}
+		});
+		helpBuilder.setMultiChoiceItems(R.array.optionsCheckboxes, null,
+                new DialogInterface.OnMultiChoiceClickListener() {
 		
+			
+
+		
+         @Override
+         public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+             if (isChecked) {
+            	 //0 is the array value of the first check, Advanced Functions
+                if(which == 0){ 
+                	SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
+    				SharedPreferences.Editor editor = settings.edit();
+    				editor.putBoolean("advFunctions", true);
+    				editor.commit();
+                }
+                 
+             } else {
+            	 if(which == 0){ 
+            		 SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
+     				SharedPreferences.Editor editor = settings.edit();
+     				editor.putBoolean("advFunctions", false);
+     				editor.commit();
+                 	
+                 }
+             }
+         }
+     });
+
+		helpBuilder.setNeutralButton("Advanced Functions", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+			}
+		});
+
+
+		// Remember, create doesn't show the dialog
+		AlertDialog helpDialog = helpBuilder.create();
+		helpDialog.show();
+
+	}
+
+
+
 	/*
 	 * This is part of the system that hides the connecting button when the
 	 * connection has been established
 	 */
 	public void hideConnect(){
 		if(!skipSetup){
-		TextView connectText = (TextView) findViewById(R.id.connectText);
-		connectText.setText("Connecting...");
-		final Handler handler = new Handler();
-		handler.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				if (!mServer.isConnected){
-					
-					linButtons = (LinearLayout) findViewById(R.id.connectObj);
-					linButtons.setVisibility(View.VISIBLE);
-				if(mServer.Connect()){
-					try    {           
-						linButtons.setVisibility(View.GONE);       
-					} catch(Exception ex) {
-					}
-				} else {
-					TextView connectText = (TextView) findViewById(R.id.connectText);
-					connectText.setText("Couldn't connect, retry?");
-				}
-				
-			} else {
-				
-				
-				
-					}
-				}
-		}, 500);
+			TextView connectText = (TextView) findViewById(R.id.connectText);
+			connectText.setText("Connecting...");
+			final Handler handler = new Handler();
+			handler.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					if (!mServer.isConnected){
 
-	}
+						linButtons = (LinearLayout) findViewById(R.id.connectObj);
+						linButtons.setVisibility(View.VISIBLE);
+						if(mServer.Connect()){
+							try    {           
+								linButtons.setVisibility(View.GONE);       
+							} catch(Exception ex) {
+							}
+						} else {
+							TextView connectText = (TextView) findViewById(R.id.connectText);
+							connectText.setText("Couldn't connect, retry?");
+						}
+
+					} else {
+					}
+				}
+			}, 500);
+
+		}
 	}
 
 	ServiceConnection mConnection = new ServiceConnection() {

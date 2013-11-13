@@ -37,7 +37,7 @@ public class SetupThree extends Activity {
 	
 	Intent homeIntent;
 	
-	public static final String PREFS_NAME = "AndCamPreferences";
+	public static final String TOROCAM_PREFS = "AndCamPreferences";
 	
 	Boolean completedSetup;
 
@@ -111,7 +111,7 @@ public class SetupThree extends Activity {
 			   if(mServer.Connect()){
 				   //Called when the device connects ok
 				   completedSetup = true;
-				   SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+				   SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
 					SharedPreferences.Editor editor = settings.edit();
 					editor.putBoolean("completedSetup", true);
 					editor.commit();

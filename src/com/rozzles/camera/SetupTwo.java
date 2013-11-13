@@ -39,7 +39,7 @@ public class SetupTwo extends Activity {
 	Dialog dialog = null;
 	
 
-	public static final String PREFS_NAME = "AndCamPreferences";
+	public static final String TOROCAM_PREFS = "AndCamPreferences";
 
 	public void onCreate(Bundle savedInstanceState){
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -93,7 +93,7 @@ public class SetupTwo extends Activity {
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
 				System.out.println(String.valueOf(nameArray[position]));
-				SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+				SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
 				SharedPreferences.Editor editor = settings.edit();
 				editor.putString("macaddress", macAddressArray[ ((int) id)]);
 				editor.putString("devicename", nameArray[ ((int) id)]);

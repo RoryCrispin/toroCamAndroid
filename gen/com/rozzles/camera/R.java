@@ -17,6 +17,7 @@ public final class R {
         public static final int slide_out_right=0x7f040005;
     }
     public static final class array {
+        public static final int optionsCheckboxes=0x7f080001;
         public static final int timeArray=0x7f080000;
     }
     public static final class attr {
