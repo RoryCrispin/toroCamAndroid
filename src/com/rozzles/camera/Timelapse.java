@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class Timelapse extends Activity {
+	public static final String TOROCAM_PREFS = "AndCamPreferences";
 	@Override
 	public void onBackPressed() {
 	    super.onBackPressed();
@@ -166,8 +168,22 @@ public class Timelapse extends Activity {
 				
 			}
 		});
+		
+		/*
+		 * Checking if adv functions is enables and hiding adv options if not.
+		 * It would be tidier to have a separate void for this but it would mean
+		 *  making the objects public
+		 */
+		
+		
+		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
+		if(!(prefs.getBoolean("advFunctions", false))){
+			textvalFunction.setVisibility(View.INVISIBLE);
+			functionSeek.setVisibility(View.INVISIBLE);
+		}
 
 	}
+
 	
 	ServiceConnection mConnection = new ServiceConnection() {
 

@@ -70,6 +70,7 @@ public class ShutterRelease extends Activity {
 		TextView tv = (TextView) findViewById(R.id.s1Text);
 		tv.setTypeface(tf);
 		SeekBar seekBar = (SeekBar) findViewById(R.id.TimeDelaySeek);
+		
 		final SeekBar ShutterBmodeSeek = (SeekBar) findViewById(R.id.shutterBmodeSeek);
 		final TextView seekBarValue = (TextView) findViewById(R.id.delayIntView);
 		final TextView ShutterBmodeText = (TextView) findViewById(R.id.shutterBmodeText);
@@ -159,10 +160,11 @@ public class ShutterRelease extends Activity {
 			public void onStopTrackingTouch(SeekBar seekBar) {
 			}
 		});
+		
+		
+		
 
 	}
-
-
 
 
 	ServiceConnection mConnection = new ServiceConnection() {

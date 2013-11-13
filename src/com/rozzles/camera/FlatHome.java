@@ -26,9 +26,11 @@ import android.preference.Preference;
 
 public class FlatHome extends Activity {
 	public static final String TOROCAM_PREFS = "AndCamPreferences";
+	SharedPreferences.Editor editor;
 
+	SharedPreferences settings;
 	LinearLayout linButtons = null;
-
+	boolean[] advFunctionsState = {false};
 	boolean mBounded;
 	BlueComms mServer;
 	boolean skipSetup;
@@ -40,13 +42,24 @@ public class FlatHome extends Activity {
 	Intent mIntent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
+		
+		
+		settings = getSharedPreferences(TOROCAM_PREFS, 0);
+		editor = settings.edit();
+		
+		
 		Intent mIntent = new Intent(this, BlueComms.class); 
 		startService(mIntent);
 		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
 		//Indie helvetica stuff explained in other classes
 		setContentView(R.layout.activity_flat_home);
+		
+		
+		
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
 		TextView tv = (TextView) findViewById(R.id.s1Text);
@@ -69,8 +82,7 @@ public class FlatHome extends Activity {
 			//Runs if setup has been completed
 			hideConnect(); 
 		}
-
-
+		
 	}
 
 	@Override
@@ -94,11 +106,11 @@ public class FlatHome extends Activity {
 	 * has already run setup, if they have it returns true, otherwise false
 	 */
 	public boolean checkSetup(){
-		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
-		if (prefs.getBoolean("completedSetup", false)){
+
+		if (settings.getBoolean("completedSetup", false)){
 			return true;
 		} else {
-			if (prefs.getBoolean("skipSetup", true)){
+			if (settings.getBoolean("skipSetup", true)){
 				skipSetup = true;
 				return true;
 			} else {
@@ -191,6 +203,7 @@ public class FlatHome extends Activity {
 	//This creates the popup options dialog
 	public void optionsClicked(final View v) {
 		
+		advFunctionsState[0] = mServer.advFunctions();
 		AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 		helpBuilder.setTitle("Options");
 
@@ -199,8 +212,7 @@ public class FlatHome extends Activity {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
-				SharedPreferences.Editor editor = settings.edit();
+
 				editor.putBoolean("skipSetup", false);
 				editor.putBoolean("completedSetup", false);
 				editor.commit();
@@ -213,34 +225,31 @@ public class FlatHome extends Activity {
 				}
 			}
 		});
-		helpBuilder.setMultiChoiceItems(R.array.optionsCheckboxes, null,
-                new DialogInterface.OnMultiChoiceClickListener() {
-		
-			
+		helpBuilder.setMultiChoiceItems(R.array.optionsCheckboxes, advFunctionsState,
+				new DialogInterface.OnMultiChoiceClickListener() {
 
-		
-         @Override
-         public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-             if (isChecked) {
-            	 //0 is the array value of the first check, Advanced Functions
-                if(which == 0){ 
-                	SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
-    				SharedPreferences.Editor editor = settings.edit();
-    				editor.putBoolean("advFunctions", true);
-    				editor.commit();
-                }
-                 
-             } else {
-            	 if(which == 0){ 
-            		 SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
-     				SharedPreferences.Editor editor = settings.edit();
-     				editor.putBoolean("advFunctions", false);
-     				editor.commit();
-                 	
-                 }
-             }
-         }
-     });
+			@Override
+			public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+				if (isChecked) {
+					//0 is the array value of the first check, Advanced Functions
+					if(which == 0){ 
+
+						SharedPreferences.Editor editor = settings.edit();
+						editor.putBoolean("advFunctions", true);
+						editor.commit();
+					}
+
+				} else {
+					if(which == 0){ 
+
+						SharedPreferences.Editor editor = settings.edit();
+						editor.putBoolean("advFunctions", false);
+						editor.commit();
+
+					}
+				}
+			}
+		});
 
 		helpBuilder.setNeutralButton("Advanced Functions", new DialogInterface.OnClickListener() {
 
@@ -264,6 +273,11 @@ public class FlatHome extends Activity {
 	 * connection has been established
 	 */
 	public void hideConnect(){
+		
+		
+
+		
+		
 		if(!skipSetup){
 			TextView connectText = (TextView) findViewById(R.id.connectText);
 			connectText.setText("Connecting...");
@@ -271,6 +285,7 @@ public class FlatHome extends Activity {
 			handler.postDelayed(new Runnable() {
 				@Override
 				public void run() {
+	
 					if (!mServer.isConnected){
 
 						linButtons = (LinearLayout) findViewById(R.id.connectObj);

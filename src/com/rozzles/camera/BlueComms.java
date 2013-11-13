@@ -89,6 +89,16 @@ public class BlueComms extends Service{
 		System.out.println("PULLING PREF :" + address);
 	}
 	/*
+	 * This isn't bluetooth, but BlueComms is a convenient class that all the activities
+	 * are linked to so I'm borrowing it to grab the state of a shared pref 'advFucntions'
+	 * Sorry, but I'm not sorry. 
+	 */
+	public boolean advFunctions(){
+		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
+		 return(prefs.getBoolean("advFunctions", false));
+	}
+	
+	/*
 	 *This is called by the Setup utility to send the Mac address selected
 	 *to BlueComms and save it in the shared preference  
 	 */
