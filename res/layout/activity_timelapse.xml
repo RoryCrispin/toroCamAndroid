@@ -28,13 +28,13 @@
         android:text="@string/shots" />
 
 <TextView
-        android:id="@+id/totalShots"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/ShotsSeek"
-        android:layout_below="@+id/ShotsSeek"
-        android:text="@string/zero"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+    android:id="@+id/totalShots"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignRight="@+id/ShotsSeek"
+    android:layout_below="@+id/ShotsSeek"
+    android:text="∞ shots"
+    android:textAppearance="?android:attr/textAppearanceSmall" />
 
 <Spinner
     android:id="@+id/TimeSpinner"
@@ -86,7 +86,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@+id/totalShots"
     android:layout_centerHorizontal="true"
-    android:text="@string/zero"
+    android:text="∞ time"
     android:textAppearance="?android:attr/textAppearanceMedium" />
 
 <SeekBar

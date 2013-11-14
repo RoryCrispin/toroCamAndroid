@@ -113,7 +113,11 @@ public class Timelapse extends Activity {
 					@Override
 					public void onProgressChanged(SeekBar shotsSeek,
 							int progress, boolean fromUser) {
-						totalShotView.setText(progress + " shots");
+						if(progress != 0)	{
+							totalShotView.setText(progress + " shots");
+						}else{
+							totalShotView.setText("∞ shots");
+						}
 						// shotsText.setText(String.valueOf(progress));
 						shots = progress;
 						totalTime(totalTime, timeparse, delay, shots, spin);
@@ -202,7 +206,12 @@ public class Timelapse extends Activity {
 			int shots, int spin) {
 
 		millis = delay * shots * spin;
-		totalTime.setText(TimeParse.getDurationBreakdown(millis));
+		if(shots != 0)	{
+			totalTime.setText(TimeParse.getDurationBreakdown(millis));
+		}else{
+			totalTime.setText("∞ time");
+		}
+		
 	}
 
 	@Override

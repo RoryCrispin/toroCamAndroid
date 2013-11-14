@@ -84,7 +84,7 @@
           android:layout_height="wrap_content"
           android:layout_alignRight="@+id/TimeDelaySeek"
           android:layout_below="@+id/TimeDelaySeek"
-          android:text="@string/zero"
+          android:text="0 seconds"
           android:textAppearance="?android:attr/textAppearanceSmall" />
 
       <CheckBox
