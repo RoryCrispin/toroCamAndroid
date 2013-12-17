@@ -12,11 +12,40 @@
       android:paddingRight="@dimen/activity_horizontal_margin"
       android:paddingTop="@dimen/activity_vertical_margin" >
 
+      <RelativeLayout
+          android:id="@+id/relativeLayout1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+          <ImageView
+              android:id="@+id/imageView4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:src="@drawable/ic_action_backaction" />
+
+          <TextView
+              android:id="@+id/s1Text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:text="@string/smartshutter"
+              android:textColor="#3B97D3"
+              android:textSize="40sp" />
+
+          <ImageView
+              android:id="@+id/imageView1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:onClick="onOptionsClicked"
+              android:src="@drawable/ic_launcher_menu" />
+      </RelativeLayout>
+
       <SeekBar
           android:id="@+id/TimeDelaySeek"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/s1Text"
           android:layout_alignParentRight="true"
           android:layout_below="@+id/startXtitle"
           android:enabled="false"
@@ -31,18 +60,6 @@
           android:onClick="CaptureClick"
           android:text="@string/capture"
           android:textColor="#FFFFFF" />
-
-      <TextView
-          android:id="@+id/s1Text"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentRight="true"
-          android:layout_alignParentTop="true"
-          android:gravity="center_horizontal"
-          android:text="@string/smartshutter"
-          android:textColor="#3B97D3"
-          android:textSize="40sp" />
 
       <SeekBar
           android:id="@+id/shutterBmodeSeek"
@@ -71,14 +88,6 @@
           android:textSize="14pt" />
 
       <TextView
-          android:id="@+id/startXtitle"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignLeft="@+id/TimeDelaySeek"
-          android:layout_below="@+id/s1Text"
-          android:text="@string/delay" />
-
-      <TextView
           android:id="@+id/delayIntView"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -94,6 +103,15 @@
           android:layout_alignLeft="@+id/TimeDelaySeek"
           android:layout_alignTop="@+id/delayIntView"
           android:text="Bulb Mode" />
+
+      <TextView
+          android:id="@+id/startXtitle"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/shutterBmodeCheck"
+          android:layout_below="@+id/relativeLayout1"
+          android:layout_marginTop="11dp"
+          android:text="@string/delay" />
 
   </RelativeLayout>
 

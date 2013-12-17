@@ -51,8 +51,9 @@ public class SoundTrigger extends Activity {
 	public float delay;
 	public float mod;
 	public int bulbBinary;
+	public int chkPersBinary;
 	CheckBox bulb;
-	CheckBox chkPersistant;
+	CheckBox chkPers;
 	boolean mBounded;
 	BlueComms mServer;
 	
@@ -60,7 +61,7 @@ public class SoundTrigger extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.activity_light_trigger);
+		setContentView(R.layout.activity_sound_trigger);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
 		TextView tv = (TextView) findViewById(R.id.s1Text);
@@ -70,7 +71,7 @@ public class SoundTrigger extends Activity {
 		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);
 		final TextView modView = (TextView) findViewById(R.id.multiplierVal);
 		bulb = (CheckBox) findViewById(R.id.bulbCheck);
-		chkPersistant = (CheckBox) findViewById(R.id.chkPersistant);
+		chkPers = (CheckBox) findViewById(R.id.chkPersistant);
 		Intent mIntent = new Intent(this, BlueComms.class);
 	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
 
@@ -140,6 +141,11 @@ public class SoundTrigger extends Activity {
 			bulbBinary = 1;
 		} else {
 			bulbBinary = 0;
+		}
+		if (chkPers.isChecked() == true) {
+			chkPersBinary = 1;
+		} else {
+			chkPersBinary = 0;
 		}
 		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + "0" + "," + bulbBinary
 				+ ",0,0,0,0!");
