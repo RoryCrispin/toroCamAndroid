@@ -151,7 +151,7 @@ public class SoundTrigger extends Activity {
 				+ ",0,0,0,0!");
 	}
 	public void Recal(View v) {
-		mServer.sendData("9,0,0,0,0,0,0,0,0,0!");
+		mServer.sendData("9,1!");
 	}
 
 }
