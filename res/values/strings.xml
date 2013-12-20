@@ -21,6 +21,11 @@
         <item>Minutes</item>
         <item>Hours</item>
     </string-array>
+     <string-array name="cameraArray">
+        <item>Canon</item>
+        <item>Nikon</item>
+        <item>Olympus</item>
+    </string-array>
      <string-array name="optionsCheckboxes">
         <item>Advanced Functions</item>
     </string-array>

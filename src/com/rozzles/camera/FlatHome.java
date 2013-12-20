@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -36,7 +37,7 @@ public class FlatHome extends Activity {
 	boolean skipSetup;
 	String[] myStringArray = {"Help","Power Off"};
 	String[] checkboxarraypop = {"test","testtt"};
-
+	Context c;
 
 
 	Intent mIntent;
@@ -206,7 +207,7 @@ public class FlatHome extends Activity {
 		advFunctionsState[0] = mServer.advFunctions();
 		AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 		helpBuilder.setTitle("Options");
-
+		c = this;
 
 		helpBuilder.setNegativeButton("Redo Setup", new DialogInterface.OnClickListener() {
 
@@ -222,6 +223,8 @@ public class FlatHome extends Activity {
 					overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
 				} catch(Exception ex) {
 					//I don't handle catches because I'm lazy 
+					System.out.println(ex);
+					//Oh wait, yeah I do
 				}
 			}
 		});
@@ -251,11 +254,30 @@ public class FlatHome extends Activity {
 			}
 		});
 
-		helpBuilder.setNeutralButton("Advanced Functions", new DialogInterface.OnClickListener() {
+		helpBuilder.setNeutralButton("Camera Mode", new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
+				AlertDialog.Builder helpdBuilder = new AlertDialog.Builder(c);
+				helpdBuilder.setTitle("IR Camera Mode");
+				helpdBuilder.setItems(R.array.cameraArray, new DialogInterface.OnClickListener() {
+		               public void onClick(DialogInterface dialog, int which) {
+		                   switch (which) {
+		                   case 0: System.out.println("NIKON CAMERA MODE");
+		                   	break;
+		                   case 1: System.out.println("CANON CAMERA MODE");
+		                   mServer.sendData("9,2,0!");
+		                   	break;
+		                   case 2: System.out.println("OLYMPUS CAMERA MODE");
+		                   	break;	
+		                  
+		                   }
+		               }});
 
+		               
+				helpdBuilder.show();
+			
+				 
 			}
 		});
 
