@@ -208,7 +208,7 @@ public class ShutterRelease extends Activity {
 	}
 
 	public void CaptureClick(View view) {
-		mServer.sendData("1," + prog + "," + delayParse() + "," + (bulbMode? 1 : 0) + ",0,0,0,0,0,0!");
+		mServer.sendData("1," + prog + "," + delayParse() + "," + (bulbMode? 1 : 0) + "!");
 	}
 
 	@Override
@@ -219,7 +219,7 @@ public class ShutterRelease extends Activity {
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) { 
 		if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) { 
-			mServer.sendData("1," + prog + "," + delayParse() + ",0,0,0,0,0,0,0!");
+			mServer.sendData("1," + prog + "," + delayParse() + "!");
 			return true;
 		} else {
 			return super.onKeyDown(keyCode, event); 

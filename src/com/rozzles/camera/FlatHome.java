@@ -43,24 +43,24 @@ public class FlatHome extends Activity {
 	Intent mIntent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
-		
+
+
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
-		
-		
+
+
 		settings = getSharedPreferences(TOROCAM_PREFS, 0);
 		editor = settings.edit();
-		
-		
+
+
 		Intent mIntent = new Intent(this, BlueComms.class); 
 		startService(mIntent);
 		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
 		//Indie helvetica stuff explained in other classes
 		setContentView(R.layout.activity_flat_home);
-		
-		
-		
+
+
+
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
 		TextView tv = (TextView) findViewById(R.id.s1Text);
@@ -83,7 +83,7 @@ public class FlatHome extends Activity {
 			//Runs if setup has been completed
 			hideConnect(); 
 		}
-		
+
 	}
 
 	@Override
@@ -203,7 +203,7 @@ public class FlatHome extends Activity {
 
 	//This creates the popup options dialog
 	public void optionsClicked(final View v) {
-		
+
 		advFunctionsState[0] = mServer.advFunctions();
 		AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 		helpBuilder.setTitle("Options");
@@ -261,23 +261,24 @@ public class FlatHome extends Activity {
 				AlertDialog.Builder helpdBuilder = new AlertDialog.Builder(c);
 				helpdBuilder.setTitle("IR Camera Mode");
 				helpdBuilder.setItems(R.array.cameraArray, new DialogInterface.OnClickListener() {
-		               public void onClick(DialogInterface dialog, int which) {
-		                   switch (which) {
-		                   case 0: System.out.println("NIKON CAMERA MODE");
-		                   	break;
-		                   case 1: System.out.println("CANON CAMERA MODE");
-		                   mServer.sendData("9,2,0!");
-		                   	break;
-		                   case 2: System.out.println("OLYMPUS CAMERA MODE");
-		                   	break;	
-		                  
-		                   }
-		               }});
+					public void onClick(DialogInterface dialog, int which) {
+						switch (which) {
+						case 0: System.out.println("NIKON CAMERA MODE");
+						break;
+						case 1: System.out.println("CANON CAMERA MODE");
+						mServer.sendData("9,2,0!");
+						break;
+						case 2: System.out.println("OLYMPUS CAMERA MODE");
+						mServer.readStream();
+						break;	
 
-		               
+						}
+					}});
+
+
 				helpdBuilder.show();
-			
-				 
+
+
 			}
 		});
 
@@ -295,11 +296,11 @@ public class FlatHome extends Activity {
 	 * connection has been established
 	 */
 	public void hideConnect(){
-		
-		
 
-		
-		
+
+
+
+
 		if(!skipSetup){
 			TextView connectText = (TextView) findViewById(R.id.connectText);
 			connectText.setText("Connecting...");
@@ -307,7 +308,7 @@ public class FlatHome extends Activity {
 			handler.postDelayed(new Runnable() {
 				@Override
 				public void run() {
-	
+
 					if (!mServer.isConnected){
 
 						linButtons = (LinearLayout) findViewById(R.id.connectObj);

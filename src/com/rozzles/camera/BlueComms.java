@@ -15,7 +15,10 @@
  */
 package com.rozzles.camera;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.UUID;
 
@@ -38,7 +41,7 @@ public class BlueComms extends Service{
 	public OutputStream outStream = null;
 	
 	public static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");//TODO useless delete this and debug
-	// private InputStream inStream = null; //TODO Add input stream listener
+	private InputStream inStream = null; //TODO Add input stream listener
 	Handler handler = new Handler();
 	
 	byte delimiter = 10;
@@ -63,6 +66,7 @@ public class BlueComms extends Service{
 	 */
 	public void onCreate(){
 		restoreMac();
+		
 	}
 	/*
 	 * (non-Javadoc)
@@ -79,6 +83,42 @@ public class BlueComms extends Service{
 		public BlueComms getServerInstance() {
 			return BlueComms.this;
 		}
+	}
+	public void readStream(){
+		try {
+			while (inStream.available() > 0) {
+			
+				System.out.println(inStream.available());
+				
+				BufferedReader r = new BufferedReader(new InputStreamReader(inStream));
+				StringBuilder total = new StringBuilder();
+				String line;
+				while ((line = r.readLine()) != null) {
+				    total.append(line);
+				System.out.println(total.toString());
+				}
+			}
+			/*
+			 Thread thread = new Thread()
+{
+    @Override
+    public void run() {
+        try {
+            while(true) {
+                sleep(1000);
+                handler.post(r);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+};
+			 */
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	/*
 	 * This retrieves the mac address from the shared preference set in the set-up utility
@@ -149,13 +189,15 @@ public class BlueComms extends Service{
 		try {
 			btSocket = device.createRfcommSocketToServiceRecord(MY_UUID); //This line doesn't do anything really, I should delete it but I'm scared
 			btSocket.connect(); //Connect to the device
-			outStream = btSocket.getOutputStream(); //Initialize the output stream so data can be sent to the device later
+			outStream = btSocket.getOutputStream();
+			inStream = btSocket.getInputStream();//Initialize the output stream so data can be sent to the device later
 			Toast.makeText(getApplicationContext(), "Connetion Made!", Toast.LENGTH_SHORT).show();
 		
 			isConnected = true;
+			
 			return true;
 			//TODO make a persistent notification while the service is open
-
+		
 		} catch (IOException e) {
 			try {
 				btSocket.close();
