@@ -1,13 +1,14 @@
 toroCam Camera Control
 ======================
 
-toroCam is a camera control system, which gives you unparalleled control over your SLR though an open source app, and a small, Arduino compatible board.
+toroCam is a camera control system, which gives you unparalleled control over your SLR though an open source app and a small, Arduino compatible board.
 
-This repo hosts the Android app is built in conjunction with an arduino compatible board. They connect via bluetooth allowing advanced creative DSLR controls set inside the App to be sent to the small Atemiga chip controlling the camera. For more info email me:
+This repo hosts the Android app which is built in conjunction with an arduino compatible board. They connect via Bluetooth allowing advanced creative DSLR controls set inside the App to be sent to the small Atemiga chip controlling the camera. For more info read http://rozzles.com/torocam or http://tomgarry.co.uk/torocam and visit the Facebook news page: https://www.facebook.com/toroCam
 
 Availability
 ============
-At the time of writing (Dec 2013) toroCam boards are only avalible to developers and early testers, if you're interested in joining this programme please get in contact with me@rorycrispin.co.uk, developer editions of the toroCam pro can be obtained in exchange for a £30 donation to the project, plus international postage if you're not from the UK. 
+At the time of writing (Dec 2013) toroCam boards are only available to developers and early testers, if you're interested in joining this programme please get in contact through the facebook page or via email (me@rorycrispin.co.uk) 
+Developer editions of the toroCam pro can be obtained in exchange for a £30 donation to the project, plus international postage if you're not from the UK.  
 
 Contributing
 ============
@@ -39,18 +40,18 @@ line or you'll get crashes for setting the typeface before loading the xml.
 		tv.setTypeface(tf);
 
 
-Give the back button a transisiton like so: 
+Give the back button a transition like so: 
 
 	@Override
 		public void onBackPressed(){
 			super.onBackPressed();
 			overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
 		}
-And do the same for the ui back button, this should give you an actiity that matches the rest. Also make sure to set the font color of your buttons to white instead of the default black, we've already changed the ui elements to the toroCam green color though. Next step is communicating with the Bluetoooth device. 
+And do the same for the ui back button, this should give you an activity that matches the rest. Also make sure to set the font color of your buttons to white instead of the default black, we've already changed the ui elements to the toroCam green color though. Next step is communicating with the Bluetooth device. 
 
 Using Bluetooth
 ===============
-All the bluetooth code happens in the BlueComms class which functions as a service which the activities bind to. If your activity needs to communicate with the toroCam board you'll need to bind the service like so: 
+All the Bluetooth code happens in the BlueComms class which functions as a service which the activities bind to. If your activity needs to communicate with the toroCam board you'll need to bind the service like so: 
 Declare this at the top of your activity: 
 
 	BlueComms mServer;
@@ -93,10 +94,10 @@ That's it. You can send data to the toroCam with
 
 Sending data to the totoCam board
 ---------------------------------
-In order to communicate as efficiently as possible over the bluetooth connection we communicate with the toroCam board in numbers seperated by commas. The first number is the method decleration and after that you send the variables seperated by commas and end the message with an ! 
+In order to communicate as efficiently as possible over the Bluetooth connection we communicate with the toroCam board in numbers separated by commas. The first number is the method declaration and after that you send the variables separated by commas and end the message with an ! 
 For example: 
 ------------
-To simply trigger the shutter, use method 1 with no perameters: 
+To simply trigger the shutter, use method 1 with no parameters: 
 	1!
 A more complex function like timelapse is sent like so: 
 	2,seconds,mins,hurs,shots!
@@ -104,12 +105,12 @@ To deconstruct this: 2 is the method number for timelapse, the second value is t
 Note: 
 Previously we used 10 values in total and even if we didn't want to send anything we'd stil send a 0, so Shutter release would look like this: 
 	1,0,0,0,0,0,0,0,0,0! 
-This is no longer needed but you may still see it in some of the code until it's all been updated. Please don't write any new code with this sytnax as it's inefficient and unnescesery. Thanks!
+This is no longer needed but you may still see it in some of the code until it's all been updated. Please don't write any new code with this sytnax as it's inefficient and unnecessary. Thanks!
 
 Guidelines
 ==========
-All work you add to this peoject will be under the same license we're using, 'CreativeCommons Attribution-ShareAlike 3.0 Unported'
-We're currently in the process of cleaning up the Android app which has become a bit of a mess of button1's and unstructured names like 'shutterBmodeSeek' and such. If you're pushig new code to the project we expect it to have a solid naming structure with no unnamed or default objects. Other than that we're pretty flex right now. 
+All work you add to this project will be under the same license we're using, 'CreativeCommons Attribution-ShareAlike 3.0 Unported'
+We're currently in the process of cleaning up the Android app which has become a bit of a mess of button1's and unstructured names like 'shutterBmodeSeek' and such. If you're pushing new code to the project we expect it to have a solid naming structure with no unnamed or default objects. Other than that we're pretty flex right now. 
 
 License
 =======
