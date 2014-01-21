@@ -17,9 +17,9 @@ public final class R {
         public static final int slide_out_right=0x7f040005;
     }
     public static final class array {
-        public static final int cameraArray=0x7f090001;
-        public static final int optionsCheckboxes=0x7f090002;
-        public static final int timeArray=0x7f090000;
+        public static final int cameraArray=0x7f080001;
+        public static final int optionsCheckboxes=0x7f080002;
+        public static final int timeArray=0x7f080000;
     }
     public static final class attr {
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -32,9 +32,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int buttonBarStyle=0x7f010000;
     }
     public static final class color {
-        public static final int black_overlay=0x7f070000;
-        public static final int pressed_rccamgreen=0x7f070002;
-        public static final int white=0x7f070001;
+        public static final int black_overlay=0x7f050000;
+        public static final int pressed_rccamgreen=0x7f050002;
+        public static final int white=0x7f050001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -43,8 +43,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f080000;
-        public static final int activity_vertical_margin=0x7f080001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static final int ab_background_textured_rccamgreen=0x7f020000;
@@ -130,50 +130,49 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int list_selector_holo_light=0x7f020050;
         public static final int menu_dropdown_panel_rccamgreen=0x7f020051;
         public static final int mntne=0x7f020052;
-        public static final int popup_black=0x7f020053;
-        public static final int pressed_background_rccamgreen=0x7f020054;
-        public static final int progress_bg_rccamgreen=0x7f020055;
-        public static final int progress_horizontal_rccamgreen=0x7f020056;
-        public static final int progress_primary_rccamgreen=0x7f020057;
-        public static final int progress_secondary_rccamgreen=0x7f020058;
-        public static final int question=0x7f020059;
-        public static final int retry=0x7f02005a;
-        public static final int scrubber_control_disabled_holo=0x7f02005b;
-        public static final int scrubber_control_focused_holo=0x7f02005c;
-        public static final int scrubber_control_normal_holo=0x7f02005d;
-        public static final int scrubber_control_pressed_holo=0x7f02005e;
-        public static final int scrubber_control_selector_holo_light=0x7f02005f;
-        public static final int scrubber_primary_holo=0x7f020060;
-        public static final int scrubber_progress_horizontal_holo_light=0x7f020061;
-        public static final int scrubber_secondary_holo=0x7f020062;
-        public static final int scrubber_track_holo_light=0x7f020063;
-        public static final int selectable_background_rccamgreen=0x7f020064;
-        public static final int simpleshoot=0x7f020065;
-        public static final int sound=0x7f020066;
-        public static final int spinner_ab_default_rccamgreen=0x7f020067;
-        public static final int spinner_ab_disabled_rccamgreen=0x7f020068;
-        public static final int spinner_ab_focused_rccamgreen=0x7f020069;
-        public static final int spinner_ab_pressed_rccamgreen=0x7f02006a;
-        public static final int spinner_background_ab_rccamgreen=0x7f02006b;
-        public static final int spinner_background_holo_light=0x7f02006c;
-        public static final int spinner_default_holo_light=0x7f02006d;
-        public static final int spinner_disabled_holo_light=0x7f02006e;
-        public static final int spinner_focused_holo_light=0x7f02006f;
-        public static final int spinner_pressed_holo_light=0x7f020070;
-        public static final int tab_indicator_ab_rccamgreen=0x7f020071;
-        public static final int tab_selected_focused_rccamgreen=0x7f020072;
-        public static final int tab_selected_pressed_rccamgreen=0x7f020073;
-        public static final int tab_selected_rccamgreen=0x7f020074;
-        public static final int tab_unselected_focused_rccamgreen=0x7f020075;
-        public static final int tab_unselected_pressed_rccamgreen=0x7f020076;
-        public static final int tab_unselected_rccamgreen=0x7f020077;
-        public static final int textfield_activated_holo_light=0x7f020078;
-        public static final int textfield_default_holo_light=0x7f020079;
-        public static final int textfield_disabled_focused_holo_light=0x7f02007a;
-        public static final int textfield_disabled_holo_light=0x7f02007b;
-        public static final int textfield_focused_holo_light=0x7f02007c;
-        public static final int tick=0x7f02007d;
-        public static final int timelapse=0x7f02007e;
+        public static final int pressed_background_rccamgreen=0x7f020053;
+        public static final int progress_bg_rccamgreen=0x7f020054;
+        public static final int progress_horizontal_rccamgreen=0x7f020055;
+        public static final int progress_primary_rccamgreen=0x7f020056;
+        public static final int progress_secondary_rccamgreen=0x7f020057;
+        public static final int question=0x7f020058;
+        public static final int retry=0x7f020059;
+        public static final int scrubber_control_disabled_holo=0x7f02005a;
+        public static final int scrubber_control_focused_holo=0x7f02005b;
+        public static final int scrubber_control_normal_holo=0x7f02005c;
+        public static final int scrubber_control_pressed_holo=0x7f02005d;
+        public static final int scrubber_control_selector_holo_light=0x7f02005e;
+        public static final int scrubber_primary_holo=0x7f02005f;
+        public static final int scrubber_progress_horizontal_holo_light=0x7f020060;
+        public static final int scrubber_secondary_holo=0x7f020061;
+        public static final int scrubber_track_holo_light=0x7f020062;
+        public static final int selectable_background_rccamgreen=0x7f020063;
+        public static final int simpleshoot=0x7f020064;
+        public static final int sound=0x7f020065;
+        public static final int spinner_ab_default_rccamgreen=0x7f020066;
+        public static final int spinner_ab_disabled_rccamgreen=0x7f020067;
+        public static final int spinner_ab_focused_rccamgreen=0x7f020068;
+        public static final int spinner_ab_pressed_rccamgreen=0x7f020069;
+        public static final int spinner_background_ab_rccamgreen=0x7f02006a;
+        public static final int spinner_background_holo_light=0x7f02006b;
+        public static final int spinner_default_holo_light=0x7f02006c;
+        public static final int spinner_disabled_holo_light=0x7f02006d;
+        public static final int spinner_focused_holo_light=0x7f02006e;
+        public static final int spinner_pressed_holo_light=0x7f02006f;
+        public static final int tab_indicator_ab_rccamgreen=0x7f020070;
+        public static final int tab_selected_focused_rccamgreen=0x7f020071;
+        public static final int tab_selected_pressed_rccamgreen=0x7f020072;
+        public static final int tab_selected_rccamgreen=0x7f020073;
+        public static final int tab_unselected_focused_rccamgreen=0x7f020074;
+        public static final int tab_unselected_pressed_rccamgreen=0x7f020075;
+        public static final int tab_unselected_rccamgreen=0x7f020076;
+        public static final int textfield_activated_holo_light=0x7f020077;
+        public static final int textfield_default_holo_light=0x7f020078;
+        public static final int textfield_disabled_focused_holo_light=0x7f020079;
+        public static final int textfield_disabled_holo_light=0x7f02007a;
+        public static final int textfield_focused_holo_light=0x7f02007b;
+        public static final int tick=0x7f02007c;
+        public static final int timelapse=0x7f02007d;
     }
     public static final class id {
         public static final int CaptureButton=0x7f0b0047;
@@ -336,87 +335,87 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int timelapse=0x7f0a0010;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int bulbFlash=0x7f050012;
-        public static final int capture=0x7f050007;
-        public static final int connect=0x7f050017;
-        public static final int connecting_=0x7f050041;
-        public static final int debug_controls=0x7f05001d;
-        public static final int delServoTitle=0x7f05004a;
-        public static final int delay=0x7f050006;
-        public static final int delayInt=0x7f050009;
-        public static final int delayVal=0x7f050008;
-        public static final int delay_betweem_drips=0x7f050028;
-        public static final int devlink=0x7f050016;
-        public static final int drip_length_size=0x7f050025;
-        public static final int drip_no_=0x7f050027;
-        public static final int driptrig_=0x7f050020;
-        public static final int end_x=0x7f050049;
-        public static final int end_y=0x7f050048;
-        public static final int flash_delay=0x7f050026;
-        public static final int h=0x7f05001a;
-        public static final int hdr_timelapse=0x7f05002b;
-        public static final int hello_world=0x7f05000b;
-        public static final int help=0x7f05003e;
-        public static final int helvetica_=0x7f050037;
-        public static final int i_have_a_smartbox=0x7f050034;
-        public static final int just_a_minute_=0x7f05003a;
-        public static final int kill=0x7f05001c;
-        public static final int l=0x7f05001b;
-        public static final int ldr_laser=0x7f050023;
-        public static final int light_trigger=0x7f050003;
-        public static final int mic=0x7f050024;
-        public static final int multiplier=0x7f050013;
-        public static final int oops_=0x7f05003b;
-        public static final int recallob=0x7f05001f;
-        public static final int retry=0x7f05003f;
-        public static final int s1_length=0x7f05002c;
-        public static final int s2_length=0x7f05002d;
-        public static final int s3_length=0x7f05002e;
-        public static final int select_your_device=0x7f050038;
-        public static final int sevsitivity=0x7f050022;
-        public static final int shots=0x7f05000c;
-        public static final int simple_shoot=0x7f050030;
-        public static final int skip_just_browsing=0x7f050036;
-        public static final int smartshutter=0x7f05002f;
-        public static final int sound_trigger=0x7f050004;
-        public static final int start=0x7f05000f;
-        public static final int start_x=0x7f050045;
-        public static final int start_y=0x7f050047;
-        public static final int stop=0x7f050010;
-        public static final int there_was_a_problem_with_bluetooth_nis_your_smartshutter_turned_on_=0x7f05003c;
-        public static final int timelapse=0x7f050002;
-        public static final int timelapse_mode=0x7f050043;
-        public static final int title_activity_blue_control=0x7f050019;
-        public static final int title_activity_dev_link=0x7f050015;
-        public static final int title_activity_drip_trig=0x7f050021;
-        public static final int title_activity_flat_home=0x7f050029;
-        public static final int title_activity_flat_settings=0x7f050042;
-        public static final int title_activity_hdrlapse=0x7f05002a;
-        public static final int title_activity_launch=0x7f050018;
-        public static final int title_activity_light_trigger=0x7f050011;
-        public static final int title_activity_servo_timelapse=0x7f050044;
-        public static final int title_activity_setup_one=0x7f050032;
-        public static final int title_activity_setup_three=0x7f050039;
-        public static final int title_activity_setup_two=0x7f050033;
-        public static final int title_activity_shake_trigger=0x7f05000e;
-        public static final int title_activity_shutter_release=0x7f050005;
-        public static final int title_activity_sound_trigger=0x7f050014;
-        public static final int title_activity_timelapse=0x7f05000a;
-        public static final int todo=0x7f050031;
-        public static final int todo_device_must_be_connected_before_entering_activities_press_h_or_l_=0x7f05001e;
-        public static final int troubleshoot=0x7f050040;
-        public static final int try_again=0x7f05003d;
-        public static final int welcome_to=0x7f050035;
-        public static final int zero=0x7f05000d;
-        public static final int zeroms=0x7f050046;
+        public static final int action_settings=0x7f070001;
+        public static final int app_name=0x7f070000;
+        public static final int bulbFlash=0x7f070012;
+        public static final int capture=0x7f070007;
+        public static final int connect=0x7f070017;
+        public static final int connecting_=0x7f070041;
+        public static final int debug_controls=0x7f07001d;
+        public static final int delServoTitle=0x7f07004a;
+        public static final int delay=0x7f070006;
+        public static final int delayInt=0x7f070009;
+        public static final int delayVal=0x7f070008;
+        public static final int delay_betweem_drips=0x7f070028;
+        public static final int devlink=0x7f070016;
+        public static final int drip_length_size=0x7f070025;
+        public static final int drip_no_=0x7f070027;
+        public static final int driptrig_=0x7f070020;
+        public static final int end_x=0x7f070049;
+        public static final int end_y=0x7f070048;
+        public static final int flash_delay=0x7f070026;
+        public static final int h=0x7f07001a;
+        public static final int hdr_timelapse=0x7f07002b;
+        public static final int hello_world=0x7f07000b;
+        public static final int help=0x7f07003e;
+        public static final int helvetica_=0x7f070037;
+        public static final int i_have_a_smartbox=0x7f070034;
+        public static final int just_a_minute_=0x7f07003a;
+        public static final int kill=0x7f07001c;
+        public static final int l=0x7f07001b;
+        public static final int ldr_laser=0x7f070023;
+        public static final int light_trigger=0x7f070003;
+        public static final int mic=0x7f070024;
+        public static final int multiplier=0x7f070013;
+        public static final int oops_=0x7f07003b;
+        public static final int recallob=0x7f07001f;
+        public static final int retry=0x7f07003f;
+        public static final int s1_length=0x7f07002c;
+        public static final int s2_length=0x7f07002d;
+        public static final int s3_length=0x7f07002e;
+        public static final int select_your_device=0x7f070038;
+        public static final int sevsitivity=0x7f070022;
+        public static final int shots=0x7f07000c;
+        public static final int simple_shoot=0x7f070030;
+        public static final int skip_just_browsing=0x7f070036;
+        public static final int smartshutter=0x7f07002f;
+        public static final int sound_trigger=0x7f070004;
+        public static final int start=0x7f07000f;
+        public static final int start_x=0x7f070045;
+        public static final int start_y=0x7f070047;
+        public static final int stop=0x7f070010;
+        public static final int there_was_a_problem_with_bluetooth_nis_your_smartshutter_turned_on_=0x7f07003c;
+        public static final int timelapse=0x7f070002;
+        public static final int timelapse_mode=0x7f070043;
+        public static final int title_activity_blue_control=0x7f070019;
+        public static final int title_activity_dev_link=0x7f070015;
+        public static final int title_activity_drip_trig=0x7f070021;
+        public static final int title_activity_flat_home=0x7f070029;
+        public static final int title_activity_flat_settings=0x7f070042;
+        public static final int title_activity_hdrlapse=0x7f07002a;
+        public static final int title_activity_launch=0x7f070018;
+        public static final int title_activity_light_trigger=0x7f070011;
+        public static final int title_activity_servo_timelapse=0x7f070044;
+        public static final int title_activity_setup_one=0x7f070032;
+        public static final int title_activity_setup_three=0x7f070039;
+        public static final int title_activity_setup_two=0x7f070033;
+        public static final int title_activity_shake_trigger=0x7f07000e;
+        public static final int title_activity_shutter_release=0x7f070005;
+        public static final int title_activity_sound_trigger=0x7f070014;
+        public static final int title_activity_timelapse=0x7f07000a;
+        public static final int todo=0x7f070031;
+        public static final int todo_device_must_be_connected_before_entering_activities_press_h_or_l_=0x7f07001e;
+        public static final int troubleshoot=0x7f070040;
+        public static final int try_again=0x7f07003d;
+        public static final int welcome_to=0x7f070035;
+        public static final int zero=0x7f07000d;
+        public static final int zeroms=0x7f070046;
     }
     public static final class style {
-        public static final int ActionBar_Solid_Rccamgreen=0x7f060011;
-        public static final int ActionBar_Transparent_Rccamgreen=0x7f060012;
-        public static final int ActionBarTabStyle_Rccamgreen=0x7f060015;
-        public static final int ActionButton_CloseMode_Rccamgreen=0x7f060018;
+        public static final int ActionBar_Solid_Rccamgreen=0x7f090011;
+        public static final int ActionBar_Transparent_Rccamgreen=0x7f090012;
+        public static final int ActionBarTabStyle_Rccamgreen=0x7f090015;
+        public static final int ActionButton_CloseMode_Rccamgreen=0x7f090018;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -437,56 +436,34 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         res/values-v11/styles.xml on API 14+ devices.
     
  API 14 theme customizations can go here. 
-
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
-
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
- Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
-        public static final int ButtonAppTheme=0x7f060009;
-        public static final int ButtonBar=0x7f060003;
-        public static final int ButtonBarButton=0x7f060004;
-        public static final int CheckBoxAppTheme=0x7f060007;
-        public static final int DropDownListView_Rccamgreen=0x7f060014;
-        public static final int DropDownNav_Rccamgreen=0x7f060016;
-        public static final int EditTextAppTheme=0x7f060006;
-        public static final int FullscreenActionBarStyle=0x7f060005;
-        public static final int FullscreenTheme=0x7f060002;
-        public static final int ImageButtonAppTheme=0x7f06000a;
-        public static final int PopupMenu_Rccamgreen=0x7f060013;
-        public static final int ProgressBar_Rccamgreen=0x7f060017;
-        public static final int RadioButtonAppTheme=0x7f060008;
-        public static final int SeekBarAppTheme=0x7f06000e;
-        public static final int SpinnerAppTheme=0x7f06000b;
-        public static final int SpinnerAppTheme_DropDown=0x7f06000c;
-        public static final int SpinnerDropDownItemAppTheme=0x7f06000d;
-        public static final int Theme_Rccamgreen=0x7f060010;
+        public static final int AppTheme=0x7f090001;
+        public static final int ButtonAppTheme=0x7f090009;
+        public static final int ButtonBar=0x7f090003;
+        public static final int ButtonBarButton=0x7f090004;
+        public static final int CheckBoxAppTheme=0x7f090007;
+        public static final int DropDownListView_Rccamgreen=0x7f090014;
+        public static final int DropDownNav_Rccamgreen=0x7f090016;
+        public static final int EditTextAppTheme=0x7f090006;
+        public static final int FullscreenActionBarStyle=0x7f090005;
+        public static final int FullscreenTheme=0x7f090002;
+        public static final int ImageButtonAppTheme=0x7f09000a;
+        public static final int PopupMenu_Rccamgreen=0x7f090013;
+        public static final int ProgressBar_Rccamgreen=0x7f090017;
+        public static final int RadioButtonAppTheme=0x7f090008;
+        public static final int SeekBarAppTheme=0x7f09000e;
+        public static final int SpinnerAppTheme=0x7f09000b;
+        public static final int SpinnerAppTheme_DropDown=0x7f09000c;
+        public static final int SpinnerDropDownItemAppTheme=0x7f09000d;
+        public static final int Theme_Rccamgreen=0x7f090010;
         /**  this style is only referenced in a Light.DarkActionBar based theme 
          */
-        public static final int Theme_Rccamgreen_Widget=0x7f060019;
-        public static final int ToggleAppTheme=0x7f06000f;
+        public static final int Theme_Rccamgreen_Widget=0x7f090019;
+        public static final int ToggleAppTheme=0x7f09000f;
     }
     public static final class styleable {
         /** 
