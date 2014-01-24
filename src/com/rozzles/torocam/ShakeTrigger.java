@@ -13,17 +13,23 @@
  *   Rozz xx 
  * 
  */
-package com.rozzles.camera;
+package com.rozzles.torocam;
 
-import com.rozzles.camera.BlueComms.LocalBinder;
+import com.rozzles.torocam.R;
+import com.rozzles.torocam.BlueComms.LocalBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Typeface;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,8 +37,9 @@ import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
-public class SoundTrigger extends Activity {
+public class ShakeTrigger extends Activity {
 	
 	@Override 
 	public void onPause(){
@@ -51,29 +58,37 @@ public class SoundTrigger extends Activity {
 	public float delay;
 	public float mod;
 	public int bulbBinary;
-	public int chkPersBinary;
 	CheckBox bulb;
-	CheckBox chkPers;
+	CheckBox chkPersistant;
 	boolean mBounded;
 	BlueComms mServer;
+	boolean listen;
+	ToggleButton tog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.activity_sound_trigger);
+		setContentView(R.layout.activity_shake_trigger);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
 		TextView tv = (TextView) findViewById(R.id.s1Text);
 		tv.setTypeface(tf);
 		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
+		tog = (ToggleButton) findViewById(R.id.CaptureButton); 
 		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);
 		final TextView modView = (TextView) findViewById(R.id.multiplierVal);
 		bulb = (CheckBox) findViewById(R.id.bulbCheck);
-		chkPers = (CheckBox) findViewById(R.id.chkPersistant);
+		chkPersistant = (CheckBox) findViewById(R.id.chkPersistant);
 		Intent mIntent = new Intent(this, BlueComms.class);
 	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+	     
+	     mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		    mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+		    mAccel = 0.00f;
+		    mAccelCurrent = SensorManager.GRAVITY_EARTH;
+		    mAccelLast = SensorManager.GRAVITY_EARTH;
 
 		delaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -96,7 +111,7 @@ public class SoundTrigger extends Activity {
 
 			@Override
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				mod = (float) arg1 / 100;
+				mod = (float) arg1 / 10;
 				modView.setText(String.valueOf(mod + "x"));
 			}
 
@@ -122,6 +137,34 @@ public class SoundTrigger extends Activity {
 		}
 	};
 	
+	private SensorManager mSensorManager;
+	  private float mAccel; // acceleration apart from gravity
+	  private float mAccelCurrent; // current acceleration including gravity
+	  private float mAccelLast; // last acceleration including gravity
+
+	  private final SensorEventListener mSensorListener = new SensorEventListener() {
+
+	    public void onSensorChanged(SensorEvent se) {
+	      float x = se.values[0];
+	      float y = se.values[1];
+	      float z = se.values[2];
+	      mAccelLast = mAccelCurrent;
+	      mAccelCurrent = (float) Math.sqrt((double) (x*x + y*y + z*z));
+	      float delta = mAccelCurrent - mAccelLast;
+	      mAccel = mAccel * 0.9f + delta; // perform low-cut filter
+	      //System.out.println(x + " y " + y + " z " + z);
+	      //System.out.println(mAccel);
+	      if(listen == true && mAccel > mod){
+	    	  mServer.sendData("1,0,0,0,0,0,0,0,0,0!");
+	      }
+	    }
+
+	    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+	    }
+	  };
+
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.light_trigger, menu);
@@ -136,22 +179,9 @@ public class SoundTrigger extends Activity {
 	}
 
 	public void CaptureClick(View v) {
+		listen = tog.isChecked();
 		
-		if (bulb.isChecked() == true) {
-			bulbBinary = 1;
-		} else {
-			bulbBinary = 0;
-		}
-		if (chkPers.isChecked() == true) {
-			chkPersBinary = 1;
-		} else {
-			chkPersBinary = 0;
-		}
-		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + "0" + "," + bulbBinary
-				+ ",0,0,0,0!");
+		
+		//mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + "0" + "," + bulbBinary + ",0,0,0,0!");
 	}
-	public void Recal(View v) {
-		mServer.sendData("9,1!");
-	}
-
 }

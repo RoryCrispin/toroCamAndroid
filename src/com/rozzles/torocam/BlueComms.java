@@ -13,7 +13,7 @@
  *   Rozz xx 
  * 
  */
-package com.rozzles.camera;
+package com.rozzles.torocam;
 
 import java.io.BufferedReader;
 import java.io.IOException;

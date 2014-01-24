@@ -1,4 +1,4 @@
-package com.rozzles.camera;
+package com.rozzles.torocam;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+import com.rozzles.torocam.R;
 
 public class SetupOne extends Activity {
 

@@ -1,8 +1,8 @@
-package com.rozzles.camera;
+package com.rozzles.torocam;
 
 import java.util.Set;
 
-import com.rozzles.camera.BlueComms.LocalBinder;
+import com.rozzles.torocam.BlueComms.LocalBinder;
 
 import android.app.ListActivity;
 import android.bluetooth.BluetoothAdapter;

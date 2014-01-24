@@ -13,9 +13,10 @@
  *   Rozz xx 
  * 
  */
-package com.rozzles.camera;
+package com.rozzles.torocam;
 
-import com.rozzles.camera.BlueComms.LocalBinder;
+import com.rozzles.torocam.R;
+import com.rozzles.torocam.BlueComms.LocalBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
@@ -32,25 +33,36 @@ import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class LightTrigger extends Activity {
+public class SoundTrigger extends Activity {
+	
+	@Override 
+	public void onPause(){
+		super.onPause();
+		mBounded = false;
+		mServer = null;
+	}
+	
 	@Override
 	public void onBackPressed() {
+		//TODO leaking service 
 	    super.onBackPressed();
 	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
+	    
 	}
 	public float delay;
 	public float mod;
 	public int bulbBinary;
-	
+	public int chkPersBinary;
+	CheckBox bulb;
+	CheckBox chkPers;
 	boolean mBounded;
 	BlueComms mServer;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.activity_light_trigger);
-		
+		setContentView(R.layout.activity_sound_trigger);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
 		TextView tv = (TextView) findViewById(R.id.s1Text);
@@ -59,10 +71,12 @@ public class LightTrigger extends Activity {
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
 		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);
 		final TextView modView = (TextView) findViewById(R.id.multiplierVal);
+		bulb = (CheckBox) findViewById(R.id.bulbCheck);
+		chkPers = (CheckBox) findViewById(R.id.chkPersistant);
 		Intent mIntent = new Intent(this, BlueComms.class);
 	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
-		delaySeek
-				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+		delaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 					@Override
 					public void onProgressChanged(SeekBar arg0, int arg1,
@@ -96,7 +110,6 @@ public class LightTrigger extends Activity {
 			}
 		});
 	}
-
 	ServiceConnection mConnection = new ServiceConnection() {
 
 		public void onServiceDisconnected(ComponentName name) {
@@ -109,9 +122,9 @@ public class LightTrigger extends Activity {
 			mServer = mLocalBinder.getServerInstance();
 		}
 	};
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.light_trigger, menu);
 		return true;
 	}
@@ -124,14 +137,19 @@ public class LightTrigger extends Activity {
 	}
 
 	public void CaptureClick(View v) {
-		final CheckBox bulb = (CheckBox) findViewById(R.id.bulbCheck);
+		
 		if (bulb.isChecked() == true) {
 			bulbBinary = 1;
 		} else {
 			bulbBinary = 0;
 		}
-		mServer.sendData("3,1000,"+ Math.round((200-(mod*100))) + "," + Math.round(delay*1000) + "," + bulbBinary
-				+ ",0,0,0,0,0!");
+		if (chkPers.isChecked() == true) {
+			chkPersBinary = 1;
+		} else {
+			chkPersBinary = 0;
+		}
+		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + "0" + "," + bulbBinary
+				+ ",0,0,0,0!");
 	}
 	public void Recal(View v) {
 		mServer.sendData("9,1!");

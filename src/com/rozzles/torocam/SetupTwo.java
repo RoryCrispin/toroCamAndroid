@@ -1,8 +1,9 @@
-package com.rozzles.camera;
+package com.rozzles.torocam;
 import java.util.ArrayList;
 import java.util.Set;
 
-import com.rozzles.camera.BlueComms.LocalBinder;
+import com.rozzles.torocam.R;
+import com.rozzles.torocam.BlueComms.LocalBinder;
 
 import android.app.Activity;
 import android.app.Dialog;

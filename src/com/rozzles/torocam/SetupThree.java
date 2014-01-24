@@ -1,6 +1,7 @@
-package com.rozzles.camera;
+package com.rozzles.torocam;
 
-import com.rozzles.camera.BlueComms.LocalBinder;
+import com.rozzles.torocam.R;
+import com.rozzles.torocam.BlueComms.LocalBinder;
 
 import android.os.Bundle;
 import android.os.Handler;

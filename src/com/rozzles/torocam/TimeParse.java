@@ -13,7 +13,7 @@
  *   Rozz xx 
  * 
  */
-package com.rozzles.camera;
+package com.rozzles.torocam;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,4 +1,4 @@
-package com.rozzles.camera;
+package com.rozzles.torocam;
 
 public class SaveState {
 
