@@ -1,3 +1,18 @@
+/*
+* Rory Crispin --rorycrispin.co.uk -- rozzles.com
+*
+* Distributed under the Creative Commons
+* Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+* License, full conditions can be found here:
+* http://creativecommons.org/licenses/by-sa/3.0/
+*
+* This is free software, and you are welcome to redistribute it
+* under certain conditions;
+*
+* Go crazy,
+* Rozz xx
+*
+*/
 package com.rozzles.torocam;
 
 import com.rozzles.torocam.R;
