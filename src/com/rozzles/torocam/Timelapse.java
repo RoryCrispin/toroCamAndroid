@@ -70,7 +70,7 @@ public class Timelapse extends Activity {
 		final SeekBar shotsSeek = (SeekBar) findViewById(R.id.ShotsSeek);
 		final SeekBar functionSeek = (SeekBar) findViewById(R.id.seekFunction);
 		Spinner spinner = (Spinner) findViewById(R.id.TimeSpinner);
-		// final TextView shotsText = (TextView)findViewById(R.id.shotView);
+		final TextView shotsText = (TextView)findViewById(R.id.ShotsView);
 		final TextView delayView = (TextView) findViewById(R.id.TimelapseDelayView);
 		final TextView totalTime = (TextView) findViewById(R.id.totalTime);
 		final TextView totalShotView = (TextView) findViewById(R.id.totalShots);
@@ -116,7 +116,7 @@ public class Timelapse extends Activity {
 						if(progress != 0)	{
 							totalShotView.setText(progress + " shots");
 						}else{
-							totalShotView.setText("∞ shots");
+							totalShotView.setText("\u221e shots");
 						}
 						// shotsText.setText(String.valueOf(progress));
 						shots = progress;
@@ -184,6 +184,9 @@ public class Timelapse extends Activity {
 		if(!(prefs.getBoolean("advFunctions", false))){
 			textvalFunction.setVisibility(View.INVISIBLE);
 			functionSeek.setVisibility(View.INVISIBLE);
+			totalShotView.setVisibility(View.INVISIBLE);
+			shotsSeek.setVisibility(View.INVISIBLE);
+			shotsText.setVisibility(View.INVISIBLE);
 		}
 
 	}
@@ -209,7 +212,7 @@ public class Timelapse extends Activity {
 		if(shots != 0)	{
 			totalTime.setText(TimeParse.getDurationBreakdown(millis));
 		}else{
-			totalTime.setText("∞ time");
+			totalTime.setText("\u221e time");
 		}
 		
 	}

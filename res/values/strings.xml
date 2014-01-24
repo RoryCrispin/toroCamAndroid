@@ -90,5 +90,9 @@
     <string name="end_y">End Y</string>
     <string name="end_x">End X</string>
     <string name="delServoTitle">Delay</string>
+    <string name="sensitivity">Sensitivity</string>
+    <string name="_0_0_seconds">0.0 seconds</string>
+    <string name="_0_0x">0.0x</string>
+    <string name="persistant">Persistant</string>
 
 </resources>

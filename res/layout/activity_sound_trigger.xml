@@ -19,7 +19,7 @@
         android:layout_alignLeft="@+id/multiplierSeek"
         android:layout_below="@+id/LightDelay"
         android:layout_marginTop="26dp"
-        android:text="Sensitivity"
+        android:text="@string/sensitivity"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <SeekBar
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/LightDelay"
-        android:text="0.0 seconds"
+        android:text="@string/_0_0_seconds"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/multiplierSeek"
-        android:text="0.0x"
+        android:text="@string/_0_0x"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
@@ -112,7 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/bulbCheck"
         android:layout_below="@+id/bulbCheck"
-        android:text="@string/capture" />
+        android:text="@string/persistant" />
 
 </RelativeLayout>
 </ScrollView>

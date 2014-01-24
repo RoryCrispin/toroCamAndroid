@@ -335,6 +335,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int timelapse=0x7f0a0010;
     }
     public static final class string {
+        public static final int _0_0_seconds=0x7f07004c;
+        public static final int _0_0x=0x7f07004d;
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070000;
         public static final int bulbFlash=0x7f070012;
@@ -368,12 +370,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int mic=0x7f070024;
         public static final int multiplier=0x7f070013;
         public static final int oops_=0x7f07003b;
+        public static final int persistant=0x7f07004e;
         public static final int recallob=0x7f07001f;
         public static final int retry=0x7f07003f;
         public static final int s1_length=0x7f07002c;
         public static final int s2_length=0x7f07002d;
         public static final int s3_length=0x7f07002e;
         public static final int select_your_device=0x7f070038;
+        public static final int sensitivity=0x7f07004b;
         public static final int sevsitivity=0x7f070022;
         public static final int shots=0x7f07000c;
         public static final int simple_shoot=0x7f070030;
