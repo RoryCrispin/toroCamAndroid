@@ -15,7 +15,7 @@
 */
 package com.rozzles.torocam;
 
-import java.util.ArrayList;
+
 
 import com.rozzles.torocam.R;
 import com.rozzles.torocam.BlueComms.LocalBinder;
@@ -25,7 +25,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,13 +33,12 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.preference.PreferenceManager;
-import android.preference.Preference;
 
 public class FlatHome extends Activity {
 	public static final String TOROCAM_PREFS = "AndCamPreferences";
@@ -52,7 +51,6 @@ public class FlatHome extends Activity {
 	BlueComms mServer;
 	boolean skipSetup;
 	String[] myStringArray = {"Help","Power Off"};
-	String[] checkboxarraypop = {"test","testtt"};
 	Context c;
 
 
@@ -140,81 +138,41 @@ public class FlatHome extends Activity {
 	 * Set of simple methods to forward the user to the appropriate 
 	 * activities for different functions
 	 */
-
-	public void simpleShootClick(View v) {
+	public void navigateToClass(Context context, Class classToNavigate)
+	{
 		try    {
-			Intent newIntent = new Intent(v.getContext(), ShutterRelease.class);    
+			Intent newIntent = new Intent(context, classToNavigate);    
 			startActivityForResult(newIntent, 0);
 			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
 		} catch(Exception ex) {
-			//I don't handle catches because I'm lazy 
+			Log.d("TOROCAM", "Somethign went wrong with changing activities, Error: " + ex);
 		}
+	}
+	public void simpleShootClick(View v) {
+		navigateToClass(v.getContext(), ShutterRelease.class);
 	}
 
 	public void timelapseClick(View v) {
-		try    {
-			Intent newIntent = new Intent(v.getContext(), Timelapse.class);    
-			startActivityForResult(newIntent, 0);
-			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
-		} catch(Exception ex) {
-			//I don't handle catches because I'm lazy 
-		}
+		navigateToClass(v.getContext(), Timelapse.class);
 	}
 	public void lightClick(View v) {
-		try    {
-			Intent newIntent = new Intent(v.getContext(), LightTrigger.class);    
-			startActivityForResult(newIntent, 0);
-			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
-		} catch(Exception ex) {
-			//I don't handle catches because I'm lazy 
-		}
+		navigateToClass(v.getContext(), LightTrigger.class);
 	}
 	public void	soundClick(View v) {
-		try    {
-			Intent newIntent = new Intent(v.getContext(), SoundTrigger.class);    
-			startActivityForResult(newIntent, 0);
-			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
-		} catch(Exception ex) {
-			//I don't handle catches because I'm lazy 
-		}
+		navigateToClass(v.getContext(), SoundTrigger.class);
 	}
 	public void	shakeClick(View v) {
-		try    {
-			Intent newIntent = new Intent(v.getContext(), ShakeTrigger.class);    
-			startActivityForResult(newIntent, 0);
-			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
-		} catch(Exception ex) {
-			System.out.println(ex);
-			//I don't handle catches because I'm lazy 
-		}
+		navigateToClass(v.getContext(), ShakeTrigger.class);
 	}
 
 	public void	dripClick(View v) {
-		try    {
-			Intent newIntent = new Intent(v.getContext(), DripTrig.class);    
-			startActivityForResult(newIntent, 0);
-			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
-		} catch(Exception ex) {
-			//I don't handle catches because I'm lazy 
-		}
+		navigateToClass(v.getContext(), DripTrig.class);
 	}
 	public void	hdrClick(View v) {
-		try    {
-			Intent newIntent = new Intent(v.getContext(), HDRLapse.class);    
-			startActivityForResult(newIntent, 0);
-			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
-		} catch(Exception ex) {
-			//I don't handle catches because I'm lazy 
-		}
+		navigateToClass(v.getContext(), HDRLapse.class);
 	}
 	public void	srvClick(View v) {
-		try    {
-			Intent newIntent = new Intent(v.getContext(), ServoTimelapse.class);    
-			startActivityForResult(newIntent, 0);
-			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
-		} catch(Exception ex) {
-			//I don't handle catches because I'm lazy 
-		}
+		navigateToClass(v.getContext(), ServoTimelapse.class);
 	}
 
 	//This creates the popup options dialog
@@ -233,15 +191,7 @@ public class FlatHome extends Activity {
 				editor.putBoolean("skipSetup", false);
 				editor.putBoolean("completedSetup", false);
 				editor.commit();
-				try    {
-					Intent newIntent = new Intent(v.getContext(), SetupOne.class);    
-					startActivityForResult(newIntent, 0);
-					overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
-				} catch(Exception ex) {
-					//I don't handle catches because I'm lazy 
-					System.out.println(ex);
-					//Oh wait, yeah I do
-				}
+				navigateToClass(v.getContext(), SetupOne.class);
 			}
 		});
 		helpBuilder.setMultiChoiceItems(R.array.optionsCheckboxes, advFunctionsState,
@@ -365,12 +315,6 @@ public class FlatHome extends Activity {
 	}
 	//Called to switch activities to the first setup
 	public void startSetup(View v){
-		try    {
-			Intent newIntent = new Intent(v.getContext(), SetupOne.class);    
-			startActivityForResult(newIntent, 0);
-			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
-		} catch(Exception ex) {
-			//I don't handle catches because I'm lazy 
-		}
+		navigateToClass(v.getContext(), SetupOne.class);
 	}
 }
