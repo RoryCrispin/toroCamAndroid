@@ -33,49 +33,38 @@ import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class SoundTrigger extends Activity {
-	
+public class SoundTrigger extends toroCamTrigger {
+	/*
 	@Override 
 	public void onPause(){
 		super.onPause();
 		mBounded = false;
 		mServer = null;
 	}
-	
-	@Override
-	public void onBackPressed() {
-		//TODO leaking service 
-	    super.onBackPressed();
-	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-	    
-	}
+	*/
+
 	public float delay;
 	public float mod;
 	public int bulbBinary;
 	public int chkPersBinary;
 	CheckBox bulb;
 	CheckBox chkPers;
-	boolean mBounded;
-	BlueComms mServer;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_sound_trigger);
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.s1Text);
-		tv.setTypeface(tf);
+		
 		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
 		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);
 		final TextView modView = (TextView) findViewById(R.id.multiplierVal);
 		bulb = (CheckBox) findViewById(R.id.bulbCheck);
 		chkPers = (CheckBox) findViewById(R.id.chkPersistant);
-		Intent mIntent = new Intent(this, BlueComms.class);
-	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
-
+	
 		delaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 					@Override
@@ -110,31 +99,11 @@ public class SoundTrigger extends Activity {
 			}
 		});
 	}
-	ServiceConnection mConnection = new ServiceConnection() {
-
-		public void onServiceDisconnected(ComponentName name) {
-			mBounded = false;
-			mServer = null;
-		}
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			mBounded = true;
-			LocalBinder mLocalBinder = (LocalBinder)service;
-			mServer = mLocalBinder.getServerInstance();
-		}
-	};
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.light_trigger, menu);
-		return true;
-	}
+	
 
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
-		startActivityForResult(myIntent, 0);
-		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-		return true;
-	}
+
+
 
 	public void CaptureClick(View v) {
 		
