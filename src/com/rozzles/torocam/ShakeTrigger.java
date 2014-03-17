@@ -39,41 +39,29 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class ShakeTrigger extends Activity {
+public class ShakeTrigger extends toroCamTrigger {
 	
 	@Override 
 	public void onPause(){
 		super.onPause();
-		mBounded = false;
-		mServer = null;
+
 	}
 	
-	@Override
-	public void onBackPressed() {
-		//TODO leaking service 
-	    super.onBackPressed();
-	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-	    
-	}
 	public float delay;
 	public float mod;
 	public int bulbBinary;
 	CheckBox bulb;
 	CheckBox chkPersistant;
-	boolean mBounded;
-	BlueComms mServer;
 	boolean listen;
 	ToggleButton tog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_shake_trigger);
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.s1Text);
-		tv.setTypeface(tf);
+		super.onCreate(savedInstanceState);
+		
+	
 		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
 		tog = (ToggleButton) findViewById(R.id.CaptureButton); 
@@ -81,9 +69,7 @@ public class ShakeTrigger extends Activity {
 		final TextView modView = (TextView) findViewById(R.id.multiplierVal);
 		bulb = (CheckBox) findViewById(R.id.bulbCheck);
 		chkPersistant = (CheckBox) findViewById(R.id.chkPersistant);
-		Intent mIntent = new Intent(this, BlueComms.class);
-	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
-	     
+		
 	     mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 		    mSensorManager.registerListener(mSensorListener, mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
 		    mAccel = 0.00f;
@@ -162,26 +148,13 @@ public class ShakeTrigger extends Activity {
 	    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 	    }
 	  };
-
-	
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.light_trigger, menu);
-		return true;
-	}
-
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
-		startActivityForResult(myIntent, 0);
-		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-		return true;
-	}
-
-	public void CaptureClick(View v) {
-		listen = tog.isChecked();
-		
-		
-		//mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + "0" + "," + bulbBinary + ",0,0,0,0!");
-	}
+	  @Override 
+	  public void sendCapture() {
+		  listen = tog.isChecked();
+	  }
+	  @Override 
+	  void sendCapture_Volume(){
+		  tog.setChecked(!tog.isChecked());
+		  listen = tog.isChecked();
+	  }
 }

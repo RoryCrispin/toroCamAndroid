@@ -36,7 +36,7 @@ line or you'll get crashes for setting the typeface before loading the xml.
 	
 	Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.s1Text);
+		TextView tv = (TextView) findViewById(R.id.headerTitle);
 		tv.setTypeface(tf);
 
 

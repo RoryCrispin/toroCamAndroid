@@ -64,7 +64,7 @@ public class toroCamTrigger extends Activity {
 		super.onCreate(savedInstanceState);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.s1Text);
+		TextView tv = (TextView) findViewById(R.id.headerTitle);
 		tv.setTypeface(tf);
 
 		settings = getSharedPreferences(TOROCAM_PREFS, 0);
@@ -102,7 +102,7 @@ public class toroCamTrigger extends Activity {
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) { 
 		if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) { 
-			sendCapture();
+			sendCapture_Volume();
 			return true;
 		} else if( keyCode == KeyEvent.KEYCODE_MENU) {
 			optionsClicked(v);
@@ -114,6 +114,16 @@ public class toroCamTrigger extends Activity {
 	public void sendCapture(){
 		//Overridden by subclass	
 	}
+	
+	//Some activities need to perform different functions when the volume buttons 
+	//are used instead of the on screen buttons and will override this. Others won't
+	void sendCapture_Volume(){
+		sendCapture();
+	}
+	public void CaptureClick(View v) {
+		sendCapture();
+	}
+	
 	public boolean advancedMode(){
 		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
 		if(!(prefs.getBoolean("advFunctions", false))){

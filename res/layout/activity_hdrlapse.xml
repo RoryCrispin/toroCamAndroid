@@ -12,6 +12,41 @@
       android:paddingRight="@dimen/activity_horizontal_margin"
       android:paddingTop="@dimen/activity_vertical_margin" >
 
+      <RelativeLayout
+          android:id="@+id/headerLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:paddingLeft="@dimen/activity_horizontal_margin"
+          android:paddingRight="@dimen/activity_horizontal_margin" >
+
+          <ImageView
+              android:id="@+id/imageView4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:contentDescription="@string/todo"
+              android:src="@drawable/ic_action_backaction" />
+
+          <ImageView
+              android:id="@+id/ImageView08"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:contentDescription="@string/todo"
+              android:onClick="optionsClicked"
+              android:src="@drawable/ic_launcher_menu" />
+
+          <TextView
+              android:id="@+id/headerText"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:text="@string/smartshutter"
+              android:textColor="#3B97D3"
+              android:textSize="40sp" />
+      </RelativeLayout>
+
     <SeekBar
         android:id="@+id/sTwoSeek"
         android:layout_width="match_parent"
@@ -130,27 +165,6 @@
         android:layout_toLeftOf="@+id/sThreeLabel"
         android:text="@string/zero" />
 
-    <TextView
-        android:id="@+id/dialog_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center_horizontal"
-        android:text="@string/smartshutter"
-        android:textColor="#3B97D3"
-        android:textSize="40sp" />
-
-    <TextView
-        android:id="@+id/s1Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="51dp"
-        android:text="@string/s1_length" />
-
     <SeekBar
         android:id="@+id/sOneSeek"
         android:layout_width="match_parent"
@@ -158,6 +172,14 @@
         android:layout_alignLeft="@+id/sTwoSeek"
         android:layout_below="@+id/s1Text"
         android:max="200" />
+
+    <TextView
+        android:id="@+id/s1Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/headerLayout"
+        android:layout_below="@+id/headerLayout"
+        android:text="@string/s1_length" />
 
 </RelativeLayout>
 </ScrollView>

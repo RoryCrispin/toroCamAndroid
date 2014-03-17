@@ -53,7 +53,7 @@ public class FlatHome extends toroCamTrigger {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_flat_home);
 		super.onCreate(savedInstanceState);
 

@@ -218,6 +218,10 @@ public class Timelapse extends toroCamTrigger {
 		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
 		return true;
 	}
+	public void sendCapture_Volume(){
+		captureToggle.setChecked(!captureToggle.isChecked()); 
+		sendCapture();
+	}
 	public void sendCapture(){
 		if (captureToggle.isChecked()) {
 			delayParse();

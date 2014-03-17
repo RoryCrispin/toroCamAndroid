@@ -39,12 +39,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
 
-public class HDRLapse extends Activity {
-	@Override
-	public void onBackPressed() {
-	    super.onBackPressed();
-	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-	}
+public class HDRLapse extends toroCamTrigger {
 
 	int delay;
 	int spin = 1;
@@ -52,9 +47,6 @@ public class HDRLapse extends Activity {
 	int mins = 0; 
 	int hurs = 0;
 	public int shotsvar;
-	
-	boolean mBounded;
-	BlueComms mServer;
 	
 	float sOneVal;
 	float sTwoVal;
@@ -80,14 +72,10 @@ public class HDRLapse extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_hdrlapse);
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.dialog_title);
-		tv.setTypeface(tf);
-
+		super.onCreate(savedInstanceState);
 		
 		sOneSeek  = (SeekBar) findViewById(R.id.sOneSeek);
 		sTwoSeek  = (SeekBar) findViewById(R.id.sTwoSeek);
@@ -102,8 +90,7 @@ public class HDRLapse extends Activity {
 		sDelayLabel  = (TextView) findViewById(R.id.sDelLabel);
 		spinner = (Spinner) findViewById(R.id.sDelSpinner);
 		hdrCheck = (CheckBox) findViewById(R.id.hdrCheck);
-		Intent mIntent = new Intent(this, BlueComms.class);
-		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+		
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this,
 
@@ -263,32 +250,9 @@ public class HDRLapse extends Activity {
 		});
 		
 	}
-	ServiceConnection mConnection = new ServiceConnection() {
-
-		public void onServiceDisconnected(ComponentName name) {
-			mBounded = false;
-			mServer = null;
-		}
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			mBounded = true;
-			LocalBinder mLocalBinder = (LocalBinder)service;
-			mServer = mLocalBinder.getServerInstance();
-		}
-	};
-
-	
 
 
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
-		startActivityForResult(myIntent, 0);
-		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-		return true;
-	}
-	
-	
-	public void captureClick (View v){
-		
+	public void sendCapture(){
 		if (hdrCheck.isChecked() == false) {
 			shotsvar = 1;
 		} else {
@@ -299,12 +263,7 @@ public class HDRLapse extends Activity {
 		clearTimes();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.hdrlapse, menu);
-		return true;
-	}
+
 	public void delayParse(){
 		if (spin == 1){
 			secs = sDelaySeek.getProgress();

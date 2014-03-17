@@ -33,15 +33,9 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class DripTrig extends Activity {
-	@Override
-	public void onBackPressed() {
-	    super.onBackPressed();
-	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-	}
+public class DripTrig extends toroCamTrigger {
+
 	float delay;
-	boolean mBounded;
-	BlueComms mServer;
 
 	RadioButton micRadio = null;
 	RadioButton ldrRadio = null; 
@@ -58,13 +52,10 @@ public class DripTrig extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_drip_trig);
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.s1Text);
-		tv.setTypeface(tf);
+		super.onCreate(savedInstanceState);
+		
 		sensSlide  = (SeekBar) findViewById(R.id.sensitivitySlider);
 		dlengthSlide  = (SeekBar) findViewById(R.id.dlengthSlider);
 		dnoSlide  = (SeekBar) findViewById(R.id.dnoSlider);
@@ -79,8 +70,7 @@ public class DripTrig extends Activity {
 
 		micRadio = (RadioButton) findViewById(R.id.MICradio);
 		ldrRadio = (RadioButton) findViewById(R.id.LDRradio);
-		Intent mIntent = new Intent(this, BlueComms.class);
-		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+		
 		sensSlide.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 			@Override
@@ -193,32 +183,8 @@ public class DripTrig extends Activity {
 		});
 
 	}
-	ServiceConnection mConnection = new ServiceConnection() {
-
-		public void onServiceDisconnected(ComponentName name) {
-			mBounded = false;
-			mServer = null;
-		}
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			mBounded = true;
-			LocalBinder mLocalBinder = (LocalBinder)service;
-			mServer = mLocalBinder.getServerInstance();
-		}
-	};
-
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.drip_trig, menu);
-		return true;
-	}
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
-		startActivityForResult(myIntent, 0);
-		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-		return true;
-	}
-	public void captureClick(View v){
+	public void sendCapture(){
 		if (micRadio.isChecked()) {
 			micSens = sensSlide.getProgress();
 			ldrSens = 1000;
@@ -229,6 +195,7 @@ public class DripTrig extends Activity {
 		mServer.sendData("4,"+ micSens +"," + ldrSens +"," + (dlengthSlide.getProgress()) + "," + 
 		(dnoSlide.getProgress()) + "," + (dbdSlide.getProgress()) + "," + (flashSlide.getProgress()) + ",0,0,0!");
 	}
+
 	public void Recal(View v) {
 		mServer.sendData("9,0,0,0,0,0,0,0,0,0!");
 	}

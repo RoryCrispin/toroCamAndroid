@@ -33,35 +33,23 @@ import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class LightTrigger extends Activity {
-	@Override
-	public void onBackPressed() {
-	    super.onBackPressed();
-	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-	}
+public class LightTrigger extends toroCamTrigger {
 	public float delay;
 	public float mod;
 	public int bulbBinary;
-	
-	boolean mBounded;
-	BlueComms mServer;
-
+	CheckBox bulb;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_light_trigger);
+		super.onCreate(savedInstanceState);
 		
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.s1Text);
-		tv.setTypeface(tf);
+		bulb = (CheckBox) findViewById(R.id.bulbCheck);
 		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
 		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);
 		final TextView modView = (TextView) findViewById(R.id.multiplierVal);
-		Intent mIntent = new Intent(this, BlueComms.class);
-	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+
 		delaySeek
 				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -98,34 +86,8 @@ public class LightTrigger extends Activity {
 		});
 	}
 
-	ServiceConnection mConnection = new ServiceConnection() {
-
-		public void onServiceDisconnected(ComponentName name) {
-			mBounded = false;
-			mServer = null;
-		}
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			mBounded = true;
-			LocalBinder mLocalBinder = (LocalBinder)service;
-			mServer = mLocalBinder.getServerInstance();
-		}
-	};
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.light_trigger, menu);
-		return true;
-	}
-
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
-		startActivityForResult(myIntent, 0);
-		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-		return true;
-	}
-
-	public void CaptureClick(View v) {
-		final CheckBox bulb = (CheckBox) findViewById(R.id.bulbCheck);
+	public void sendCapture(){
+		
 		if (bulb.isChecked() == true) {
 			bulbBinary = 1;
 		} else {
@@ -134,6 +96,7 @@ public class LightTrigger extends Activity {
 		mServer.sendData("3,1000,"+ Math.round((200-(mod*100))) + "," + Math.round(delay*1000) + "," + bulbBinary
 				+ ",0,0,0,0,0!");
 	}
+
 	public void Recal(View v) {
 		mServer.sendData("9,1!");
 	}

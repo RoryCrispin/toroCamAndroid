@@ -120,7 +120,7 @@
         android:src="@drawable/grass1" android:contentDescription="@string/todo"/>
 
     <TextView
-        android:id="@+id/s1Text"
+        android:id="@+id/headerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/LinButtons"
@@ -134,7 +134,7 @@
         android:id="@+id/dialog_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/s1Text"
+        android:layout_above="@+id/headerTitle"
         android:layout_centerHorizontal="true"
         android:text="@string/welcome_to"
         android:textAppearance="?android:attr/textAppearanceMedium" />

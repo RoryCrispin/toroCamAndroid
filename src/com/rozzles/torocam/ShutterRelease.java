@@ -142,13 +142,6 @@ public class ShutterRelease extends toroCamTrigger {
 		});
 	}
 
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
-		startActivityForResult(myIntent, 0);
-		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-		return true;
-	}
-
 	public String delayParse(){
 		System.out.println(bulbMode);
 		if(bulbMode){
@@ -160,14 +153,5 @@ public class ShutterRelease extends toroCamTrigger {
 
 	public void sendCapture() {
 		mServer.sendData("1," + prog + "," + delayParse() + "," + (bulbMode? 1 : 0) + "!");
-	}
-	void CaptureClick(View v) {
-		sendCapture();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.shutter_release, menu);
-		return true;
 	}
 }

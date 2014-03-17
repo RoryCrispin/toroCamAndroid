@@ -42,14 +42,9 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ToggleButton;
 
-public class ServoTimelapse extends Activity {
+public class ServoTimelapse extends toroCamTrigger {
 	
-	@Override
-	public void onBackPressed() {
-	    super.onBackPressed();
-	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-	}
-	
+
 	boolean mBounded;
 	BlueComms mServer;
 	
@@ -58,17 +53,14 @@ public class ServoTimelapse extends Activity {
 	SeekBar endXseek = null;
 	SeekBar endYseek = null;
 	SeekBar delaySeek = null;
-	
+	ToggleButton captureToggle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_servo_timelapse);
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.s1Text);
-		tv.setTypeface(tf);
+		super.onCreate(savedInstanceState);
+
 		//Init ui elements
 		final TextView startXvalue = (TextView) findViewById(R.id.startXvalue);
 		final TextView startYvalue = (TextView) findViewById(R.id.startYvalue);
@@ -81,9 +73,8 @@ public class ServoTimelapse extends Activity {
 		endXseek = (SeekBar) findViewById(R.id.endXseek);
 		endYseek = (SeekBar) findViewById(R.id.endYseek);
 		delaySeek = (SeekBar) findViewById(R.id.delaySeek);
-		
-		Intent mIntent = new Intent(this, BlueComms.class);
-		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+
+		captureToggle = (ToggleButton) findViewById(R.id.servToggle);
 		
 		delaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 			
@@ -185,23 +176,13 @@ public class ServoTimelapse extends Activity {
 				
 			}});
 	}
-
-	ServiceConnection mConnection = new ServiceConnection() {
-
-		public void onServiceDisconnected(ComponentName name) {
-			mBounded = false;
-			mServer = null;
-		}
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			mBounded = true;
-			LocalBinder mLocalBinder = (LocalBinder)service;
-			mServer = mLocalBinder.getServerInstance();
-		}
-	};
-	
-	public void onToggleClicked(View view) {
-		boolean on = ((ToggleButton) view).isChecked();
-		if (on) {
+	public void sendCapture_Volume(){
+		captureToggle.setChecked(!captureToggle.isChecked()); 
+		sendCapture();
+	}
+	public void sendCapture(){
+		
+		if (captureToggle.isChecked()) {
 			
 			mServer.sendData("6," + startXseek.getProgress() + "," + startYseek.getProgress() + "," + endXseek.getProgress() + "," + endYseek.getProgress() + "," + delaySeek.getProgress() + ","  + "0,0,0,0!");
 			
@@ -210,20 +191,4 @@ public class ServoTimelapse extends Activity {
 		}
 	}
 	
-	public void onOptionsClicked(View view){
-		
-	}
-	
-	
-
-	
-	
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.servo_timelapse, menu);
-		return true;
-	}
-
 }

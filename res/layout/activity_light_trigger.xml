@@ -12,6 +12,36 @@
       android:paddingRight="@dimen/activity_horizontal_margin"
       android:paddingTop="@dimen/activity_vertical_margin" >
 
+      <RelativeLayout
+          android:id="@+id/headerLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" >
+
+          <ImageView
+              android:id="@+id/imageView4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:src="@drawable/ic_action_backaction" />
+
+          <TextView
+              android:id="@+id/headerTitle"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerInParent="true"
+              android:text="@string/smartshutter"
+              android:textColor="#3B97D3"
+              android:textSize="40sp" />
+
+          <ImageView
+              android:id="@+id/imageView1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:onClick="optionsClicked"
+              android:src="@drawable/ic_launcher_menu" />
+      </RelativeLayout>
+
     <TextView
         android:id="@+id/sensitivityTextView"
         android:layout_width="wrap_content"
@@ -81,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/LightDelay"
-        android:layout_below="@+id/s1Text"
+        android:layout_below="@+id/headerLayout"
         android:text="@string/delay"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -96,17 +126,6 @@
         android:onClick="Recal"
         android:text="@string/recallob"
         android:textColor="#FFFFFF" />
-
-    <TextView
-        android:id="@+id/s1Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/smartshutter"
-        android:textColor="#3B97D3"
-        android:textSize="40sp" />
 
 </RelativeLayout>
 </ScrollView>

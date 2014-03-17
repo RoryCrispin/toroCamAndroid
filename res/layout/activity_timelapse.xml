@@ -55,7 +55,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 <TextView
-    android:id="@+id/s1Text"
+    android:id="@+id/headerTitle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
@@ -77,7 +77,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignLeft="@+id/TimeDelaySeek"
-    android:layout_below="@+id/s1Text"
+    android:layout_below="@+id/headerTitle"
     android:text="@string/delay" />
 
 <TextView

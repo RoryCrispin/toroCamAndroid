@@ -42,21 +42,19 @@ public class SoundTrigger extends toroCamTrigger {
 		mServer = null;
 	}
 	*/
-
 	public float delay;
 	public float mod;
 	public int bulbBinary;
 	public int chkPersBinary;
 	CheckBox bulb;
 	CheckBox chkPers;
-
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
-		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_sound_trigger);
+		super.onCreate(savedInstanceState);
+		
 		
 		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
@@ -102,11 +100,8 @@ public class SoundTrigger extends toroCamTrigger {
 	
 	
 
+	public void sendCapture(){
 
-
-
-	public void CaptureClick(View v) {
-		
 		if (bulb.isChecked() == true) {
 			bulbBinary = 1;
 		} else {
@@ -120,6 +115,9 @@ public class SoundTrigger extends toroCamTrigger {
 		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + "0" + "," + bulbBinary
 				+ ",0,0,0,0!");
 	}
+
+
+
 	public void Recal(View v) {
 		mServer.sendData("9,1!");
 	}
