@@ -221,6 +221,10 @@ public class toroCamTrigger extends Activity {
 		helpDialog.show();
 
 	}
+	
+	public void backClick(final View v) {
+		onBackPressed();
+	}
 
 
 }

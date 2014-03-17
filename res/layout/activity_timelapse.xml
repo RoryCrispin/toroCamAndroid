@@ -25,7 +25,8 @@
               android:layout_height="wrap_content"
               android:layout_alignParentLeft="true"
               android:contentDescription="@string/todo"
-              android:src="@drawable/ic_action_backaction" />
+              android:src="@drawable/ic_action_backaction"
+              android:onClick="backClick" />
 
           <ImageView
               android:id="@+id/ImageView08"
