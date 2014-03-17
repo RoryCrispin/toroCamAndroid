@@ -15,37 +15,32 @@
       <RelativeLayout
           android:id="@+id/headerLayout"
           android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:paddingLeft="@dimen/activity_horizontal_margin"
-          android:paddingRight="@dimen/activity_horizontal_margin" >
+          android:layout_height="wrap_content" >
 
           <ImageView
               android:id="@+id/imageView4"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_alignParentLeft="true"
-              android:contentDescription="@string/todo"
               android:src="@drawable/ic_action_backaction"
               android:onClick="backClick" />
-
-          <ImageView
-              android:id="@+id/ImageView08"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentRight="true"
-              android:contentDescription="@string/todo"
-              android:onClick="optionsClicked"
-              android:src="@drawable/ic_launcher_menu" />
 
           <TextView
               android:id="@+id/headerTitle"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_alignParentTop="true"
-              android:layout_centerHorizontal="true"
+              android:layout_centerInParent="true"
               android:text="@string/smartshutter"
               android:textColor="#3B97D3"
               android:textSize="40sp" />
+
+          <ImageView
+              android:id="@+id/imageView1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:onClick="optionsClicked"
+              android:src="@drawable/ic_launcher_menu" />
       </RelativeLayout>
 
     <SeekBar
