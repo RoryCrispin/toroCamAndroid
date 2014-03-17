@@ -151,6 +151,16 @@ public class toroCamTrigger extends Activity {
 				navigateToClass(v.getContext(), SetupOne.class);
 			}
 		});
+		
+		helpBuilder.setPositiveButton("Reconnect", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				mServer.Connect();
+				mServer.Connect();
+			}
+		});
+		
 		helpBuilder.setMultiChoiceItems(R.array.optionsCheckboxes, advFunctionsState,
 				new DialogInterface.OnMultiChoiceClickListener() {
 
