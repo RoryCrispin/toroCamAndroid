@@ -40,45 +40,26 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class FlatHome extends Activity {
-	public static final String TOROCAM_PREFS = "AndCamPreferences";
-	SharedPreferences.Editor editor;
+public class FlatHome extends toroCamTrigger {
+	
 
-	SharedPreferences settings;
+	
 	LinearLayout linButtons = null;
 	boolean[] advFunctionsState = {false};
-	boolean mBounded;
-	BlueComms mServer;
+
+
 	boolean skipSetup;
 	String[] myStringArray = {"Help","Power Off"};
 	Context c;
 
 
-	Intent mIntent;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
-
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_flat_home);
 		super.onCreate(savedInstanceState);
 
-
-		settings = getSharedPreferences(TOROCAM_PREFS, 0);
-		editor = settings.edit();
-
-
-		Intent mIntent = new Intent(this, BlueComms.class); 
-		startService(mIntent);
-		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
-		//Indie helvetica stuff explained in other classes
-		setContentView(R.layout.activity_flat_home);
-
-
-
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.s1Text);
-		tv.setTypeface(tf);
 
 		/*
 		 * This checks to see if the user has already run the set up utility
@@ -106,16 +87,7 @@ public class FlatHome extends Activity {
 		getMenuInflater().inflate(R.menu.flat_home, menu);
 		return true;
 	}
-	/*
-	 * (non-Javadoc)
-	 * @see android.app.Activity#onBackPressed()
-	 * Overrides the back button press and inserts the custom slide transition
-	 */
-	@Override
-	public void onBackPressed(){
-		super.onBackPressed();
-		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-	}
+
 	/*
 	 * This method is called to check the shared preference to see if the user
 	 * has already run setup, if they have it returns true, otherwise false

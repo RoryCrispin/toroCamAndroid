@@ -37,13 +37,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class Timelapse extends Activity {
-	public static final String TOROCAM_PREFS = "AndCamPreferences";
-	@Override
-	public void onBackPressed() {
-	    super.onBackPressed();
-	    overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-	}
+public class Timelapse extends toroCamTrigger {
+	
 	public long millis;
 	public int shots;
 	int delay;
@@ -51,21 +46,14 @@ public class Timelapse extends Activity {
 	int secs = 0;
 	int mins = 0; 
 	int hurs = 0;
-	boolean mBounded;
-	BlueComms mServer;
 	int move;
+	ToggleButton captureToggle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_timelapse);
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.s1Text);
-		tv.setTypeface(tf);
-		//ActionBar actionBar = getActionBar();
-		//actionBar.setDisplayHomeAsUpEnabled(true);
+		super.onCreate(savedInstanceState);
 		final SeekBar delaySeek = (SeekBar) findViewById(R.id.TimeDelaySeek);
 		final SeekBar shotsSeek = (SeekBar) findViewById(R.id.ShotsSeek);
 		final SeekBar functionSeek = (SeekBar) findViewById(R.id.seekFunction);
@@ -75,9 +63,11 @@ public class Timelapse extends Activity {
 		final TextView totalTime = (TextView) findViewById(R.id.totalTime);
 		final TextView totalShotView = (TextView) findViewById(R.id.totalShots);
 		final TextView textvalFunction = (TextView) findViewById(R.id.textvalFunction);
-		Intent mIntent = new Intent(this, BlueComms.class);
-	     bindService(mIntent, mConnection, BIND_AUTO_CREATE);
 		final TimeParse timeparse = new TimeParse();
+		captureToggle  = (ToggleButton) findViewById(R.id.toggleButton1);
+
+
+		
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this,
 
@@ -180,8 +170,7 @@ public class Timelapse extends Activity {
 		 */
 		
 		
-		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
-		if(!(prefs.getBoolean("advFunctions", false))){
+		if(advancedMode()){
 			textvalFunction.setVisibility(View.INVISIBLE);
 			functionSeek.setVisibility(View.INVISIBLE);
 			totalShotView.setVisibility(View.INVISIBLE);
@@ -229,10 +218,8 @@ public class Timelapse extends Activity {
 		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
 		return true;
 	}
-
-	public void onToggleClicked(View view) {
-		boolean on = ((ToggleButton) view).isChecked();
-		if (on) {
+	public void sendCapture(){
+		if (captureToggle.isChecked()) {
 			delayParse();
 			mServer.sendData("2," + secs + "," + mins + "," + hurs + "," + shots
 					+ "," + move + ",0,0,0,0!");
@@ -241,6 +228,11 @@ public class Timelapse extends Activity {
 			mServer.sendData("0,0,0,0,0,0,0,0,0,0!");
 		}
 	}
+	
+	public void onToggleClicked(View view) {
+		sendCapture();
+	}
+	
 	public void delayParse(){
 		if (spin == 1){
 			secs = delay;

@@ -20,7 +20,6 @@ import com.rozzles.torocam.BlueComms.LocalBinder;
 
 import android.os.Bundle;
 import android.os.IBinder;
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -39,17 +38,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class ShutterRelease extends Activity {
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
-	}
+public class ShutterRelease extends toroCamTrigger {
 
 
-	boolean mBounded;
-	boolean bulbMode;
-	BlueComms mServer;
 	public int prog = 0;
 	public int bulbProg = 0;
 	public int spin = 1;
@@ -58,19 +49,11 @@ public class ShutterRelease extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		super.onCreate(savedInstanceState);
-
-		Intent mIntent = new Intent(this, BlueComms.class);
-		bindService(mIntent, mConnection, BIND_AUTO_CREATE);
-
-
 		setContentView(R.layout.activity_shutter_release);
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.s1Text);
-		tv.setTypeface(tf);
-		SeekBar seekBar = (SeekBar) findViewById(R.id.TimeDelaySeek);
+		super.onCreate(savedInstanceState);
 		
+		
+		SeekBar seekBar = (SeekBar) findViewById(R.id.TimeDelaySeek);
 		final SeekBar ShutterBmodeSeek = (SeekBar) findViewById(R.id.shutterBmodeSeek);
 		final TextView seekBarValue = (TextView) findViewById(R.id.delayIntView);
 		final TextView ShutterBmodeText = (TextView) findViewById(R.id.shutterBmodeText);
@@ -93,11 +76,8 @@ public class ShutterRelease extends Activity {
 					spinner.setEnabled(false);
 					bulbMode = false;
 				}
-
 			}
-
 		});
-
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this,
 
@@ -160,35 +140,7 @@ public class ShutterRelease extends Activity {
 			public void onStopTrackingTouch(SeekBar seekBar) {
 			}
 		});
-		
-		
-		
-
 	}
-
-
-	ServiceConnection mConnection = new ServiceConnection() {
-
-		public void onServiceDisconnected(ComponentName name) {
-			mBounded = false;
-			mServer = null;
-		}
-
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			mBounded = true;
-			LocalBinder mLocalBinder = (LocalBinder)service;
-			mServer = mLocalBinder.getServerInstance();
-		}
-	};
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-		if(mBounded) {
-			unbindService(mConnection);
-			mBounded = false;
-		}
-	};
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
@@ -204,11 +156,13 @@ public class ShutterRelease extends Activity {
 		} else {
 			return "0";
 		}
-
 	}
 
-	public void CaptureClick(View view) {
+	public void sendCapture() {
 		mServer.sendData("1," + prog + "," + delayParse() + "," + (bulbMode? 1 : 0) + "!");
+	}
+	void CaptureClick(View v) {
+		sendCapture();
 	}
 
 	@Override
@@ -216,14 +170,4 @@ public class ShutterRelease extends Activity {
 		getMenuInflater().inflate(R.menu.shutter_release, menu);
 		return true;
 	}
-
-	public boolean onKeyDown(int keyCode, KeyEvent event) { 
-		if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) { 
-			mServer.sendData("1," + prog + "," + delayParse() + "!");
-			return true;
-		} else {
-			return super.onKeyDown(keyCode, event); 
-		}
-	}
-
 }
