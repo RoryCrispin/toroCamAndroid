@@ -11,6 +11,42 @@
       android:paddingLeft="@dimen/activity_horizontal_margin"
       android:paddingRight="@dimen/activity_horizontal_margin"
       android:paddingTop="@dimen/activity_vertical_margin" >
+
+      <RelativeLayout
+          android:id="@+id/headerLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:paddingLeft="@dimen/activity_horizontal_margin"
+          android:paddingRight="@dimen/activity_horizontal_margin" >
+
+          <ImageView
+              android:id="@+id/imageView4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:contentDescription="@string/todo"
+              android:src="@drawable/ic_action_backaction" />
+
+          <ImageView
+              android:id="@+id/ImageView08"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:contentDescription="@string/todo"
+              android:onClick="optionsClicked"
+              android:src="@drawable/ic_launcher_menu" />
+
+          <TextView
+              android:id="@+id/headerTitle"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:text="@string/smartshutter"
+              android:textColor="#3B97D3"
+              android:textSize="40sp" />
+      </RelativeLayout>
+
 <SeekBar
         android:id="@+id/ShotsSeek"
         android:layout_width="match_parent"
@@ -54,16 +90,6 @@
         android:text="@string/zero"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-<TextView
-    android:id="@+id/headerTitle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true"
-    android:text="@string/smartshutter"
-    android:textColor="#3B97D3"
-    android:textSize="40sp" />
-
 <SeekBar
     android:id="@+id/TimeDelaySeek"
     android:layout_width="match_parent"
@@ -76,8 +102,8 @@
     android:id="@+id/startXtitle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+     android:layout_below="@+id/headerLayout"
     android:layout_alignLeft="@+id/TimeDelaySeek"
-    android:layout_below="@+id/headerTitle"
     android:text="@string/delay" />
 
 <TextView
