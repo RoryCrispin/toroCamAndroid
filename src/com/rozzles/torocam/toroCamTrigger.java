@@ -30,7 +30,8 @@ public class toroCamTrigger extends Activity {
 	View v;
 	Intent mIntent;
 	Context c;
-
+	private static final String TAG = "toroCam";
+	
 	boolean[] advFunctionsState = {false};
 	/*
 	 * (non-Javadoc)
@@ -65,7 +66,12 @@ public class toroCamTrigger extends Activity {
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
 		TextView tv = (TextView) findViewById(R.id.headerTitle);
-		tv.setTypeface(tf);
+		try {
+			tv.setTypeface(tf);
+		} catch(Exception ex)
+		{
+			System.out.println(ex);
+		}
 
 		settings = getSharedPreferences(TOROCAM_PREFS, 0);
 		editor = settings.edit();
