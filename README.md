@@ -109,9 +109,9 @@ This is no longer needed but you may still see it in some of the code until it's
 
 Guidelines
 ==========
-All work you add to this project will be under the same license we're using, 'CreativeCommons Attribution-ShareAlike 3.0 Unported'
+All work you add to this project will be under the same license we're using, 'Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)'
 We're currently in the process of cleaning up the Android app which has become a bit of a mess of button1's and unstructured names like 'shutterBmodeSeek' and such. If you're pushing new code to the project we expect it to have a solid naming structure with no unnamed or default objects. Other than that we're pretty flex right now. 
 
 License
 =======
-All code here is licenced under the 'CreativeCommons Attribution-ShareAlike 3.0 Unported' License found here http://creativecommons.org/licenses/by-sa/3.0/
+All code here is licenced under the 'Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) ' License found here http://creativecommons.org/licenses/by-nc-sa/4.0/

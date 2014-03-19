@@ -1,17 +1,16 @@
 /*
  * Rory Crispin --rorycrispin.co.uk -- rozzles.com
- *
- * Distributed under the Creative Commons
- * Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
- * License, full conditions can be found here:
- * http://creativecommons.org/licenses/by-sa/3.0/
- *
- * This is free software, and you are welcome to redistribute it
- * under certain conditions;
- *
- * Go crazy,
- * Rozz xx
- *
+ * 
+ * Distributed under theAttribution-NonCommercial-ShareAlike 4.0 International
+ * License, full conditions can be found here: 
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/
+ *   
+ *   This is free software, and you are welcome to redistribute it
+ *   under certain conditions;
+ *   
+ *   Go crazy,
+ *   Rozz xx 
+ * 
  */
 package com.rozzles.torocam;
 
@@ -23,6 +22,7 @@ import com.rozzles.torocam.BlueComms.LocalBinder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 
@@ -63,7 +63,7 @@ public class FlatHome extends toroCamTrigger {
 		 * if they have not -> (!checkSetup()) <- it forwards them to the setup 
 		 * utility
 		 */
-		if(!checkSetup()){
+		if(checkSetup()){
 			try    {
 				Intent newIntent = new Intent(this, SetupOne.class);    
 				startActivityForResult(newIntent, 0);
@@ -83,19 +83,25 @@ public class FlatHome extends toroCamTrigger {
 	 * has already run setup, if they have it returns true, otherwise false
 	 */
 	public boolean checkSetup(){
+		SharedPreferences saved_values = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		SharedPreferences.Editor editor=saved_values.edit();
+
+		SharedPreferences settings = getSharedPreferences(TOROCAM_PREFS, 0);
+
 
 		if (settings.getBoolean("completedSetup", false)){
+			//User has already completed setup
+			return true;
+		} else if (settings.getBoolean("skipSetup", false)){
+			//User has skipped setup
+			skipSetup = true;
 			return true;
 		} else {
-			if (settings.getBoolean("skipSetup", true)){
-				skipSetup = true;
-				return true;
-			} else {
-				return false;
-			}
-		}
-
+			//Setup not run
+			return false;
+		}	
 	}
+
 	/*
 	 * Set of simple methods to forward the user to the appropriate 
 	 * activities for different functions
