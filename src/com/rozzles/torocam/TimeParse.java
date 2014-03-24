@@ -16,38 +16,44 @@ package com.rozzles.torocam;
 
 import java.util.concurrent.TimeUnit;
 
+import android.annotation.SuppressLint;
+
+@SuppressLint("NewApi")
 public class TimeParse {
 	/*
-	 * This class is used to convert the data used in the timelapse which is sent in 
-	 * TODO Seconds/Milliseconds, I think I changed this and forgot to update the names!
-	 * into a string with the format:
-	 * W Days X Hours Y Min Z Sec 
-	 * This shows the length of the timelapse.
+	 * This class is used to convert the data used in the timelapse which is
+	 * sent in TODO Seconds/Milliseconds, I think I changed this and forgot to
+	 * update the names! into a string with the format: W Days X Hours Y Min Z
+	 * Sec This shows the length of the timelapse.
 	 */
 	public static String getDurationBreakdown(long millis) {
 		if (millis < 0) {
 			throw new IllegalArgumentException(
 					"Duration must be greater than zero!");
 		}
+		try {
+			long days = TimeUnit.SECONDS.toDays(millis);
+			millis -= TimeUnit.DAYS.toSeconds(days);
+			long hours = TimeUnit.SECONDS.toHours(millis);
+			millis -= TimeUnit.HOURS.toSeconds(hours);
+			long minutes = TimeUnit.SECONDS.toMinutes(millis);
+			millis -= TimeUnit.MINUTES.toSeconds(minutes);
+			long seconds = TimeUnit.SECONDS.toSeconds(millis);
 
-		long days = TimeUnit.SECONDS.toDays(millis);
-		millis -= TimeUnit.DAYS.toSeconds(days);
-		long hours = TimeUnit.SECONDS.toHours(millis);
-		millis -= TimeUnit.HOURS.toSeconds(hours);
-		long minutes = TimeUnit.SECONDS.toMinutes(millis);
-		millis -= TimeUnit.MINUTES.toSeconds(minutes);
-		long seconds = TimeUnit.SECONDS.toSeconds(millis);
+			StringBuilder sb = new StringBuilder(64);
+			sb.append(days);
+			sb.append(" Days ");
+			sb.append(hours);
+			sb.append(" Hours ");
+			sb.append(minutes);
+			sb.append(" Min ");
+			sb.append(seconds);
+			sb.append(" Sec");
 
-		StringBuilder sb = new StringBuilder(64);
-		sb.append(days);
-		sb.append(" Days ");
-		sb.append(hours);
-		sb.append(" Hours ");
-		sb.append(minutes);
-		sb.append(" Min ");
-		sb.append(seconds);
-		sb.append(" Sec");
-
-		return (sb.toString());
+			return (sb.toString());
+		} catch (Exception e) {
+			return (""); // Timeparse may not work on android API level 9 and
+							// below so we handle it to avoid a crash
+		}
 	}
 }

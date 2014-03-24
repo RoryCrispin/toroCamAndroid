@@ -14,35 +14,27 @@
  */
 package com.rozzles.torocam;
 
-import com.rozzles.torocam.R;
-import com.rozzles.torocam.BlueComms.LocalBinder;
-
 import android.os.Bundle;
-import android.os.IBinder;
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.graphics.Typeface;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.rozzles.torocam.core.toroCamTrigger;
+
 public class LightTrigger extends toroCamTrigger {
 	public float delay;
 	public float mod;
 	public int bulbBinary;
 	CheckBox bulb;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_light_trigger);
 		super.onCreate(savedInstanceState);
-		
+
 		bulb = (CheckBox) findViewById(R.id.bulbCheck);
 		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
@@ -85,19 +77,20 @@ public class LightTrigger extends toroCamTrigger {
 		});
 	}
 
-	public void sendCapture(){
-		
+	@Override
+	public void sendCapture() {
+
 		if (bulb.isChecked() == true) {
 			bulbBinary = 1;
 		} else {
 			bulbBinary = 0;
 		}
-		mServer.sendData("3,1000,"+ Math.round((200-(mod*100))) + "," + Math.round(delay*1000) + "," + bulbBinary
-				+ ",0,0,0,0,0!");
+		sendToroCamMessage("3,1000," + Math.round((200 - (mod * 100))) + ","
+				+ Math.round(delay * 1000) + "," + bulbBinary + ",0,0,0,0,0!");
 	}
 
 	public void Recal(View v) {
-		mServer.sendData("9,1!");
+		sendToroCamMessage("9,1!");
 	}
 
 }

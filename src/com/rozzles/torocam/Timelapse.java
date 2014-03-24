@@ -14,17 +14,10 @@
  */
 package com.rozzles.torocam;
 
-import com.rozzles.torocam.R;
-import com.rozzles.torocam.BlueComms.LocalBinder;
+import com.rozzles.torocam.core.FlatHome;
 
-import android.os.Bundle;
-import android.os.IBinder;
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.content.SharedPreferences;
-import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,14 +29,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class Timelapse extends toroCamTrigger {
-	
+public class Timelapse extends com.rozzles.torocam.core.toroCamTrigger {
+
 	public long millis;
 	public int shots;
 	int delay;
 	public int spin = 1;
 	int secs = 0;
-	int mins = 0; 
+	int mins = 0;
 	int hurs = 0;
 	int move;
 	ToggleButton captureToggle;
@@ -57,16 +50,14 @@ public class Timelapse extends toroCamTrigger {
 		final SeekBar shotsSeek = (SeekBar) findViewById(R.id.ShotsSeek);
 		final SeekBar functionSeek = (SeekBar) findViewById(R.id.seekFunction);
 		Spinner spinner = (Spinner) findViewById(R.id.TimeSpinner);
-		final TextView shotsText = (TextView)findViewById(R.id.ShotsView);
+		final TextView shotsText = (TextView) findViewById(R.id.ShotsView);
 		final TextView delayView = (TextView) findViewById(R.id.TimelapseDelayView);
 		final TextView totalTime = (TextView) findViewById(R.id.totalTime);
 		final TextView totalShotView = (TextView) findViewById(R.id.totalShots);
 		final TextView textvalFunction = (TextView) findViewById(R.id.textvalFunction);
 		final TimeParse timeparse = new TimeParse();
-		captureToggle  = (ToggleButton) findViewById(R.id.toggleButton1);
+		captureToggle = (ToggleButton) findViewById(R.id.toggleButton1);
 
-
-		
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this,
 
@@ -102,9 +93,9 @@ public class Timelapse extends toroCamTrigger {
 					@Override
 					public void onProgressChanged(SeekBar shotsSeek,
 							int progress, boolean fromUser) {
-						if(progress != 0)	{
+						if (progress != 0) {
 							totalShotView.setText(progress + " shots");
-						}else{
+						} else {
 							totalShotView.setText("\u221e shots");
 						}
 						// shotsText.setText(String.valueOf(progress));
@@ -121,7 +112,8 @@ public class Timelapse extends toroCamTrigger {
 					}
 				});
 
-		delaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+		delaySeek
+				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 					@Override
 					public void onProgressChanged(SeekBar delaySeek,
 							int progress, boolean fromUser) {
@@ -138,38 +130,38 @@ public class Timelapse extends toroCamTrigger {
 					public void onStopTrackingTouch(SeekBar seekBar) {
 					}
 				});
-		
-		functionSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-			
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
-				textvalFunction.setText(progress + " ms");
-				move = progress;
-				
-			}
-		});
-		
+
+		functionSeek
+				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+					@Override
+					public void onStopTrackingTouch(SeekBar seekBar) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void onStartTrackingTouch(SeekBar seekBar) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void onProgressChanged(SeekBar seekBar,
+							int progress, boolean fromUser) {
+						textvalFunction.setText(progress + " ms");
+						move = progress;
+
+					}
+				});
+
 		/*
 		 * Checking if adv functions is enables and hiding adv options if not.
 		 * It would be tidier to have a separate void for this but it would mean
-		 *  making the objects public
+		 * making the objects public
 		 */
-		
-		
-		if(advancedMode()){
+
+		if (advancedMode()) {
 			textvalFunction.setVisibility(View.INVISIBLE);
 			functionSeek.setVisibility(View.INVISIBLE);
 			totalShotView.setVisibility(View.INVISIBLE);
@@ -179,30 +171,16 @@ public class Timelapse extends toroCamTrigger {
 
 	}
 
-	
-	ServiceConnection mConnection = new ServiceConnection() {
-
-		public void onServiceDisconnected(ComponentName name) {
-			mBounded = false;
-			mServer = null;
-		}
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			mBounded = true;
-			LocalBinder mLocalBinder = (LocalBinder)service;
-			mServer = mLocalBinder.getServerInstance();
-		}
-	};
-
 	public void totalTime(TextView totalTime, TimeParse timeparse, int delay,
 			int shots, int spin) {
 
 		millis = delay * shots * spin;
-		if(shots != 0)	{
+		if (shots != 0) {
 			totalTime.setText(TimeParse.getDurationBreakdown(millis));
-		}else{
+		} else {
 			totalTime.setText("\u221e time");
 		}
-		
+
 	}
 
 	@Override
@@ -211,43 +189,49 @@ public class Timelapse extends toroCamTrigger {
 		return true;
 	}
 
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent myIntent = new Intent(getApplicationContext(), FlatHome.class);
 		startActivityForResult(myIntent, 0);
 		overridePendingTransition(R.anim.slide_out_left, R.anim.slide_out_right);
 		return true;
 	}
-	public void sendCapture_Volume(){
-		captureToggle.setChecked(!captureToggle.isChecked()); 
+
+	@Override
+	public void sendCapture_Volume() {
+		captureToggle.setChecked(!captureToggle.isChecked());
 		sendCapture();
 	}
-	public void sendCapture(){
+
+	@Override
+	public void sendCapture() {
 		if (captureToggle.isChecked()) {
 			delayParse();
-			mServer.sendData("2," + secs + "," + mins + "," + hurs + "," + shots
-					+ "," + move + ",0,0,0,0!");
+			sendToroCamMessage("2," + secs + "," + mins + "," + hurs + ","
+					+ shots + "," + move + ",0,0,0,0!");
 			clearTimes();
 		} else {
-			mServer.sendData("0,0,0,0,0,0,0,0,0,0!");
+			sendToroCamMessage("0,0,0,0,0,0,0,0,0,0!");
 		}
 	}
-	
+
 	public void onToggleClicked(View view) {
 		sendCapture();
 	}
-	
-	public void delayParse(){
-		if (spin == 1){
+
+	public void delayParse() {
+		if (spin == 1) {
 			secs = delay;
-		} else if (spin == 60){
+		} else if (spin == 60) {
 			mins = delay;
-		} else if (spin == 3600){
+		} else if (spin == 3600) {
 			hurs = delay;
-		} else { 
+		} else {
 			System.out.println("Spin value empty");
 		}
 	}
-	public void clearTimes(){
+
+	public void clearTimes() {
 		secs = 0;
 		mins = 0;
 		hurs = 0;

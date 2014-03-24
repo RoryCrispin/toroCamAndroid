@@ -12,9 +12,13 @@
  *   Rozz xx 
  * 
  */
-package com.rozzles.torocam;
+package com.rozzles.torocam.core;
 
-import com.rozzles.torocam.BlueComms.LocalBinder;
+import com.rozzles.torocam.R;
+import com.rozzles.torocam.R.anim;
+import com.rozzles.torocam.R.array;
+import com.rozzles.torocam.R.id;
+import com.rozzles.torocam.core.BlueComms.LocalBinder;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -35,9 +39,9 @@ import android.widget.TextView;
 
 public class toroCamTrigger extends Activity {
 
-	boolean mBounded;
-	boolean bulbMode;
-	BlueComms mServer;
+	 boolean mBounded;
+	public boolean bulbMode;
+	public BlueComms mServer;
 	public static final String TOROCAM_PREFS = "AndCamPreferences";
 	SharedPreferences.Editor editor;
 	SharedPreferences settings;
@@ -137,7 +141,7 @@ public class toroCamTrigger extends Activity {
 	
 	//Some activities need to perform different functions when the volume buttons 
 	//are used instead of the on screen buttons and will override this. Others won't
-	void sendCapture_Volume(){
+	public void sendCapture_Volume(){
 		sendCapture();
 	}
 	public void CaptureClick(View v) {
@@ -151,6 +155,9 @@ public class toroCamTrigger extends Activity {
 		} else {
 			return true;
 		}
+	}
+	public void sendToroCamMessage(String message){
+		mServer.sendData(message);
 	}
 	//This creates the popup options dialog
 	public void optionsClicked(final View v) {
@@ -219,7 +226,7 @@ public class toroCamTrigger extends Activity {
 						case 0: System.out.println("NIKON CAMERA MODE");
 						break;
 						case 1: System.out.println("CANON CAMERA MODE");
-						mServer.sendData("9,2,0!");
+						sendToroCamMessage("9,2,0!");
 						break;
 						case 2: System.out.println("OLYMPUS CAMERA MODE");
 						mServer.readStream();

@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.rozzles.torocam.FlatHome"
+            android:name="com.rozzles.torocam.core.FlatHome"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
@@ -65,41 +65,42 @@
         </activity>
 
         <service
-            android:name="com.rozzles.torocam.BlueComms"
+            android:name="com.rozzles.torocam.core.BlueComms"
             android:enabled="true" >
         </service>
 
         <activity
             android:name="com.rozzles.torocam.DripTrig"
-            android:label="@string/title_activity_drip_trig" >
+            android:label="@string/title_activity_drip_trig"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name="com.rozzles.torocam.MainActivity"
-            android:label="@string/title_activity_flat_home" >
-        </activity>
+
         <activity
             android:name="com.rozzles.torocam.HDRLapse"
-            android:label="@string/title_activity_hdrlapse" >
+            android:label="@string/title_activity_hdrlapse"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.rozzles.torocam.SetupOne"
-            android:label="@string/title_activity_setup_one" >
+            android:name="com.rozzles.torocam.core.SetupOne"
+            android:label="@string/title_activity_setup_one"
+            android:screenOrientation="portrait" >
+        </activity>
+        
+        
+        <activity
+            android:name="com.rozzles.torocam.core.SetupTwo"
+            android:label="@string/title_activity_setup_two"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.rozzles.torocam.SetupTwo"
-            android:label="@string/title_activity_setup_two" >
-        </activity>
-        <activity
-            android:name="com.rozzles.torocam.SetupThree"
-            android:label="@string/title_activity_setup_three" >
-        </activity>
-        <activity
-            android:name="com.rozzles.torocam.FlatSettings"
-            android:label="@string/title_activity_flat_settings" >
+           android:name="com.rozzles.torocam.core.SetupThree"
+            android:label="@string/title_activity_setup_three"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.rozzles.torocam.ServoTimelapse"
-            android:label="@string/title_activity_servo_timelapse" >
+            android:label="@string/title_activity_servo_timelapse"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

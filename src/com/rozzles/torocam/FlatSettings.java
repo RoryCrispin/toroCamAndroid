@@ -14,10 +14,9 @@
  */
 package com.rozzles.torocam;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
-import com.rozzles.torocam.R;
 
 public class FlatSettings extends Activity {
 

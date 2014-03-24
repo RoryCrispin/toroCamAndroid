@@ -14,31 +14,21 @@
  */
 package com.rozzles.torocam;
 
-import com.rozzles.torocam.R;
-import com.rozzles.torocam.BlueComms.LocalBinder;
-
 import android.os.Bundle;
-import android.os.IBinder;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.graphics.Typeface;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+
+import com.rozzles.torocam.core.toroCamTrigger;
 
 public class ShutterRelease extends toroCamTrigger {
-
 
 	public int prog = 0;
 	public int bulbProg = 0;
@@ -50,8 +40,7 @@ public class ShutterRelease extends toroCamTrigger {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_shutter_release);
 		super.onCreate(savedInstanceState);
-		
-		
+
 		SeekBar seekBar = (SeekBar) findViewById(R.id.TimeDelaySeek);
 		final SeekBar ShutterBmodeSeek = (SeekBar) findViewById(R.id.shutterBmodeSeek);
 		final TextView seekBarValue = (TextView) findViewById(R.id.delayIntView);
@@ -61,22 +50,24 @@ public class ShutterRelease extends toroCamTrigger {
 
 		ShutterBmodeSeek.setEnabled(false);
 		spinner.setEnabled(false);
-		ShutterBmodeCheck.setOnCheckedChangeListener(new OnCheckedChangeListener()	{
+		ShutterBmodeCheck
+				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-			@Override
-			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-				if (arg1){
+					@Override
+					public void onCheckedChanged(CompoundButton arg0,
+							boolean arg1) {
+						if (arg1) {
 
-					ShutterBmodeSeek.setEnabled(true);
-					spinner.setEnabled(true);
-					bulbMode = true;
-				} else {
-					ShutterBmodeSeek.setEnabled(false);
-					spinner.setEnabled(false);
-					bulbMode = false;
-				}
-			}
-		});
+							ShutterBmodeSeek.setEnabled(true);
+							spinner.setEnabled(true);
+							bulbMode = true;
+						} else {
+							ShutterBmodeSeek.setEnabled(false);
+							spinner.setEnabled(false);
+							bulbMode = false;
+						}
+					}
+				});
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this,
 
@@ -105,23 +96,23 @@ public class ShutterRelease extends toroCamTrigger {
 
 		});
 
-		ShutterBmodeSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
-				ShutterBmodeText.setText(String.valueOf(progress));
-				bulbProg = progress;
-			};
+		ShutterBmodeSeek
+				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+					@Override
+					public void onProgressChanged(SeekBar seekBar,
+							int progress, boolean fromUser) {
+						ShutterBmodeText.setText(String.valueOf(progress));
+						bulbProg = progress;
+					};
 
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-			}
+					@Override
+					public void onStartTrackingTouch(SeekBar seekBar) {
+					}
 
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-			}
-		});
-
+					@Override
+					public void onStopTrackingTouch(SeekBar seekBar) {
+					}
+				});
 
 		seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 			@Override
@@ -141,16 +132,18 @@ public class ShutterRelease extends toroCamTrigger {
 		});
 	}
 
-	public String delayParse(){
+	public String delayParse() {
 		System.out.println(bulbMode);
-		if(bulbMode){
-			return Integer.toString(spin*bulbProg*1000);
+		if (bulbMode) {
+			return Integer.toString(spin * bulbProg * 1000);
 		} else {
 			return "0";
 		}
 	}
 
+	@Override
 	public void sendCapture() {
-		mServer.sendData("1," + prog + "," + delayParse() + "," + (bulbMode? 1 : 0) + "!");
+		sendToroCamMessage("1," + prog + "," + delayParse() + ","
+				+ (bulbMode ? 1 : 0) + "!");
 	}
 }

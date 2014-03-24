@@ -14,82 +14,71 @@
  */
 package com.rozzles.torocam;
 
-import com.rozzles.torocam.R;
-import com.rozzles.torocam.BlueComms.LocalBinder;
-
 import android.os.Bundle;
-import android.os.IBinder;
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.graphics.Typeface;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
+import com.rozzles.torocam.core.toroCamTrigger;
 
 public class HDRLapse extends toroCamTrigger {
 
 	int delay;
 	int spin = 1;
 	int secs = 0;
-	int mins = 0; 
+	int mins = 0;
 	int hurs = 0;
 	public int shotsvar;
-	
+
 	float sOneVal;
 	float sTwoVal;
 	float sThreeVal;
-	
-	
+
 	SeekBar sOneSeek = null;
 	SeekBar sTwoSeek = null;
 	SeekBar sThreeSeek = null;
 	SeekBar sShotsSeek = null;
 	SeekBar sDelaySeek = null;
-	
+
 	TextView sOneLabel = null;
 	TextView sTwoLabel = null;
 	TextView sThreeLabel = null;
 	TextView sShotsLabel = null;
 	TextView sDelayLabel = null;
 	CheckBox hdrCheck = null;
-	
+
 	CheckBox lapseBox = null;
-	
+
 	Spinner spinner = null;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_hdrlapse);
 		super.onCreate(savedInstanceState);
-		
-		sOneSeek  = (SeekBar) findViewById(R.id.sOneSeek);
-		sTwoSeek  = (SeekBar) findViewById(R.id.sTwoSeek);
-		sThreeSeek  = (SeekBar) findViewById(R.id.sThreeSeek);
-		sShotsSeek  = (SeekBar) findViewById(R.id.sShotSeek);
-		sDelaySeek  = (SeekBar) findViewById(R.id.sDelSeek);
-		
-		sOneLabel  = (TextView) findViewById(R.id.sOneLabel);
-		sTwoLabel  = (TextView) findViewById(R.id.sTwoLabel);
-		sThreeLabel  = (TextView) findViewById(R.id.sThreeLabel);
-		sShotsLabel  = (TextView) findViewById(R.id.sShotLabel);
-		sDelayLabel  = (TextView) findViewById(R.id.sDelLabel);
+
+		sOneSeek = (SeekBar) findViewById(R.id.sOneSeek);
+		sTwoSeek = (SeekBar) findViewById(R.id.sTwoSeek);
+		sThreeSeek = (SeekBar) findViewById(R.id.sThreeSeek);
+		sShotsSeek = (SeekBar) findViewById(R.id.sShotSeek);
+		sDelaySeek = (SeekBar) findViewById(R.id.sDelSeek);
+
+		sOneLabel = (TextView) findViewById(R.id.sOneLabel);
+		sTwoLabel = (TextView) findViewById(R.id.sTwoLabel);
+		sThreeLabel = (TextView) findViewById(R.id.sThreeLabel);
+		sShotsLabel = (TextView) findViewById(R.id.sShotLabel);
+		sDelayLabel = (TextView) findViewById(R.id.sDelLabel);
 		spinner = (Spinner) findViewById(R.id.sDelSpinner);
 		hdrCheck = (CheckBox) findViewById(R.id.hdrCheck);
-		
+
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this,
 
@@ -118,7 +107,6 @@ public class HDRLapse extends toroCamTrigger {
 
 		});
 
-		
 		sOneSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 			@Override
@@ -140,7 +128,7 @@ public class HDRLapse extends toroCamTrigger {
 
 			}
 
-		}); 
+		});
 		sTwoSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 			@Override
@@ -162,119 +150,127 @@ public class HDRLapse extends toroCamTrigger {
 
 			}
 
-		}); 
-		sThreeSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
-			@Override
-			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				sThreeVal = (float) arg1 / 100;
-				sThreeLabel.setText(String.valueOf(sThreeVal + "s"));
-				
-
-			}
-
-			@Override
-			public void onStartTrackingTouch(SeekBar arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void onStopTrackingTouch(SeekBar arg0) {
-				// TODO Auto-generated method stub
-
-			}
-
 		});
-		sShotsSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+		sThreeSeek
+				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
-			@Override
-			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				sShotsLabel.setText(String.valueOf(arg1 + "Shots"));
+					@Override
+					public void onProgressChanged(SeekBar arg0, int arg1,
+							boolean arg2) {
+						sThreeVal = (float) arg1 / 100;
+						sThreeLabel.setText(String.valueOf(sThreeVal + "s"));
 
-			}
+					}
 
-			@Override
-			public void onStartTrackingTouch(SeekBar arg0) {
-				// TODO Auto-generated method stub
+					@Override
+					public void onStartTrackingTouch(SeekBar arg0) {
+						// TODO Auto-generated method stub
 
-			}
+					}
 
-			@Override
-			public void onStopTrackingTouch(SeekBar arg0) {
-				// TODO Auto-generated method stub
+					@Override
+					public void onStopTrackingTouch(SeekBar arg0) {
+						// TODO Auto-generated method stub
 
-			}
+					}
 
-		});
-		sDelaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+				});
+		sShotsSeek
+				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
-			@Override
-			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-				sDelayLabel.setText(String.valueOf(arg1 + ""));
-				
-			}
+					@Override
+					public void onProgressChanged(SeekBar arg0, int arg1,
+							boolean arg2) {
+						sShotsLabel.setText(String.valueOf(arg1 + "Shots"));
 
-			@Override
-			public void onStartTrackingTouch(SeekBar arg0) {
-				// TODO Auto-generated method stub
+					}
 
-			}
+					@Override
+					public void onStartTrackingTouch(SeekBar arg0) {
+						// TODO Auto-generated method stub
 
-			@Override
-			public void onStopTrackingTouch(SeekBar arg0) {
-				// TODO Auto-generated method stub
+					}
 
-			}
+					@Override
+					public void onStopTrackingTouch(SeekBar arg0) {
+						// TODO Auto-generated method stub
 
-		});
-		
-		hdrCheck.setOnCheckedChangeListener(new OnCheckedChangeListener()	{
+					}
+
+				});
+		sDelaySeek
+				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+					@Override
+					public void onProgressChanged(SeekBar arg0, int arg1,
+							boolean arg2) {
+						sDelayLabel.setText(String.valueOf(arg1 + ""));
+
+					}
+
+					@Override
+					public void onStartTrackingTouch(SeekBar arg0) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void onStopTrackingTouch(SeekBar arg0) {
+						// TODO Auto-generated method stub
+
+					}
+
+				});
+
+		hdrCheck.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-				if(arg1 == false)	{
+				if (arg1 == false) {
 					sShotsSeek.setEnabled(false);
 					sDelaySeek.setEnabled(false);
 					spinner.setEnabled(false);
-				}	else	{
+				} else {
 					sShotsSeek.setEnabled(true);
 					sDelaySeek.setEnabled(true);
 					spinner.setEnabled(true);
 				}
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		});
-		
+
 	}
 
-
-	public void sendCapture(){
+	@Override
+	public void sendCapture() {
 		if (hdrCheck.isChecked() == false) {
 			shotsvar = 1;
 		} else {
 			shotsvar = sShotsSeek.getProgress();
 		}
 		delayParse();
-		mServer.sendData("5," + secs +"," + mins + "," + hurs + ","  + (shotsvar) + "," + (sOneSeek.getProgress()*10) + "," + (sTwoSeek.getProgress()*10) + "," + (sThreeSeek.getProgress()*10) + ",500,0!");
+		sendToroCamMessage("5," + secs + "," + mins + "," + hurs + ","
+				+ (shotsvar) + "," + (sOneSeek.getProgress() * 10) + ","
+				+ (sTwoSeek.getProgress() * 10) + ","
+				+ (sThreeSeek.getProgress() * 10) + ",500,0!");
 		clearTimes();
 	}
 
-
-	public void delayParse(){
-		if (spin == 1){
+	public void delayParse() {
+		if (spin == 1) {
 			secs = sDelaySeek.getProgress();
-		} else if (spin == 60){
+		} else if (spin == 60) {
 			mins = sDelaySeek.getProgress();
-		} else if (spin == 3600){
+		} else if (spin == 3600) {
 			hurs = sDelaySeek.getProgress();
-		} else { 
+		} else {
 			System.out.println("Spin value empty");
 		}
 	}
-	public void clearTimes(){
+
+	public void clearTimes() {
 		secs = 0;
 		mins = 0;
 		hurs = 0;

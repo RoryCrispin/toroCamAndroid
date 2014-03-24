@@ -14,55 +14,43 @@
  */
 package com.rozzles.torocam;
 
-import com.rozzles.torocam.R;
-import com.rozzles.torocam.BlueComms.LocalBinder;
-
 import android.os.Bundle;
-import android.os.IBinder;
-import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.graphics.Typeface;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.rozzles.torocam.core.toroCamTrigger;
+
 public class SoundTrigger extends toroCamTrigger {
 	/*
-	@Override 
-	public void onPause(){
-		super.onPause();
-		mBounded = false;
-		mServer = null;
-	}
-	*/
+	 * @Override public void onPause(){ super.onPause(); mBounded = false;
+	 * mServer = null; }
+	 */
 	public float delay;
 	public float mod;
 	public int bulbBinary;
 	public int chkPersBinary;
 	CheckBox bulb;
 	CheckBox chkPers;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_sound_trigger);
 		super.onCreate(savedInstanceState);
-		
-		
+
 		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
 		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);
 		final TextView modView = (TextView) findViewById(R.id.multiplierVal);
 		bulb = (CheckBox) findViewById(R.id.bulbCheck);
 		chkPers = (CheckBox) findViewById(R.id.chkPersistant);
-	
-		delaySeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+		delaySeek
+				.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 					@Override
 					public void onProgressChanged(SeekBar arg0, int arg1,
@@ -96,10 +84,9 @@ public class SoundTrigger extends toroCamTrigger {
 			}
 		});
 	}
-	
-	
 
-	public void sendCapture(){
+	@Override
+	public void sendCapture() {
 
 		if (bulb.isChecked() == true) {
 			bulbBinary = 1;
@@ -111,14 +98,13 @@ public class SoundTrigger extends toroCamTrigger {
 		} else {
 			chkPersBinary = 0;
 		}
-		mServer.sendData("3," + Math.round((200-(mod*100))) + ",1000," + Math.round(delay*1000) + "," + "0" + "," + bulbBinary
+		sendToroCamMessage("3," + Math.round((200 - (mod * 100))) + ",1000,"
+				+ Math.round(delay * 1000) + "," + "0" + "," + bulbBinary
 				+ ",0,0,0,0!");
 	}
 
-
-
 	public void Recal(View v) {
-		mServer.sendData("9,1!");
+		sendToroCamMessage("9,1!");
 	}
 
 }
