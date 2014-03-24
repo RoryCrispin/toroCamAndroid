@@ -63,7 +63,7 @@ public class FlatHome extends toroCamTrigger {
 		 * if they have not -> (!checkSetup()) <- it forwards them to the setup 
 		 * utility
 		 */
-		if(checkSetup()){
+		if(!checkSetup()){
 			try    {
 				Intent newIntent = new Intent(this, SetupOne.class);    
 				startActivityForResult(newIntent, 0);

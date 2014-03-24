@@ -43,7 +43,7 @@ public class ShakeTrigger extends toroCamTrigger {
 	@Override 
 	public void onPause(){
 		super.onPause();
-
+		mSensorManager.unregisterListener(mSensorListener);
 	}
 	
 	public float delay;
@@ -109,26 +109,13 @@ public class ShakeTrigger extends toroCamTrigger {
 			}
 		});
 	}
-	ServiceConnection mConnection = new ServiceConnection() {
 
-		public void onServiceDisconnected(ComponentName name) {
-			mBounded = false;
-			mServer = null;
-		}
-		public void onServiceConnected(ComponentName name, IBinder service) {
-			mBounded = true;
-			LocalBinder mLocalBinder = (LocalBinder)service;
-			mServer = mLocalBinder.getServerInstance();
-		}
-	};
-	
 	private SensorManager mSensorManager;
 	  private float mAccel; // acceleration apart from gravity
 	  private float mAccelCurrent; // current acceleration including gravity
 	  private float mAccelLast; // last acceleration including gravity
-
+	  	
 	  private final SensorEventListener mSensorListener = new SensorEventListener() {
-
 	    public void onSensorChanged(SensorEvent se) {
 	      float x = se.values[0];
 	      float y = se.values[1];
@@ -147,6 +134,8 @@ public class ShakeTrigger extends toroCamTrigger {
 	    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 	    }
 	  };
+	  
+	  
 	  @Override 
 	  public void sendCapture() {
 		  listen = tog.isChecked();

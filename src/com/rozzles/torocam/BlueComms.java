@@ -183,10 +183,12 @@ public class BlueComms extends Service{
 	public boolean Connect(){
 		restoreMac();
 		CheckBt(); //Check bluetooth exists and is enabled & set mBluetoothAdapter
-		BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
+		try {
+			BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
+			
 		Log.d(TAG, "Connecting to ... " + device);
 		mBluetoothAdapter.cancelDiscovery();
-		try {
+		
 			btSocket = device.createRfcommSocketToServiceRecord(MY_UUID); //This line doesn't do anything really, I should delete it but I'm scared
 			btSocket.connect(); //Connect to the device
 			outStream = btSocket.getOutputStream();
@@ -197,6 +199,7 @@ public class BlueComms extends Service{
 			
 			return true;
 			//TODO make a persistent notification while the service is open
+			
 		
 		} catch (IOException e) {
 			try {
