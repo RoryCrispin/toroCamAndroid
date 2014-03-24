@@ -14,6 +14,12 @@ Contributing
 ============
 We've designed toroCam from the ground up to be an open source project that anyone can contribute to so we're really excited to invite new developers to the project. Here's the basic setup for making new functions and communicating with the toroCam board.
 
+This documentation is now OUT OF DATE. I will update it when I have a minute. 
+============================================================
+The activities are now much more object oriented and all of this importing and copy/pasting has been replaced by inheriting from torocam.core.toroCamTrigger which contains all this code. 
+---------------
+
+
 Adding functions
 ----------------
 There are a couple of steps to creating a new toroCam function, firstly you need to create a new activity and add a link to it from the FlatHome activity, you can do so by copy/pasting one of the linearlayouts in the FlatHome xml to the bottom of the list, make sure to change the name of it and the onClick action to a new method like this: 
