@@ -35,11 +35,13 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.TextView;
 
 public class toroCamTrigger extends Activity {
 
-	 boolean mBounded;
+	boolean mBounded;
 	public boolean bulbMode;
 	public BlueComms mServer;
 	public static final String TOROCAM_PREFS = "AndCamPreferences";
@@ -48,14 +50,18 @@ public class toroCamTrigger extends Activity {
 	View v;
 	Intent mIntent;
 	Context c;
-	private static final String TAG = "toroCam";
+	TextView torocamTitle;
+	Animation blinkTorocamTitleAnimation;
 	
+	private static final String TAG = "toroCam";
+
 	boolean[] advFunctionsState = {false};
 	/*
-	 * (non-Javadoc)
-	 * @see android.app.Activity#onBackPressed()
 	 * Overrides the back button press and inserts the custom slide transition
 	 */
+	public void backClick(final View v) {
+		onBackPressed();
+	}
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
@@ -83,21 +89,23 @@ public class toroCamTrigger extends Activity {
 		super.onCreate(savedInstanceState);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/robotoLI.otf");
-		TextView tv = (TextView) findViewById(R.id.headerTitle);
+		torocamTitle = (TextView) findViewById(R.id.headerTitle);
 		try {
-			tv.setTypeface(tf);
+			torocamTitle.setTypeface(tf);
 		} catch(Exception ex)
 		{
 			System.out.println(ex);
 		}
-
 		settings = getSharedPreferences(TOROCAM_PREFS, 0);
 		editor = settings.edit();
-
-
-
 		v = getWindow().getDecorView().findViewById(android.R.id.content);
-
+		
+		//Set up the torocam logo blinking animation which is triggered when you take a photo
+		blinkTorocamTitleAnimation = new AlphaAnimation(0.1f, 1.0f);
+		blinkTorocamTitleAnimation.setDuration(200);
+		blinkTorocamTitleAnimation.setStartOffset(20);
+		blinkTorocamTitleAnimation.setRepeatMode(Animation.REVERSE);
+		
 	}
 
 	ServiceConnection mConnection = new ServiceConnection() {
@@ -138,7 +146,7 @@ public class toroCamTrigger extends Activity {
 	public void sendCapture(){
 		//Overridden by subclass	
 	}
-	
+
 	//Some activities need to perform different functions when the volume buttons 
 	//are used instead of the on screen buttons and will override this. Others won't
 	public void sendCapture_Volume(){
@@ -147,7 +155,7 @@ public class toroCamTrigger extends Activity {
 	public void CaptureClick(View v) {
 		sendCapture();
 	}
-	
+
 	public boolean advancedMode(){
 		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
 		if(!(prefs.getBoolean("advFunctions", false))){
@@ -157,7 +165,12 @@ public class toroCamTrigger extends Activity {
 		}
 	}
 	public void sendToroCamMessage(String message){
-		mServer.sendData(message);
+		
+		
+		torocamTitle.startAnimation(blinkTorocamTitleAnimation);
+		
+		//mServer.sendData(message);
+		
 	}
 	//This creates the popup options dialog
 	public void optionsClicked(final View v) {
@@ -178,7 +191,7 @@ public class toroCamTrigger extends Activity {
 				navigateToClass(v.getContext(), SetupOne.class);
 			}
 		});
-		
+
 		helpBuilder.setPositiveButton("Reconnect", new DialogInterface.OnClickListener() {
 
 			@Override
@@ -187,7 +200,7 @@ public class toroCamTrigger extends Activity {
 				mServer.Connect();
 			}
 		});
-		
+
 		helpBuilder.setMultiChoiceItems(R.array.optionsCheckboxes, advFunctionsState,
 				new DialogInterface.OnMultiChoiceClickListener() {
 
@@ -248,10 +261,8 @@ public class toroCamTrigger extends Activity {
 		helpDialog.show();
 
 	}
-	
-	public void backClick(final View v) {
-		onBackPressed();
-	}
+
+
 
 
 }
