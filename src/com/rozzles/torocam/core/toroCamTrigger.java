@@ -40,7 +40,6 @@ import android.view.animation.Animation;
 import android.widget.TextView;
 
 public class toroCamTrigger extends Activity {
-
 	boolean mBounded;
 	public boolean bulbMode;
 	public BlueComms mServer;
@@ -75,7 +74,7 @@ public class toroCamTrigger extends Activity {
 			startActivityForResult(newIntent, 0);
 			overridePendingTransition(R.anim.slide_in_left, R.anim.slide_in_right);        
 		} catch(Exception ex) {
-			Log.d("TOROCAM", "Somethign went wrong with changing activities, Error: " + ex);
+			Log.d(TAG, "Somethign went wrong with changing activities, Error: " + ex);
 		}
 	}
 
@@ -174,7 +173,6 @@ public class toroCamTrigger extends Activity {
 	}
 	//This creates the popup options dialog
 	public void optionsClicked(final View v) {
-
 		advFunctionsState[0] = mServer.advFunctions();
 		AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 		helpBuilder.setTitle("Options");
@@ -260,8 +258,9 @@ public class toroCamTrigger extends Activity {
 		AlertDialog helpDialog = helpBuilder.create();
 		helpDialog.show();
 
+		
 	}
-
+	
 
 
 
