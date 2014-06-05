@@ -24,6 +24,7 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.rozzles.torocam.CameraView;
 import com.rozzles.torocam.DripTrig;
 import com.rozzles.torocam.HDRLapse;
 import com.rozzles.torocam.LightTrigger;
@@ -99,6 +100,9 @@ public class FlatHome extends toroCamTrigger {
 	 * for different functions
 	 */
 
+	public void cameraOneClick(View v) {
+		navigateToClass(v.getContext(), CameraView.class);
+	}
 	public void simpleShootClick(View v) {
 		navigateToClass(v.getContext(), ShutterRelease.class);
 	}

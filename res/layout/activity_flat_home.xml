@@ -44,6 +44,7 @@
             android:text="@string/smartshutter"
             android:textColor="#3B97D3"
             android:textSize="40sp" />
+
     </RelativeLayout>
 
     <ScrollView
@@ -148,6 +149,51 @@
                             android:layout_centerVertical="true"
                             android:paddingLeft="10dp"
                             android:text="@string/simple_shoot"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="#FFFFFF" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="cameraOneClick"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/greenbutton"
+                    tools:ignore="UselessParent" >
+
+                    <ImageView
+                        android:id="@+id/ImageView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:baselineAlignBottom="false"
+                        android:contentDescription="@string/zero"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/simpleshoot" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" >
+
+                        <TextView
+                            android:id="@+id/TextView08"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:paddingLeft="10dp"
+                            android:text="Local Cam"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="#FFFFFF" />
                     </RelativeLayout>

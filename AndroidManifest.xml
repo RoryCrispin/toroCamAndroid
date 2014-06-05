@@ -5,11 +5,14 @@
     android:versionName="1.03" >
 
     <uses-sdk
-        android:minSdkVersion="7"
+        android:minSdkVersion="8"
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -74,7 +77,6 @@
             android:label="@string/title_activity_drip_trig"
             android:screenOrientation="portrait" >
         </activity>
-
         <activity
             android:name="com.rozzles.torocam.HDRLapse"
             android:label="@string/title_activity_hdrlapse"
@@ -85,15 +87,13 @@
             android:label="@string/title_activity_setup_one"
             android:screenOrientation="portrait" >
         </activity>
-        
-        
         <activity
             android:name="com.rozzles.torocam.core.SetupTwo"
             android:label="@string/title_activity_setup_two"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-           android:name="com.rozzles.torocam.core.SetupThree"
+            android:name="com.rozzles.torocam.core.SetupThree"
             android:label="@string/title_activity_setup_three"
             android:screenOrientation="portrait" >
         </activity>
@@ -101,6 +101,14 @@
             android:name="com.rozzles.torocam.ServoTimelapse"
             android:label="@string/title_activity_servo_timelapse"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.rozzles.torocam.core.CameraOne"
+            android:label="@string/title_activity_camera_one" >
+        </activity>
+        <activity
+            android:name="com.rozzles.torocam.CameraView"
+            android:label="@string/title_activity_camera_view" >
         </activity>
     </application>
 
