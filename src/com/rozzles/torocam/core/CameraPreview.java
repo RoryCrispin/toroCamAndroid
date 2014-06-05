@@ -445,7 +445,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 		void createExternalStoragePublicPicture(byte[] pic) {
 
 			path = Environment.getExternalStoragePublicDirectory(
-					Environment.DIRECTORY_PICTURES);
+					Environment.DIRECTORY_PICTURES + File.separator + "toroCam" );
 
 			String timeStamp = new SimpleDateFormat("yyyyMMdd_HH-mm-ss").format(new Date());
 
