@@ -13,10 +13,13 @@ import java.util.List;
 import com.rozzles.torocam.CameraView;
 
 import android.R;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.PreviewCallback;
 import android.media.MediaScannerConnection;
@@ -24,6 +27,7 @@ import android.media.MediaScannerConnection.MediaScannerConnectionClient;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
 import android.view.Surface;
@@ -74,6 +78,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 	 */
 	protected boolean mSurfaceConfiguring = false;
 
+	
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	public CameraPreview(Activity activity, int cameraId, LayoutMode mode) {
 		super(activity); // Always necessary
@@ -82,7 +87,9 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 		mHolder = getHolder();
 		mHolder.addCallback(this);
 		mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
+		
+		
+		
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
 			if (Camera.getNumberOfCameras() > cameraId) {
 				mCameraId = cameraId;
@@ -376,7 +383,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 		}
 		mCamera.setOneShotPreviewCallback(callback);
 	}
-
+	
 	public void setPreviewCallback(PreviewCallback callback) {
 		if (null == mCamera) {
 			return;
@@ -400,6 +407,16 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
 
 		}};
+		private AutoFocusCallback mFocus = new AutoFocusCallback (){
+
+			@Override
+			public void onAutoFocus(boolean arg0, Camera arg1) {
+				// TODO Auto-generated method stub
+				Log.i("TOROCAM", "Autofocus Complete");
+			}
+			
+		};
+	
 
 		/** Create a File for saving an image or video */
 		private  File getOutputMediaFile(int type){
@@ -434,6 +451,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 		}
 
 
+		
 		void capture(){
 			mCamera.takePicture(null, null, mPicture);
 		}
@@ -479,6 +497,12 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 				}
 			});
 		}
+		
+		public void autoFocus() {
+			mCamera.autoFocus(mFocus);
+			
+		}
+		
 
 }
 

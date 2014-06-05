@@ -99,4 +99,6 @@ public class ResizableCameraPreview extends CameraPreview {
     public List<Camera.Size> getSupportedPreivewSizes() {
         return mPreviewSizeList;
     }
+
+
 }
