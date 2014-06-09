@@ -5,10 +5,12 @@ import java.util.List;
 
 import com.rozzles.torocam.core.ResizableCameraPreview;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +20,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Spinner;
@@ -30,6 +33,7 @@ public class CameraView extends Activity implements AdapterView.OnItemSelectedLi
 	private int mCameraId = 0;
 	float[] touchLocation = new float[2];
 	boolean frontCamera = false;
+	ImageView focusRing;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,9 @@ public class CameraView extends Activity implements AdapterView.OnItemSelectedLi
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		setContentView(R.layout.cam_view);
-
+		
+		focusRing = (ImageView) findViewById(R.id.focusRing);
+		
 		// Spinner for preview sizes
 		Spinner spinnerSize = (Spinner) findViewById(R.id.spinner_size);
 		mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
@@ -50,30 +56,19 @@ public class CameraView extends Activity implements AdapterView.OnItemSelectedLi
 		spinnerSize.setAdapter(mAdapter);
 		spinnerSize.setOnItemSelectedListener(this);
 
-		// Spinner for camera ID
-		Spinner spinnerCamera = (Spinner) findViewById(R.id.spinner_camera);
-		ArrayAdapter<String> adapter;
-		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerCamera.setAdapter(adapter);
-		spinnerCamera.setOnItemSelectedListener(this);
-		adapter.add("0");
-		adapter.add("1");
-		adapter.add("2");
-
 		mLayout = (RelativeLayout) findViewById(R.id.layout);
-		
+
 		mLayout.setOnTouchListener(new OnTouchListener() {      
 			@Override
 			public boolean onTouch(View v, MotionEvent touchEvent) {
-				 mPreview.autoFocus();
-				 touchLocation[0] = touchEvent.getX();
-				 touchLocation[1] = touchEvent.getY();
-				 createAutoFocusIndicator(touchLocation);
+				mPreview.autoFocus();
+				touchLocation[0] = touchEvent.getX();
+				touchLocation[1] = touchEvent.getY();
+				createAutoFocusIndicator(touchLocation);
 				return true;
 			}
 
-			});
+		});
 		ImageButton switchCamera = (ImageButton) findViewById(R.id.switchCameraButton);
 		switchCamera.setOnClickListener( new OnClickListener(){
 
@@ -89,21 +84,41 @@ public class CameraView extends Activity implements AdapterView.OnItemSelectedLi
 					mCameraId = 0;
 					frontCamera = false;
 				}
-				
+
 				createCameraPreview();
-				
-				
+
+
 			}
-			
+
 		});
 	}
-	
 
+
+	@SuppressLint("NewApi")
 	private void createAutoFocusIndicator(float[] touchLocation) {
-		
-		
+		try {
+			focusRing.setX(touchLocation[0]);
+			focusRing.setY(touchLocation[1]);
+			focusRing.setVisibility(View.VISIBLE);
+			
+			
+			final Handler handler = new Handler();
+			handler.postDelayed(new Runnable() {
+			    @Override
+			    public void run() {
+			    	focusRing.setVisibility(View.INVISIBLE);
+			    	
+			    }
+			}, 500);
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}    
-	
+
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -120,12 +135,6 @@ public class CameraView extends Activity implements AdapterView.OnItemSelectedLi
 			} else {
 				mPreview.setPreviewSize(position - 1, rect.width(), rect.height());
 			}
-			break;
-		case R.id.spinner_camera:
-			mPreview.stop();
-			mLayout.removeView(mPreview);
-			mCameraId = position;
-			createCameraPreview();
 			break;
 		}
 	}
@@ -148,8 +157,8 @@ public class CameraView extends Activity implements AdapterView.OnItemSelectedLi
 		mLayout.removeView(mPreview);
 		mPreview = null;
 	}
-	
-	
+
+
 
 	private void createCameraPreview() {
 		// Set the second argument by your choice.

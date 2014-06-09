@@ -12,11 +12,6 @@
         android:layout_alignParentLeft="true">
         
     </Spinner>
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_alignParentRight="true"
-        android:id="@+id/spinner_camera"
-        android:layout_height="wrap_content"></Spinner>
 
     <ImageButton
         android:id="@+id/imageButton1"
@@ -33,9 +28,19 @@
         android:id="@+id/switchCameraButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="11dp"
         android:background="@null"
         android:src="@drawable/ic_switch_photo_facing_holo_light" />
+
+    <ImageView
+        android:id="@+id/focusRing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:src="@drawable/ic_location_search"
+        android:visibility="invisible" />
 
 </RelativeLayout>
