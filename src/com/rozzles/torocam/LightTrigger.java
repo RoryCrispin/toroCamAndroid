@@ -28,6 +28,7 @@ public class LightTrigger extends toroCamTrigger {
 	public float mod;
 	public int bulbBinary;
 	CheckBox bulb;
+	CheckBox persistent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class LightTrigger extends toroCamTrigger {
 		super.onCreate(savedInstanceState);
 
 		bulb = (CheckBox) findViewById(R.id.bulbCheck);
+		persistent = (CheckBox) findViewById(R.id.PersistentCheckBoxLightTrigger);
 		SeekBar delaySeek = (SeekBar) findViewById(R.id.LightDelay);
 		SeekBar modSeek = (SeekBar) findViewById(R.id.multiplierSeek);
 		final TextView delayView = (TextView) findViewById(R.id.timeDelayVal);
@@ -86,7 +88,7 @@ public class LightTrigger extends toroCamTrigger {
 			bulbBinary = 0;
 		}
 		sendToroCamMessage("3,1000," + Math.round((200 - (mod * 100))) + ","
-				+ Math.round(delay * 1000) + ",0," + bulbBinary + "," + ((internalTriggerMode()) ? 0:1) +"!");
+				+ Math.round(delay * 1000) + "," + ((persistent.isChecked()) ? 1:0)+ "," + bulbBinary + "," + ((internalTriggerMode()) ? 0:1) +"!");
 	}
 
 	public void Recal(View v) {

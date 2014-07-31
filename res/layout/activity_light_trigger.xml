@@ -78,17 +78,6 @@
         android:layout_marginTop="26dp"
         android:text="@string/bulbFlash" />
 
-    <Button
-        android:id="@+id/CaptureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bulbCheck"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:onClick="CaptureClick"
-        android:text="@string/capture"
-        android:textColor="#FFFFFF" />
-
     <TextView
         android:id="@+id/timeDelayVal"
         android:layout_width="wrap_content"
@@ -120,13 +109,33 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/bulbCheck"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/CaptureButton"
-        android:layout_marginTop="22dp"
+        android:layout_marginBottom="14dp"
         android:onClick="Recal"
         android:text="@string/recallob"
         android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/CaptureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="7dp"
+        android:onClick="CaptureClick"
+        android:text="@string/capture"
+        android:textColor="#FFFFFF" />
+
+    <CheckBox
+        android:id="@+id/PersistentCheckBoxLightTrigger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bulbCheck"
+        android:layout_below="@+id/bulbCheck"
+        android:layout_marginTop="9dp"
+        android:text="@string/persistant" />
 
 </RelativeLayout>
 </ScrollView>

@@ -28,7 +28,6 @@
     </string-array>
      <string-array name="optionsCheckboxes">
         <item>Advanced Functions</item>
-        <item>External Triggers</item>
     </string-array>
 	<string name="title_activity_shake_trigger">Shake Trigger</string>
     <string name="start">START</string>
@@ -94,6 +93,6 @@
     <string name="sensitivity">Sensitivity</string>
     <string name="_0_0_seconds">0.0 seconds</string>
     <string name="_0_0x">0.0x</string>
-    <string name="persistant">Persistant</string>
+    <string name="persistant">Persistent</string>
 
 </resources>
