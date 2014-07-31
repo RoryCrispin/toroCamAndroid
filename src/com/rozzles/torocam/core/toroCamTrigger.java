@@ -33,8 +33,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.getpebble.android.kit.PebbleKit;
-import com.getpebble.android.kit.util.PebbleDictionary;
+//import com.getpebble.android.kit.PebbleKit;
+//import com.getpebble.android.kit.util.PebbleDictionary;
 import com.rozzles.torocam.R;
 import com.rozzles.torocam.core.BlueComms.LocalBinder;
 
@@ -55,10 +55,10 @@ public class toroCamTrigger extends Activity {
 	private final static int CMD_UP = 0x01;
 	private Handler mHandler;
 
-	private PebbleKit.PebbleDataReceiver dataReceiver;
+	//private PebbleKit.PebbleDataReceiver dataReceiver;
 	private static final String TAG = "toroCam";
 
-	boolean[] advFunctionsState = { false };
+	boolean[] multiChoiceOptionsArray = { false, false };
 
 	/*
 	 * (non-Javadoc)
@@ -106,7 +106,7 @@ public class toroCamTrigger extends Activity {
 		editor = settings.edit();
 
 		v = getWindow().getDecorView().findViewById(android.R.id.content);
-
+/*
 		dataReceiver = new PebbleKit.PebbleDataReceiver(PEBBLE_APP_UUID) {
 			@Override
 			public void receiveData(final Context context,
@@ -115,7 +115,7 @@ public class toroCamTrigger extends Activity {
 			}
 		};
 		PebbleKit.registerReceivedDataHandler(this, dataReceiver);
-
+*/
 	}
 
 	ServiceConnection mConnection = new ServiceConnection() {
@@ -175,7 +175,16 @@ public class toroCamTrigger extends Activity {
 
 	public boolean advancedMode() {
 		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
-		if (!(prefs.getBoolean("advFunctions", false))) {
+		if ((prefs.getBoolean("advFunctions", false))) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	public boolean internalTriggerMode() {
+		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
+		if ((prefs.getBoolean("internalTriggers", false))) {
 			return false;
 		} else {
 			return true;
@@ -189,7 +198,8 @@ public class toroCamTrigger extends Activity {
 	// This creates the popup options dialog
 	public void optionsClicked(final View v) {
 
-		advFunctionsState[0] = mServer.advFunctions();
+		multiChoiceOptionsArray[0] = mServer.advFunctions();
+		multiChoiceOptionsArray[1] = mServer.internalTriggers();
 		AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 		helpBuilder.setTitle("Options");
 		c = this;
@@ -218,7 +228,7 @@ public class toroCamTrigger extends Activity {
 				});
 
 		helpBuilder.setMultiChoiceItems(R.array.optionsCheckboxes,
-				advFunctionsState,
+				multiChoiceOptionsArray,
 				new DialogInterface.OnMultiChoiceClickListener() {
 
 					@Override
@@ -233,7 +243,13 @@ public class toroCamTrigger extends Activity {
 										.edit();
 								editor.putBoolean("advFunctions", true);
 								editor.commit();
+							} else if (which ==1){
+								SharedPreferences.Editor editor = settings
+										.edit();
+								editor.putBoolean("internalTriggers", true);
+								editor.commit();
 							}
+							
 
 						} else {
 							if (which == 0) {
@@ -243,6 +259,12 @@ public class toroCamTrigger extends Activity {
 								editor.putBoolean("advFunctions", false);
 								editor.commit();
 
+							} else if (which == 1){
+
+								SharedPreferences.Editor editor = settings
+										.edit();
+								editor.putBoolean("internalTriggers", false);
+								editor.commit();
 							}
 						}
 					}

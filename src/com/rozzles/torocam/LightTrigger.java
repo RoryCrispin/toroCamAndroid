@@ -86,7 +86,7 @@ public class LightTrigger extends toroCamTrigger {
 			bulbBinary = 0;
 		}
 		sendToroCamMessage("3,1000," + Math.round((200 - (mod * 100))) + ","
-				+ Math.round(delay * 1000) + "," + bulbBinary + ",0,0,0,0,0!");
+				+ Math.round(delay * 1000) + ",0," + bulbBinary + "," + ((internalTriggerMode()) ? 0:1) +"!");
 	}
 
 	public void Recal(View v) {

@@ -100,7 +100,7 @@ public class SoundTrigger extends toroCamTrigger {
 		}
 		sendToroCamMessage("3," + Math.round((200 - (mod * 100))) + ",1000,"
 				+ Math.round(delay * 1000) + "," + "0" + "," + bulbBinary
-				+ ",0,0,0,0!");
+				+ ((internalTriggerMode()) ? 0:1) + "!");
 	}
 
 	public void Recal(View v) {

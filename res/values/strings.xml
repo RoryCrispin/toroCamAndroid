@@ -28,6 +28,7 @@
     </string-array>
      <string-array name="optionsCheckboxes">
         <item>Advanced Functions</item>
+        <item>Internal Triggers</item>
     </string-array>
 	<string name="title_activity_shake_trigger">Shake Trigger</string>
     <string name="start">START</string>

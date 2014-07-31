@@ -142,6 +142,10 @@ public class BlueComms extends Service {
 		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
 		return (prefs.getBoolean("advFunctions", false));
 	}
+	public boolean internalTriggers() {
+		SharedPreferences prefs = getSharedPreferences(TOROCAM_PREFS, 0);
+		return (prefs.getBoolean("internalTriggers", false));
+	}
 
 	/*
 	 * This is called by the Setup utility to send the Mac address selectedto
