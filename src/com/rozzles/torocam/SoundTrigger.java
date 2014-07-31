@@ -99,7 +99,7 @@ public class SoundTrigger extends toroCamTrigger {
 			chkPersBinary = 0;
 		}
 		sendToroCamMessage("3," + Math.round((200 - (mod * 100))) + ",1000,"
-				+ Math.round(delay * 1000) + "," + "0" + "," + bulbBinary
+				+ Math.round(delay * 1000) + "," + "0" + "," + bulbBinary + "," 
 				+ ((internalTriggerMode()) ? 0:1) + "!");
 	}
 
