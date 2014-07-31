@@ -196,8 +196,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/flashSlider"
         android:layout_centerHorizontal="true"
+        android:onClick="CaptureClick"
         android:text="@string/capture"
-        android:onClick="captureClick"
         android:textColor="#FFFFFF" />
 
     <TextView

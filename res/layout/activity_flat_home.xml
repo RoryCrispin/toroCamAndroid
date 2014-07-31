@@ -424,52 +424,6 @@
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="simpelShootClick"
-                android:orientation="vertical"
-                android:paddingBottom="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/greenbutton"
-                    android:clickable="true"
-                    android:onClick="srvClick"
-                    tools:ignore="UselessParent" >
-
-                    <ImageView
-                        android:id="@+id/simpleShootIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:baselineAlignBottom="false"
-                        android:contentDescription="@string/zero"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/timelapse" />
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" >
-
-                        <TextView
-                            android:id="@+id/simpleShootText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
-                            android:layout_centerVertical="true"
-                            android:paddingLeft="10dp"
-                            android:text="Dolly Timelapse"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="#FFFFFF" />
-                    </RelativeLayout>
-                </LinearLayout>
-            </LinearLayout>
             
             <LinearLayout
                  android:layout_width="fill_parent"
