@@ -1,6 +1,9 @@
 toroCam Camera Control
 ======================
 
+## toroCam was a fun summer project that we have postponed development on in order to focus on developing exciting new products. The code is open source however our hardware is propritary. All commecial enquiries welcome at me@rorycrispin.co.uk. Thanks
+
+
 toroCam is a camera control system, which gives you unparalleled control over your SLR though an open source app and a small, Arduino compatible board.
 
 This repo hosts the Android app which is built in conjunction with an arduino compatible board. They connect via Bluetooth allowing advanced creative DSLR controls set inside the App to be sent to the small Atemiga chip controlling the camera. For more info read http://rozzles.com/torocam or http://tomgarry.co.uk/torocam and visit the Facebook news page: https://www.facebook.com/toroCam
