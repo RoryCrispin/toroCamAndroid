@@ -1,7 +1,7 @@
 toroCam Camera Control
 ======================
 
-#### toroCam was a fun summer project that we have postponed development on in order to focus on exciting new products. The code is open source however our hardware is propritary. All commecial enquiries are welcome at me@rorycrispin.co.uk. Thanks
+#### toroCam was a fun summer project that we have postponed development on in order to focus on exciting new products. The code is open source however our hardware is propritary. All commecial enquiries are welcome at gmail.com, rorycr96. Thanks
 
 
 toroCam is a camera control system, which gives you unparalleled control over your SLR though an open source app and a small, Arduino compatible board.
